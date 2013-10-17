@@ -12,7 +12,7 @@ public class Obstacles extends Object
     public int snowmanTimer = 0;
     private boolean hasDied;
     public boolean atWorldBottom(){
-        return (getY() >= getWorld().getHeight() - 1);
+        return (getY() >= getWorld().getHeight() + 50);
     }
 
     public void act()
@@ -26,7 +26,7 @@ public class Obstacles extends Object
         }
         else {
             Snowman snowman = new Snowman();
-            getWorld().addObject(snowman, Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
+            getWorld().addObject(snowman, Greenfoot.getRandomNumber(getWorld().getWidth()), -50);
             snowmanTimer = 30;
         }
     }
