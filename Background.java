@@ -10,10 +10,7 @@ public class Background extends Actor
 {
     public int snowTimer = 0;
     public boolean atWorldBottom(){
-        if (getY() >= getWorld().getHeight() - 1){
-            return true;
-        }
-        else return false;
+        return (getY() >= getWorld().getHeight() + 50); // smooth exit
     }
     
     public void act() 
@@ -23,7 +20,7 @@ public class Background extends Actor
         }
         else {
             Snow snow = new Snow();
-            getWorld().addObject(snow, Greenfoot.getRandomNumber(getWorld().getWidth()), 0);
+            getWorld().addObject(snow, Greenfoot.getRandomNumber(getWorld().getWidth()), -50);
             snow.setRotation(Greenfoot.getRandomNumber(360));
             snowTimer = 1;
         }
