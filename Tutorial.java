@@ -5,7 +5,7 @@ import java.awt.Color;
  * Write a description of class Tutorial here.
  * 
  * @author (your name) 
- * @version (a version number or a date)
+ * @version (1.0)
  */
 public class Tutorial extends Buttons
 {
