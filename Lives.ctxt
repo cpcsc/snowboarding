@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=boolean\ noLives()
+comment1.params=
+comment1.target=Lives()
+comment2.params=amount
+comment2.target=void\ bumpLives(int)
+comment2.text=\r\n\ Increase\ the\ total\ amount\ displayed\ on\ the\ counter,\ by\ a\ given\ amount.\r\n
+comment3.params=
+comment3.target=void\ respawn()
+comment4.params=
+comment4.target=void\ act()
+numComments=5
