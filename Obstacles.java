@@ -12,10 +12,7 @@ public class Obstacles extends Object
     public int snowmanTimer = 0;
     private boolean hasDied;
     public boolean atWorldBottom(){
-        if (getY() >= getWorld().getHeight() - 1){
-            return true;
-        }
-        else return false;
+        return (getY() >= getWorld().getHeight() - 1);
     }
 
     public void act()
