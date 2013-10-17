@@ -9,6 +9,10 @@ import java.awt.Color;
  */
 public class Credits extends Buttons
 {
+    public Credits()
+    {
+        setImage(new GreenfootImage("Credits", 50, Color.BLUE, null));
+    }
     public void act() 
     {
         setImage(new GreenfootImage("Credits", 50, Color.BLUE, null));
