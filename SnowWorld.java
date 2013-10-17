@@ -10,7 +10,7 @@ public class SnowWorld extends World
 {
 
     private Lives theLives;
-    
+    private GreenfootSound bkgMusic;
     public SnowWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -18,6 +18,11 @@ public class SnowWorld extends World
         
         theLives = new Lives();
         addObject(theLives, 820, 670);
+        
+        //start music in the snow world
+        bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
+        //Credit: Martin Garrix
+        bkgMusic.playLoop();
 
         prepare();
     }
