@@ -52,13 +52,28 @@ public class Lives extends Object
             spawnTime = spawnTime +1;
             if (totalLives > 0 && spawnTime > 50){
                 Boarder boarder = new Boarder();
-                getWorld().addObject(boarder, 458, 388);
+                getWorld().addObject(boarder, getRespawnX(388), 388);
                 spawnTime = 0;
                 dead = 0;
             }
         }
     }
-    
+    /**
+     * Returns the x-value of the middle of the gap between the trees
+     * so you don't spawn in the trees.
+     */
+    public int getRespawnX(int y) {
+        World w = getWorld();
+        int min = 0;
+        int max = 0;
+        for(int i = 0; w.getObjectsAt(i, y, Tree.class).size() != 0; i += 10) {
+                min = i;
+        }
+        for(int i = w.getWidth(); w.getObjectsAt(i, y, Tree.class).size() != 0; i -= 10) {
+                max = i;
+        }
+        return (max + min) / 2;
+    }
     public void act() 
     {
         respawn();

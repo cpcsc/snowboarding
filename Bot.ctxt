@@ -2,7 +2,5 @@
 comment0.params=
 comment0.target=void\ act()
 comment1.params=
-comment1.target=void\ moveLeft()
-comment2.params=
-comment2.target=void\ moveRight()
-numComments=3
+comment1.target=void\ turn()
+numComments=2

@@ -12,21 +12,18 @@ public class Pig extends Object
     
     public void act() 
     {
-        move(speed);
-        if (getX() >= getWorld().getWidth() - 50){
-            moveLeft();
-        }
-        if (getX() < 50) {
-            moveRight();
+        if (!checkTree(10*speed)) {
+            setLocation(getX() + speed, getY());
+        } else {
+            turn();
         }
     }
-    
-    public void moveLeft() {
-        setImage("cop_left.png");
-        speed = -speed;
-    }
-    public void moveRight() {
-        setImage("cop_right.png");
-        speed = -speed;
+
+    public void turn() {
+        GreenfootImage img = getImage();
+        img.mirrorHorizontally();
+        setImage(img);
+        speed *= -1;
+        setLocation(getX() + speed, getY());
     }
 }

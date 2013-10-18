@@ -14,5 +14,16 @@ public class Object extends Actor
     public void act() 
     {
         // Add your action code here.
-    }    
+    }
+    
+    public boolean checkTree(int dir) {
+        move(dir);
+        if (getOneIntersectingObject(Tree.class) != null) {
+            move(-dir);
+            return true;
+        } else {
+            move(-dir);
+            return false;
+        }    
+    }
 }

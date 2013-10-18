@@ -10,22 +10,26 @@ public class Boarder extends Object
 {   
     private int dragFromX, dragFromY;
     private int invincible = 0;
-
     public void act() 
     {
         moveAround();
         die();
-        invincible = invincible + 1;
+        invincible++;
+        respawnBlink();
     }
     
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left")){
-            move(-4);
+            if (!checkTree(-4)) {
+                move(-4);
+            }
             setImage("left.png");
         }
         if (Greenfoot.isKeyDown("right")){
-            move(4);
+            if (!checkTree(4)) {
+                move(4);
+            }
             setImage("right.png");
         }
         if (!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
@@ -64,9 +68,29 @@ public class Boarder extends Object
     }
     
     public void die(){
-        Actor snowman = getOneIntersectingObject(Snowman.class);
-        if (snowman != null && invincible > 50){
+        Actor obstacle = getOneIntersectingObject(Obstacles.class);
+        if (obstacle != null && invincible > 50){
             getWorld().removeObject(this);
         }
     }
+    
+    public void respawnBlink() {
+        if (invincible < 50) {
+            GreenfootImage img = getImage();
+            img.setTransparency(((invincible % 10) + 1)*(255/10));
+            setImage(img);        
+        }
+        if (invincible == 50) {
+            GreenfootImage img = getImage();
+            img.setTransparency(255);
+            setImage(img);        
+        }
+    }
 }
+
+
+
+
+
+
+
