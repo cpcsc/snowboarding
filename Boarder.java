@@ -10,12 +10,15 @@ public class Boarder extends Object
 {   
     private int dragFromX, dragFromY;
     private int invincible = 0;
+    private int airTime = 0;
     public void act() 
     {
         moveAround();
         die();
         invincible++;
+        airTime--;
         respawnBlink();
+        jump();
     }
     
     public void moveAround()
@@ -39,7 +42,11 @@ public class Boarder extends Object
             setImage("straight.png");
             move(0);
         }
-        
+        if (Greenfoot.isKeyDown("up")) {
+            if (airTime <= 0) {
+                airTime = 40;
+            }
+        }
         // touchscreen (mouse drag) detection/movement
         if (Greenfoot.mousePressed(null))  
         {  
@@ -69,7 +76,7 @@ public class Boarder extends Object
     
     public void die(){
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 50){
+        if (obstacle != null && invincible > 50 && airTime <= 0){
             getWorld().removeObject(this);
         }
     }
@@ -84,6 +91,16 @@ public class Boarder extends Object
             GreenfootImage img = getImage();
             img.setTransparency(255);
             setImage(img);        
+        }
+    }
+    
+    public void jump() {
+        if (airTime > 0) {
+            GreenfootImage img = new GreenfootImage("shadow.png");
+            img.drawImage(getImage(), 0, 0);
+            double xy = 50*(1.4-Math.abs(.02*(airTime-20)));
+            img.scale((int) xy,(int) xy);
+            setImage(img);
         }
     }
 }
