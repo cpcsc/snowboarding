@@ -17,6 +17,8 @@ public class Tutorial extends Buttons
     {
         setImage(new GreenfootImage("Use the left and right arrow keys to move\n"
             + "(For touchscreens: drag left and right to move)\n\n"
+            + "Press the up arrow key to jump\n"
+            + "(For touchscreens: drag up to jump)\n\n"
             + "Avoid the obstacles and survive as long as possible\n\n"
             + "Good luck! :)", 30, Color.BLACK, null));
         

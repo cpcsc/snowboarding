@@ -30,7 +30,7 @@ public class Tut extends World
         Back back = new Back();
         addObject(back, 450, 655);
         Tutorial tutorial = new Tutorial();
-        addObject(tutorial, 450, 300);
+        addObject(tutorial, 450, 350);
         Background background = new Background();
         addObject(background, 882, 17);
         Obstacles obstacles = new Obstacles();

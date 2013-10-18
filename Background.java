@@ -16,7 +16,7 @@ public class Background extends Actor
     public void act() 
     {
         if (snowTimer > 0){
-            snowTimer = snowTimer - 1;
+            snowTimer--;
         }
         else {
             Snow snow = new Snow();

@@ -71,6 +71,13 @@ public class Boarder extends Object
                 move(-4);
                 setImage("left.png");
             }
+            
+            if (newY < dragFromY - 30)
+            {
+                if (airTime <= 0) {
+                airTime = 40;
+                }
+            }
         }
     }
     
@@ -104,10 +111,3 @@ public class Boarder extends Object
         }
     }
 }
-
-
-
-
-
-
-

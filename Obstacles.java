@@ -26,7 +26,7 @@ public class Obstacles extends Object
     
     public void addSnowman(){
         if (snowmanTimer > 0){
-            snowmanTimer = snowmanTimer - 1;
+            snowmanTimer--;
         }
         else {
             Snowman snowman = new Snowman();

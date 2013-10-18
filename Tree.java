@@ -16,7 +16,6 @@ public class Tree extends Obstacles
     {
         killSnowman();
         treeMove();
-        
     }
     
     public void treeMove(){

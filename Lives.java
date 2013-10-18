@@ -45,7 +45,7 @@ public class Lives extends Object
                     SnowWorld snowWorld = (SnowWorld) getWorld();
                     Lives lives = snowWorld.getLives();
                     lives.bumpLives(-1);
-                    spawnTime = spawnTime + 1;
+                    spawnTime++;
                     dead = 1;
                 }
             }
