@@ -14,8 +14,9 @@ public class Gun extends Powerup
      */
     public void act() 
     {
-         setLocation(getX(), getY()+3);
-         pickUp();
+        killSnowman(); 
+        setLocation(getX(), getY()+3);
+        pickUp();
     }    
     
     public void pickUp() {
@@ -24,5 +25,9 @@ public class Gun extends Powerup
             b.gun += 10;
             getWorld().removeObject(this);
         }
+    }
+    
+        public void killSnowman() {
+        removeTouching(Snowman.class);
     }
 }

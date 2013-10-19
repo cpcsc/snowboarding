@@ -71,7 +71,7 @@ public class SnowWorld extends World
             for(int i = 1; getObjectsAt(i, -30, Tree.class).size() != 0; i += 10) {
                 min = i;
             }
-            for(int i = min + 10; getObjectsAt(i, -30, Tree.class).size() == 0; i += 10) {
+            for(int i = min + 10; getObjectsAt(i, -30, Tree.class).size() == 0 && i < getWidth(); i += 10) {
                 max = i;
             }
             Gun gun = new Gun();

@@ -30,10 +30,6 @@ public class Tree extends Obstacles
     } 
     
     public void killSnowman() {
-        Actor snow = getOneIntersectingObject(Snowman.class);
-        if (snow != null) {
-            getWorld().removeObject(snow);
-            return;
-        }
+        removeTouching(Snowman.class);
     }
 }
