@@ -58,6 +58,7 @@ public class Lives extends Object
             }
         }
     }
+    
     /**
      * Returns the x-value of the middle of the gap between the trees
      * so you don't spawn in the trees.
@@ -65,15 +66,16 @@ public class Lives extends Object
     public int getRespawnX(int y) {
         World w = getWorld();
         int min = 0;
-        int max = 0;
-        for(int i = 0; w.getObjectsAt(i, y, Tree.class).size() != 0; i += 10) {
+        int max = getWorld().getWidth();
+        for(int i = 1; w.getObjectsAt(i, y, Tree.class).size() != 0; i += 10) {
                 min = i;
         }
-        for(int i = w.getWidth(); w.getObjectsAt(i, y, Tree.class).size() != 0; i -= 10) {
+        for(int i = min + 10; w.getObjectsAt(i, y, Tree.class).size() == 0; i += 10) {
                 max = i;
         }
         return (max + min) / 2;
     }
+    
     public void act() 
     {
         respawn();

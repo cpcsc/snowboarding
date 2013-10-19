@@ -42,7 +42,7 @@ public class Obstacles extends Object
         else {
             lTrees += Greenfoot.getRandomNumber(3) - 1; // num of trees on left edge
             rTrees += Greenfoot.getRandomNumber(3) - 1; // num of  trees on right edge
-            if (lTrees + rTrees > 19) {                 // can't cover whole screen w/ trees
+            if (lTrees + rTrees > 7) {                 // can't cover whole screen w/ trees
                 lTrees--;
                 rTrees--;
                 }
@@ -59,7 +59,8 @@ public class Obstacles extends Object
                 Actor tree = new Tree();
                 getWorld().addObject(tree, getWorld().getWidth() - tree.getImage().getWidth()*(2*i-1)/2, y);
             }
-            treeTimer = 15;
+            Tree tree = new Tree();
+            treeTimer = tree.getImage().getHeight() / 3 - 1;
         }
     }
 }

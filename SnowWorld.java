@@ -10,6 +10,10 @@ public class SnowWorld extends World
 {
     private GreenfootSound bkgMusic;
     private Lives theLives;
+    
+    public void act() {
+        spawnPowerup();
+    }
    
     public SnowWorld()
     {    
@@ -37,7 +41,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Pig.class, Boarder.class, Lives.class, Back.class, Obstacles.class, Snow.class);
+        setPaintOrder(Pig.class, Boarder.class, Lives.class, Back.class, Obstacles.class, Weapon.class, Powerup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, 458, 388);
         Pig pig = new Pig();
@@ -57,6 +61,23 @@ public class SnowWorld extends World
         }
         for(int y = getHeight() + 50; y > -50; y -= 3) { //spawn in trees
             obstacles.addTree(y);
-        }        
+        }       
+    }
+    
+    public void spawnPowerup() {
+        if (Greenfoot.getRandomNumber(2000)==0) { 
+            int min = 0;
+            int max = 0;
+            for(int i = 1; getObjectsAt(i, -30, Tree.class).size() != 0; i += 10) {
+                min = i;
+            }
+            for(int i = min + 10; getObjectsAt(i, -30, Tree.class).size() == 0; i += 10) {
+                max = i;
+            }
+            Gun gun = new Gun();
+            addObject(gun, Greenfoot.getRandomNumber(max - min - 20) + min + 10, -30);
+            
+        }
+        
     }
 }

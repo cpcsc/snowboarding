@@ -1,9 +1,13 @@
 #BlueJ class context
 comment0.params=
-comment0.target=SnowWorld()
+comment0.target=void\ act()
 comment1.params=
-comment1.target=Lives\ getLives()
+comment1.target=SnowWorld()
 comment2.params=
-comment2.target=void\ prepare()
-comment2.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\ That\ is\:\ create\ the\ initial\r\n\ objects\ and\ add\ them\ to\ the\ world.\r\n
-numComments=3
+comment2.target=Lives\ getLives()
+comment3.params=
+comment3.target=void\ prepare()
+comment3.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\ That\ is\:\ create\ the\ initial\r\n\ objects\ and\ add\ them\ to\ the\ world.\r\n
+comment4.params=
+comment4.target=void\ spawnPowerup()
+numComments=5

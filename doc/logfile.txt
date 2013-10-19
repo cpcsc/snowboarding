@@ -1,6 +1,6 @@
 Class documentation
 <---- javadoc command: ---->
-/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/javadoc
+C:\Program Files\Java\jdk1.7.0_40\bin\javadoc.exe
 -author
 -version
 -nodeprecated
@@ -10,32 +10,36 @@ Class documentation
 -nohelp
 -nonavbar
 -source
-1.6
+1.7
 -classpath
-/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/extensions/greenfoot.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/bluejcore.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/bluejeditor.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/bluejext.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/AppleJavaExtensions.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/junit-4.8.2.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/bluej.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/commons-httpclient-3.1.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/commons-logging-api-1.1.2.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/commons-codec-1.3.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/jl1.0.1.jar:/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/opencsv-2.3.jar:/Users/jeffreyxie/Snow Job
+C:\Program Files (x86)\Greenfoot\lib\extensions\greenfoot.jar;C:\Program Files (x86)\Greenfoot\lib\bluejcore.jar;C:\Program Files (x86)\Greenfoot\lib\bluejeditor.jar;C:\Program Files (x86)\Greenfoot\lib\bluejext.jar;C:\Program Files (x86)\Greenfoot\lib\AppleJavaExtensions.jar;C:\Program Files (x86)\Greenfoot\lib\junit-4.8.2.jar;C:\Program Files (x86)\Greenfoot\lib\bluej.jar;C:\Program Files (x86)\Greenfoot\lib\commons-httpclient-3.1.jar;C:\Program Files (x86)\Greenfoot\lib\commons-logging-api-1.1.2.jar;C:\Program Files (x86)\Greenfoot\lib\commons-codec-1.3.jar;C:\Program Files (x86)\Greenfoot\lib\jl1.0.1.jar;C:\Program Files (x86)\Greenfoot\lib\opencsv-2.3.jar;C:\Users\Ricky\Documents\GitHub\snowboarding
 -d
-/Users/jeffreyxie/Snow Job/doc
+C:\Users\Ricky\Documents\GitHub\snowboarding\doc
 -encoding
 UTF-8
 -charset
 UTF-8
 -docletpath
-/Users/jeffreyxie/Desktop/Greenfoot.app/Contents/Resources/Java/bjdoclet.jar
+C:\Program Files (x86)\Greenfoot\lib\bjdoclet.jar
 -doclet
 bluej.doclet.doclets.formats.html.HtmlDoclet
-/Users/jeffreyxie/Snow Job/Object.java
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java
 <---- end of javadoc command ---->
-Loading source file /Users/jeffreyxie/Snow Job/Object.java...
-Constructing Javadoc information...
-Standard Doclet version 1.6.0_51
-Building tree for all the packages and classes...
-Generating /Users/jeffreyxie/Snow Job/doc/Object.html...
-Generating /Users/jeffreyxie/Snow Job/doc/package-frame.html...
-Generating /Users/jeffreyxie/Snow Job/doc/package-summary.html...
-Generating /Users/jeffreyxie/Snow Job/doc/constant-values.html...
-Building index for all the packages and classes...
-Building index for all classes...
-Generating /Users/jeffreyxie/Snow Job/doc/allclasses-frame.html...
-Generating /Users/jeffreyxie/Snow Job/doc/allclasses-noframe.html...
-Generating /Users/jeffreyxie/Snow Job/doc/index.html...
-Generating /Users/jeffreyxie/Snow Job/doc/stylesheet.css...
+Loading source file C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java...
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:21: error: not a statement
+        for(int i = getY(); i--; i > getY()-20) {
+                                   ^
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:22: error: ')' expected
+            if (getOneIntersectingObject(Snowman.class
+                                                      ^
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:25: error: illegal start of expression
+    }
+    ^
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:25: error: ';' expected
+    }
+     ^
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:26: error: reached end of file while parsing
+}
+ ^
+C:\Users\Ricky\Documents\GitHub\snowboarding\Bullet.java:27: error: reached end of file while parsing
+6 errors

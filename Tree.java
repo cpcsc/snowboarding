@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tree extends Obstacles
 {
+    public Tree() {
+        getImage().scale(59,72);
+    }
     /**
      * Act - do whatever the Tree wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -16,6 +19,7 @@ public class Tree extends Obstacles
     {
         killSnowman();
         treeMove();
+        
     }
     
     public void treeMove(){
@@ -24,6 +28,7 @@ public class Tree extends Obstacles
             getWorld().removeObject(this);
         }
     } 
+    
     public void killSnowman() {
         Actor snow = getOneIntersectingObject(Snowman.class);
         if (snow != null) {
