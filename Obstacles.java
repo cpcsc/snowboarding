@@ -21,7 +21,7 @@ public class Obstacles extends Object
     public void act()
     {
         addSnowman();
-        addTree(-50);
+        addTree(-70);
     }
     
     public void addSnowman(){
@@ -42,7 +42,7 @@ public class Obstacles extends Object
         else {
             lTrees += Greenfoot.getRandomNumber(3) - 1; // num of trees on left edge
             rTrees += Greenfoot.getRandomNumber(3) - 1; // num of  trees on right edge
-            if (lTrees + rTrees > 7) {                 // can't cover whole screen w/ trees
+            if (lTrees + rTrees > 9) {                 // can't cover whole screen w/ trees
                 lTrees--;
                 rTrees--;
                 }

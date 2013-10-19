@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Gun here.
+ * Write a description of class Coin here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Gun extends Pickup
+public class Coin extends Pickup
 {
     /**
-     * Act - do whatever the Gun wants to do. This method is called whenever
+     * Act - do whatever the Coin wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -22,7 +22,8 @@ public class Gun extends Pickup
     public void pickUp() {
         Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
         if (b != null) {
-            b.gun += 10;
+            SnowWorld w = (SnowWorld) getWorld();
+            w.incScore(100);
             getWorld().removeObject(this);
         }
     }

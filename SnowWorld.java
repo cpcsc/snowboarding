@@ -10,6 +10,7 @@ public class SnowWorld extends World
 {
     private GreenfootSound bkgMusic;
     private Lives theLives;
+    public Counter score = new Counter("Score: ");
     
     public void act() {
         spawnPowerup();
@@ -41,7 +42,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Pig.class, Boarder.class, Lives.class, Back.class, Obstacles.class, Weapon.class, Powerup.class, Snow.class);
+        setPaintOrder(Pig.class, Boarder.class, Lives.class, Back.class, Counter.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, 458, 388);
         Pig pig = new Pig();
@@ -59,25 +60,36 @@ public class SnowWorld extends World
             snow.setRotation(Greenfoot.getRandomNumber(360));
             addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
         }
-        for(int y = getHeight() + 50; y > -50; y -= 3) { //spawn in trees
+        for(int y = getHeight() + 70; y > -70; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }       
+        addObject(score, getWidth()/2, 17);
     }
     
     public void spawnPowerup() {
-        if (Greenfoot.getRandomNumber(2000)==0) { 
-            int min = 0;
-            int max = 0;
-            for(int i = 1; getObjectsAt(i, -30, Tree.class).size() != 0; i += 10) {
-                min = i;
-            }
-            for(int i = min + 10; getObjectsAt(i, -30, Tree.class).size() == 0 && i < getWidth(); i += 10) {
-                max = i;
-            }
-            Gun gun = new Gun();
-            addObject(gun, Greenfoot.getRandomNumber(max - min - 20) + min + 10, -30);
-            
+        if (Greenfoot.getRandomNumber(2000) == 0) { 
+            addObject(new Gun(), randX(-20), -20);
         }
-        
+        if (Greenfoot.getRandomNumber(100) == 0) {
+            addObject(new Coin(), randX(-20), -20);
+        }
+    }
+    
+    public int randX(int y) { //Returns random x-value between the trees at a given y-value
+        int min = 0;
+        int max = 0;
+        Tree tree = new Tree();
+        int w = tree.getImage().getWidth();
+        for(int i = w/2; getObjectsAt(i, y, Tree.class).size() != 0; i += w) {
+            min = i + w;
+        }
+        for(int i = min + w; getObjectsAt(i, y, Tree.class).size() == 0 && i < getWidth(); i += w) {
+            max = i;
+        }
+        return Greenfoot.getRandomNumber(max - min - 20) + min + 10;
+    }
+    
+    public void incScore(int pts) {
+        score.add(pts);    
     }
 }

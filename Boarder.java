@@ -88,6 +88,8 @@ public class Boarder extends Object
                 }
             }
         }
+        SnowWorld w = (SnowWorld) getWorld();
+        w.incScore(1);
     }
     
     public void die(){
