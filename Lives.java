@@ -23,7 +23,7 @@ public class Lives extends Object
     }
     
     public Lives(){
-        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, null));
+        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, Color.WHITE));
     }
     
     /**
@@ -32,13 +32,13 @@ public class Lives extends Object
     public void bumpLives(int amount)
     {
         totalLives += amount;
-        setImage(new GreenfootImage("Lives: " + totalLives, 50, Color.BLACK, null));
+        setImage(new GreenfootImage("Lives: " + totalLives, 50, Color.BLACK, Color.WHITE));
     }
     
     public void respawn(){
         if (getWorld().getObjects(Boarder.class).size() == 0){
             if (noLives()){
-                    setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, null));
+                    setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
                 }
             if (dead == 0) {
                 if(!noLives()) {
