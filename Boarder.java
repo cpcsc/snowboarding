@@ -92,6 +92,10 @@ public class Boarder extends Object
         w.incScore(1);
     }
     
+    public int air() {
+        return airTime;
+    }
+    
     public void die(){
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
         if (obstacle != null && invincible > 50 && airTime <= 0){
