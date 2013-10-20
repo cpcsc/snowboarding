@@ -42,7 +42,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Pig.class, Boarder.class, Lives.class, Back.class, Counter.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
+        setPaintOrder(Coin2.class, Pig.class, Boarder.class, Lives.class, Back.class, Counter.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, 458, 388);
         Pig pig = new Pig();
@@ -72,6 +72,9 @@ public class SnowWorld extends World
         }
         if (Greenfoot.getRandomNumber(100) == 0) {
             addObject(new Coin(), randX(-20), -20);
+        }
+        if (Greenfoot.getRandomNumber(300) == 0) {
+            addObject(new Coin2(), randX(-20), -20);
         }
     }
     
