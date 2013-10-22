@@ -13,6 +13,7 @@ public class Boarder extends Object
     private int airTime = 0;
     public int gun = 0;
     public int shotDelay = 20;
+    public boolean dead = false;
     public void act() 
     {
         moveAround();
@@ -101,15 +102,20 @@ public class Boarder extends Object
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
         if (obstacle != null && invincible > 50 && airTime <= 0){
             getWorld().removeObject(this);
+            dead = true;
         }
     }
     
     public void dieTree() {
-        Actor tree = getOneIntersectingObject(Tree.class);
-        if (tree != null) {
-            getWorld().removeObject(this);
+        if (!dead) {
+        
+            Actor tree = getOneIntersectingObject(Tree.class);
+            if (tree != null) {
+                getWorld().removeObject(this);
+            }
         }
     }
+    
     public void respawnBlink() {
         if (invincible < 50) {
             GreenfootImage img = getImage();

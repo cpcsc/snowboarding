@@ -11,6 +11,7 @@ public class Obstacles extends Object
 {
     public int snowmanTimer = 0;
     public int treeTimer = 0;
+    public int logTimer = 0;
     private boolean hasDied;
     private int lTrees = 1;
     private int rTrees = 1;
@@ -22,6 +23,7 @@ public class Obstacles extends Object
     {
         addSnowman();
         addTree(-70);
+        addLog();
     }
     
     public void addSnowman(){
@@ -61,6 +63,18 @@ public class Obstacles extends Object
             }
             Tree tree = new Tree();
             treeTimer = tree.getImage().getHeight() / 3 - 1;
+        }       
+    }
+    
+    public void addLog() {
+        if (logTimer > 0){
+            logTimer--;
         }
+        else {
+            Log log = new Log();
+            getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -50);
+            logTimer = 30;
+        }
+               
     }
 }
