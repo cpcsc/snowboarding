@@ -1,12 +1,10 @@
 #BlueJ class context
 comment0.params=
-comment0.target=boolean\ atWorldBottom()
+comment0.target=void\ act()
 comment1.params=
-comment1.target=void\ act()
-comment2.params=
-comment2.target=void\ addSnowman()
-comment3.params=y
-comment3.target=void\ addTree(int)
-comment4.params=
-comment4.target=void\ addLog()
-numComments=5
+comment1.target=void\ addSnowman()
+comment2.params=y
+comment2.target=void\ addTree(int)
+comment3.params=
+comment3.target=void\ addLog()
+numComments=4

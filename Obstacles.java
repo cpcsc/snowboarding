@@ -15,9 +15,6 @@ public class Obstacles extends Object
     private boolean hasDied;
     private int lTrees = 1;
     private int rTrees = 1;
-    public boolean atWorldBottom(){
-        return (getY() >= getWorld().getHeight() + 50);
-    }
 
     public void act()
     {
@@ -62,7 +59,7 @@ public class Obstacles extends Object
                 getWorld().addObject(tree, getWorld().getWidth() - tree.getImage().getWidth()*(2*i-1)/2, y);
             }
             Tree tree = new Tree();
-            treeTimer = tree.getImage().getHeight() / 3 - 1;
+            treeTimer = tree.getImage().getHeight() / speed - 1;
         }       
     }
     

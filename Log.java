@@ -17,7 +17,7 @@ public class Log extends Obstacles
         logMove();
     }    
     public void logMove() {
-        setLocation(getX(), getY()+3);
+        setLocation(getX(), getY()+speed);
         if (atWorldBottom()){
             getWorld().removeObject(this);
         }
