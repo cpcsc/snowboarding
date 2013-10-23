@@ -1,5 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 
 /**
  * Write a description of class Lives here.
@@ -12,6 +16,7 @@ public class Lives extends Object
     private int totalLives = 3;
     private int spawnTime = 0;
     private int dead = 0;
+    private boolean sent = false;
     
     public boolean noLives() {
         if (totalLives == 0){
@@ -39,6 +44,22 @@ public class Lives extends Object
         if (getWorld().getObjects(Boarder.class).size() == 0){
             if (noLives()){
                     setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
+                    
+                    if(!sent){
+                        File scores = new File(".scores");
+                        try{
+                            if(scores.exists()==false){
+                                scores.createNewFile();
+                            }
+                            PrintWriter out = new PrintWriter(new FileWriter(scores, true));
+                            SnowWorld sw = (SnowWorld) getWorld();
+                            out.append(sw.getScore() + "\n");
+                            out.close();
+                        }catch(IOException e){
+                            System.out.println("COULD NOT LOG!!");
+                        }
+                        sent = true;
+                    }
                 }
             if (dead == 0) {
                 if(!noLives()) {
@@ -79,5 +100,5 @@ public class Lives extends Object
     public void act() 
     {
         respawn();
-    }    
+    }
 }

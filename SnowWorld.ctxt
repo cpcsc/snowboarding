@@ -16,4 +16,6 @@ comment6.params=y
 comment6.target=int\ randX(int)
 comment7.params=pts
 comment7.target=void\ incScore(int)
-numComments=8
+comment8.params=
+comment8.target=int\ getScore()
+numComments=9

@@ -102,4 +102,8 @@ public class SnowWorld extends World
     public void incScore(int pts) {
         score.add(pts);    
     }
+    
+    public int getScore() {
+        return score.getValue();
+    }
 }
