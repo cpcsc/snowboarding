@@ -29,11 +29,18 @@ public class Back extends Buttons
         }
 
         if (Greenfoot.mouseClicked(this)) {
-            if (getWorld() instanceof SnowWorld && getX() > 80) {
-                Greenfoot.setWorld(new SnowWorld());
+            if (getWorld() instanceof SnowWorld) {
+                SnowWorld sw = (SnowWorld) getWorld();
+                sw.stopMusic();
+                if(getX() > 80){
+                    Greenfoot.setWorld(new SnowWorld());
+                }
+                else {
+                    Greenfoot.setWorld(new Intro());
+                }
             }
             else {
-            Greenfoot.setWorld(new Intro());
+                Greenfoot.setWorld(new Intro());
             }
         }
     }    

@@ -32,6 +32,10 @@ public class SnowWorld extends World
         prepare();
     }
     
+    public void stopMusic(){
+        bkgMusic.stop();
+    }
+    
     public Lives getLives(){
         return theLives;
     }
