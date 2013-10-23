@@ -74,6 +74,9 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(2000) == 0) { 
             addObject(new Gun(), randX(-20), -20);
         }
+        if (Greenfoot.getRandomNumber(2000) == 0) { 
+            addObject(new Invincible(), randX(-20), -20);
+        }
         if (Greenfoot.getRandomNumber(100) == 0) {
             addObject(new Coin(), randX(-20), -20);
         }

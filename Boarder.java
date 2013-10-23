@@ -19,6 +19,7 @@ public class Boarder extends Object
     public void act() 
     {
         moveAround();
+        getInvincibility();
         dieObstacle();
         dieTree();
         invincible++;
@@ -28,6 +29,7 @@ public class Boarder extends Object
         respawnBlink();
         jump();
         ramp();
+        
     }
     
     public void moveAround()
@@ -96,6 +98,17 @@ public class Boarder extends Object
         }
         SnowWorld w = (SnowWorld) getWorld();
         w.incScore(1);
+    }
+    
+    public void getInvincibility()
+    {
+        Invincible i = (Invincible) getOneIntersectingObject(Invincible.class);
+        if (i!=null) {
+            getWorld().removeObject(i);
+            invincible = 0;
+            invincible+=1;
+            respawnBlink();
+        }
     }
     
     public int air() {
