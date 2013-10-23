@@ -112,10 +112,10 @@ public class Boarder extends Object
     
     public void dieTree() {
         if (!dead) {
-        
             Actor tree = getOneIntersectingObject(Tree.class);
             if (tree != null) {
                 getWorld().removeObject(this);
+                dead = true;
             }
         }
     }
