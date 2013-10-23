@@ -70,7 +70,7 @@ public class Obstacles extends Object
         else {
             Log log = new Log();
             getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -50);
-            logTimer = 30;
+            logTimer = 90;
         }
                
     }

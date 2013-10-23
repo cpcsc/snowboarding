@@ -76,6 +76,9 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(300) == 0) {
             addObject(new Coin2(), randX(-20), -20);
         }
+        if (Greenfoot.getRandomNumber(400) == 0) {
+            addObject(new Ramp(), randX(-20), -20);
+        }
     }
     
     public int randX(int y) { //Returns random x-value between the trees at a given y-value

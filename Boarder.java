@@ -11,6 +11,8 @@ public class Boarder extends Object
     private int dragFromX, dragFromY;
     private int invincible = 0;
     private int airTime = 0;
+    private int rampTime = 0;
+    private int r;
     public int gun = 0;
     public int shotDelay = 20;
     public boolean dead = false;
@@ -21,9 +23,11 @@ public class Boarder extends Object
         dieTree();
         invincible++;
         airTime--;
+        rampTime--;
         shotDelay--;
         respawnBlink();
         jump();
+        ramp();
     }
     
     public void moveAround()
@@ -100,7 +104,7 @@ public class Boarder extends Object
     
     public void dieObstacle(){
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 50 && airTime <= 0){
+        if (obstacle != null && invincible > 50 && airTime <= 0 && rampTime <= 0){
             getWorld().removeObject(this);
             dead = true;
         }
@@ -130,12 +134,35 @@ public class Boarder extends Object
     }
     
     public void jump() {
-        if (airTime > 0) {
+        if (airTime > 0 && rampTime < 0) {
             GreenfootImage img = new GreenfootImage("shadow.png");
             img.drawImage(getImage(), 0, 0);
             double xy = 50.0 * (1.0 - (airTime) * (airTime - 46.0) / 1058.0); //parabolic path
             img.scale((int) xy,(int) xy);
             setImage(img);
+        }
+    }
+    
+    public void ramp() {
+        if (!dead) {
+            if(getOneIntersectingObject(Ramp.class) != null && airTime < 0){
+                rampTime = 200;
+            }
+            if (rampTime > 0){
+                r++;
+                GreenfootImage img = new GreenfootImage("shadow.png");
+                img.drawImage(getImage(), 0, 0);
+                if(rampTime > 135){
+                    img.scale(getImage().getWidth() + (r / 2), getImage().getHeight() + (r / 2));
+                }
+                else{
+                    img.scale(getImage().getWidth() + (rampTime / 2), getImage().getHeight() + (rampTime / 2));
+                }
+                setImage(img);
+            }
+            else{
+                r = 0;
+            }
         }
     }
 }
