@@ -31,13 +31,13 @@ public class Boarder extends Object
 
     public void moveAround()
     {
-        if (Greenfoot.isKeyDown("left")){
+        if (Greenfoot.isKeyDown("left") && getX() >= 0){
             if (!checkTree(-4) || invincible < 50) {
                 move(-4);
             }
             setImage("left.png");
         }
-        if (Greenfoot.isKeyDown("right")){
+        if (Greenfoot.isKeyDown("right") && getX() <= getWorld().getWidth()){
             if (!checkTree(4) || invincible < 50) {
                 move(4);
             }
@@ -76,13 +76,13 @@ public class Boarder extends Object
             int newX = mouse.getX(), newY = mouse.getY();  
             // check difference(s) and act upon them 
 
-            if (newX > dragFromX + 30)
+            if (newX > dragFromX + 30 && getX() <= getWorld().getWidth())
             {
                 move(4);
                 setImage("right.png");
             }
 
-            if (newX < dragFromX - 30)
+            if (newX < dragFromX - 30 && getX() >= 0)
             {
                 move(-4);
                 setImage("left.png");
