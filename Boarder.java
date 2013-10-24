@@ -32,13 +32,13 @@ public class Boarder extends Object
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left")){
-            if (!checkTree(-4)) {
+            if (!checkTree(-4) || invincible < 50) {
                 move(-4);
             }
             setImage("left.png");
         }
         if (Greenfoot.isKeyDown("right")){
-            if (!checkTree(4)) {
+            if (!checkTree(4) || invincible < 50) {
                 move(4);
             }
             setImage("right.png");
@@ -122,7 +122,7 @@ public class Boarder extends Object
     public void dieTree() {
         if (!dead) {
             Actor tree = getOneIntersectingObject(Tree.class);
-            if (tree != null) {
+            if (tree != null && invincible > 50) {
                 getWorld().removeObject(this);
                 dead = true;
             }
@@ -151,6 +151,5 @@ public class Boarder extends Object
             img.scale((int) xy,(int) xy);
             setImage(img);
         }
-
     }
 }
