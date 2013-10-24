@@ -29,6 +29,7 @@ public class Lives extends Object
     
     public Lives(){
         setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, Color.WHITE));
+        getImage().setTransparency(220);
     }
     
     /**
@@ -38,12 +39,14 @@ public class Lives extends Object
     {
         totalLives += amount;
         setImage(new GreenfootImage("Lives: " + totalLives, 50, Color.BLACK, Color.WHITE));
+        getImage().setTransparency(220);
     }
     
     public void respawn(){
         if (getWorld().getObjects(Boarder.class).size() == 0){
             if (noLives()){
                     setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
+                    getImage().setTransparency(220);
                     
                     if(!sent){
                         File scores = new File(".scores");
