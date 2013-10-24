@@ -105,7 +105,7 @@ public class Boarder extends Object
         Invincible i = (Invincible) getOneIntersectingObject(Invincible.class);
         if (i!=null) {
             getWorld().removeObject(i);
-            invincible = 0;
+            invincible = -150;
             invincible+=1;
             respawnBlink();
         }
@@ -136,7 +136,7 @@ public class Boarder extends Object
     public void respawnBlink() {
         if (invincible < 50) {
             GreenfootImage img = getImage();
-            img.setTransparency(((invincible % 10) + 1)*(255/10));
+            img.setTransparency(((Math.abs(invincible) % 10) + 1)*(255/10));
             setImage(img);        
         }
         if (invincible == 50) {
