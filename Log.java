@@ -14,12 +14,16 @@ public class Log extends Obstacles
      */
     public void act() 
     {
-        logMove();
+        killObst();
+        objMove();
     }    
-    public void logMove() {
-        setLocation(getX(), getY()+speed);
-        if (atWorldBottom()){
-            getWorld().removeObject(this);
+
+    public void killObst() {
+        if (!dead) {
+            Class[] list = {Snowman.class, Ramp.class};
+            for(Class obst : list) {
+                removeTouching(obst);
+            }
         }
     }
 }

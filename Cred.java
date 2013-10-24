@@ -31,16 +31,16 @@ public class Cred extends World
         addObject(back, 450, 655);
         Creds creds = new Creds();
         addObject(creds, 450, 300);
-        Background background = new Background();
-        addObject(background, 882, 17);
+        //Background background = new Background();
+        //addObject(background, 882, 17);
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
-        for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
+        /*for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
             Snow snow = new Snow();
             snow.setRotation(Greenfoot.getRandomNumber(360));
             addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
-        }
-        for(int y = getHeight() + 70; y > -70; y -= 3) { //spawn in trees
+        }*/
+        for(int y = getHeight() + 100; y > -100; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }
     }

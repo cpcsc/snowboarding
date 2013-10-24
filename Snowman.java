@@ -8,19 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Snowman extends Obstacles
 {
-    /**
-     * Act - do whatever the Snowman wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
-        snowmanMove();
+        objMove();
+        killObst();
     }
     
-    public void snowmanMove(){
-        setLocation(getX(), getY()+speed);
-        if (atWorldBottom()){
-            getWorld().removeObject(this);
+    public void killObst() {
+        if (!dead) {
+            Class[] list = {Ramp.class};
+            for(Class obst : list) {
+                removeTouching(obst);
+            }
         }
     }
 }

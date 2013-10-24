@@ -19,7 +19,7 @@ public class Obstacles extends Object
     public void act()
     {
         addSnowman();
-        addTree(-70);
+        addTree(-100);
         addLog();
     }
     
@@ -70,7 +70,9 @@ public class Obstacles extends Object
         else {
             Log log = new Log();
             getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -50);
+
             logTimer = 90;
+
         }
                
     }

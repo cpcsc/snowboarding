@@ -14,20 +14,19 @@ public class Gun extends Pickup
      */
     public void act() 
     {
-        killSnowman(); 
-        setLocation(getX(), getY()+3);
+        killObst(); 
+        objMove();
         pickUp();
     }    
-    
+
     public void pickUp() {
-        Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
-        if (b != null) {
-            b.gun += 10;
-            getWorld().removeObject(this);
+        if (!dead) {
+            Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
+            if (b != null) {
+                b.gun += 10;
+                getWorld().removeObject(this);
+                dead = true;
+            }
         }
-    }
-    
-        public void killSnowman() {
-        removeTouching(Snowman.class);
     }
 }

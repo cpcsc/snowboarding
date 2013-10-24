@@ -9,29 +9,26 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Boarder extends Object
 {   
     private int dragFromX, dragFromY;
-    private int invincible = 0;
+    public int invincible = 0;
     private int airTime = 0;
-    private int rampTime = 0;
-    private int r;
     public int gun = 0;
     public int shotDelay = 20;
-    public boolean dead = false;
+    public int jumpTime;
+    public double jumpConst;
     public void act() 
     {
         moveAround();
-        getInvincibility();
+        ramp();
         dieObstacle();
         dieTree();
         invincible++;
         airTime--;
-        rampTime--;
         shotDelay--;
         respawnBlink();
-        jump();
         ramp();
-        
+        jump(jumpTime);
     }
-    
+
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left")){
@@ -54,8 +51,10 @@ public class Boarder extends Object
             move(0);
         }
         if (Greenfoot.isKeyDown("up")) {
-            if (airTime <= -20) {
-                airTime = 46;
+            if (airTime <= -5) {
+                airTime = 50;
+                jumpTime = 50;
+                jumpConst = -50.0 / 1058.0;
             }
         }
         if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= 0) {
@@ -76,19 +75,19 @@ public class Boarder extends Object
             MouseInfo mouse = Greenfoot.getMouseInfo();  
             int newX = mouse.getX(), newY = mouse.getY();  
             // check difference(s) and act upon them 
-            
+
             if (newX > dragFromX + 30)
             {
                 move(4);
                 setImage("right.png");
             }
-            
+
             if (newX < dragFromX - 30)
             {
                 move(-4);
                 setImage("left.png");
             }
-                        
+
             if (newY < dragFromY - 30)
             {
                 if (airTime <= -20) {
@@ -99,30 +98,27 @@ public class Boarder extends Object
         SnowWorld w = (SnowWorld) getWorld();
         w.incScore(1);
     }
-    
-    public void getInvincibility()
-    {
-        Invincible i = (Invincible) getOneIntersectingObject(Invincible.class);
-        if (i!=null) {
-            getWorld().removeObject(i);
-            invincible = -150;
-            invincible+=1;
-            respawnBlink();
+
+    public void ramp() {
+        if (airTime < 0 && !dead && isTouching(Ramp.class)) {
+            airTime = 100;
+            jumpTime = 100;   
+            jumpConst = -25.0 / 1058.0;
         }
     }
-    
+
     public int air() {
         return airTime;
     }
-    
+
     public void dieObstacle(){
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 50 && airTime <= 0 && rampTime <= 0){
+        if (obstacle != null && invincible > 50 && airTime <= 0){
             getWorld().removeObject(this);
             dead = true;
         }
     }
-    
+
     public void dieTree() {
         if (!dead) {
             Actor tree = getOneIntersectingObject(Tree.class);
@@ -132,50 +128,29 @@ public class Boarder extends Object
             }
         }
     }
-    
+
     public void respawnBlink() {
-        if (invincible < 50) {
+        if (invincible < 100) {
             GreenfootImage img = getImage();
-            img.setTransparency(((Math.abs(invincible) % 10) + 1)*(255/10));
-            setImage(img);        
+            double transparency = 127 * Math.sin(invincible / 4.0) + 128;
+            img.setTransparency((int) transparency);
+            setImage(img);      
         }
-        if (invincible == 50) {
+        if (invincible == 100) {
             GreenfootImage img = getImage();
             img.setTransparency(255);
             setImage(img);        
         }
     }
-    
-    public void jump() {
-        if (airTime > 0 && rampTime < 0) {
+
+    public void jump(int jumpTime) {
+        if (airTime > 0) {
             GreenfootImage img = new GreenfootImage("shadow.png");
             img.drawImage(getImage(), 0, 0);
-            double xy = 50.0 * (1.0 - (airTime) * (airTime - 46.0) / 1058.0); //parabolic path
+            double xy = jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50 ; //parabolic path
             img.scale((int) xy,(int) xy);
             setImage(img);
         }
-    }
-    
-    public void ramp() {
-        if (!dead) {
-            if(getOneIntersectingObject(Ramp.class) != null && airTime < 0){
-                rampTime = 200;
-            }
-            if (rampTime > 0){
-                r++;
-                GreenfootImage img = new GreenfootImage("shadow.png");
-                img.drawImage(getImage(), 0, 0);
-                if(rampTime > 135){
-                    img.scale(getImage().getWidth() + (r / 2), getImage().getHeight() + (r / 2));
-                }
-                else{
-                    img.scale(getImage().getWidth() + (rampTime / 2), getImage().getHeight() + (rampTime / 2));
-                }
-                setImage(img);
-            }
-            else{
-                r = 0;
-            }
-        }
+
     }
 }

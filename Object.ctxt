@@ -2,7 +2,9 @@
 comment0.params=
 comment0.target=boolean\ atWorldBottom()
 comment1.params=
-comment1.target=void\ act()
-comment2.params=dir
-comment2.target=boolean\ checkTree(int)
-numComments=3
+comment1.target=void\ objMove()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=dir
+comment3.target=boolean\ checkTree(int)
+numComments=4
