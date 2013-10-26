@@ -132,7 +132,8 @@ public class Boarder extends Object
     public void respawnBlink() {
         if (invincible < 100) {
             GreenfootImage img = getImage();
-            double transparency = 127 * Math.sin(invincible / 4.0) + 128;
+            int fast = (invincible >= 0) ? 2 : 1;
+            double transparency = 127 * Math.sin(fast * invincible / 4.0) + 128;
             img.setTransparency((int) transparency);
             setImage(img);      
         }
