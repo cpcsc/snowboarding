@@ -40,8 +40,8 @@ public class Cred extends World
             snow.setRotation(Greenfoot.getRandomNumber(360));
             addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
         }*/
-        for(int y = getHeight() + 100; y > -100; y -= 3) { //spawn in trees
+        for(int y = getHeight() + 50; y > -200; y -= 3) { //spawn in trees
             obstacles.addTree(y);
-        }
+        }   
     }
 }

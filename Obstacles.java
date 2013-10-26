@@ -21,6 +21,22 @@ public class Obstacles extends Object
         addSnowman();
         addTree(-200);
         addLog();
+        addBear();
+    }
+    
+    public int randX(int y) { //Returns random x-value between the trees at a given y-value
+        int min = 0;
+        int max = 0;
+        Tree tree = new Tree();
+        World world = getWorld();
+        int w = tree.getImage().getWidth();
+        for(int i = w/2; world.getObjectsAt(i, y, Tree.class).size() != 0; i += w) {
+            min = i + w;
+        }
+        for(int i = min + w; world.getObjectsAt(i, y, Tree.class).size() == 0 && i < world.getWidth(); i += w) {
+            max = i;
+        }
+        return Greenfoot.getRandomNumber(max - min - 20) + min + 10;
     }
     
     public void addSnowman(){
@@ -29,7 +45,7 @@ public class Obstacles extends Object
         }
         else {
             Snowman snowman = new Snowman();
-            getWorld().addObject(snowman, Greenfoot.getRandomNumber(getWorld().getWidth()), -50);
+            getWorld().addObject(snowman, Greenfoot.getRandomNumber(getWorld().getWidth()), -100);
             snowmanTimer = 30;
         }
     }
@@ -69,11 +85,15 @@ public class Obstacles extends Object
         }
         else {
             Log log = new Log();
-            getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -50);
-
+            getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -100);
             logTimer = 90;
-
         }
                
+    }
+    
+    public void addBear() {
+        if (Greenfoot.getRandomNumber(500) == 0) {
+            getWorld().addObject(new Bear(), randX(-100), -100);
+        }              
     }
 }

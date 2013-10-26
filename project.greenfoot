@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Oct 26 14:28:08 PDT 2013
+#Sat Oct 26 14:59:50 PDT 2013
 target24.type=ClassTarget
 target16.name=Obstacles
 target13.editor.width=900
@@ -84,6 +84,7 @@ target26.editor.height=700
 target18.width=80
 dependency63.to=Start
 dependency47.type=UsesDependency
+class.Bear.image=polar-bear.png
 target31.editor.width=900
 dependency99.type=UsesDependency
 dependency22.type=UsesDependency
@@ -711,6 +712,7 @@ dependency20.type=UsesDependency
 dependency97.type=UsesDependency
 target20.showInterface=false
 dependency72.type=UsesDependency
+class.Bear.superclass=Obstacles
 target10.type=ClassTarget
 dependency49.to=Instructions
 dependency17.from=Start
