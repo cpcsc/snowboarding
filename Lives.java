@@ -73,10 +73,10 @@ public class Lives extends Object
                     dead = 1;
                 }
             }
-            spawnTime = spawnTime +1;
+            spawnTime++;
             if (totalLives > 0 && spawnTime > 50){
                 Boarder boarder = new Boarder();
-                getWorld().addObject(boarder, getRespawnX(388), 388);
+                getWorld().addObject(boarder, getRespawnX(400), 400);
                 spawnTime = 0;
                 dead = 0;
             }

@@ -13,7 +13,6 @@ public class Coin extends Pickup
         killObst();
         objMove();
         pickUp();
-
     }
 
     public void pickUp() {
@@ -24,7 +23,7 @@ public class Coin extends Pickup
                 if (b != null && air <= 0) {
                     SnowWorld w = (SnowWorld) getWorld();
                     w.incScore(100);
-                    getWorld().removeObject(this);
+                    w.removeObject(this);
                     dead = true;
                 }
             }
