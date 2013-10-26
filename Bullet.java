@@ -14,7 +14,7 @@ public class Bullet extends Weapon
             if (isTouching(Snowman.class)) {
                 removeTouching(Snowman.class);
                 SnowWorld w = (SnowWorld) getWorld();
-                w.incScore(50);
+                w.addObject(new Coin(), getX(), getY());
                 w.removeObject(this);
                 break;
             }
