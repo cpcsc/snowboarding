@@ -49,8 +49,8 @@ public class SnowWorld extends World
         setPaintOrder(Coin2.class, Pig.class, Boarder.class, Lives.class, Back.class, Counter.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, 458, 388);
-        Pig pig = new Pig();
-        addObject(pig, 464, 600);
+        //Pig pig = new Pig();
+        //addObject(pig, 464, 600);
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
         Back back = new Back();
