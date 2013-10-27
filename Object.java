@@ -10,7 +10,7 @@ public class Object extends Actor
 {
     public int lives = 3;
     public int score = 0;
-    public int speed = 3;
+    public static int speed = 3;
     public boolean dead = false;
     public boolean atWorldBottom(){
         return (getY() >= getWorld().getHeight() + 50);

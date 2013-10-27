@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sat Oct 26 19:07:31 PDT 2013
+#Sat Oct 26 21:50:08 PDT 2013
 target24.type=ClassTarget
 target16.name=Pig
 target13.editor.width=683
@@ -55,7 +55,7 @@ target26.editor.x=40
 dependency68.to=Snowman
 target32.width=80
 target3.editor.height=738
-mainWindow.width=1378
+mainWindow.width=1382
 class.Object.superclass=greenfoot.Actor
 target8.showInterface=false
 class.Obstacles.superclass=Object
@@ -345,7 +345,7 @@ target21.height=50
 dependency90.from=Coin2
 publish.longDesc=
 target6.editor.y=62
-target6.editor.x=293
+target6.editor.x=232
 target30.naviview.expanded=true
 target10.naviview.expanded=true
 target20.naviview.expanded=true

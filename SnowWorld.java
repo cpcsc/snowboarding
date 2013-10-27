@@ -18,6 +18,7 @@ public class SnowWorld extends World
         spawnPowerup();
         multCounter--;
         showPowerup();
+        speedUp();
     }
 
     public SnowWorld()
@@ -128,7 +129,7 @@ public class SnowWorld extends World
 
     public void incScore(int pts) {
         scoreMult = (multCounter <= 0) ? 1 : scoreMult;
-        score.add(scoreMult * pts);    
+        score.add((Object.speed - 2) * scoreMult * pts);    
     }
 
     public void showPowerup() {
@@ -144,6 +145,10 @@ public class SnowWorld extends World
                 addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getImage().getWidth()/2, 15);
             }
         }
+    }
+
+    public void speedUp() { 
+        Object.speed = 3 + (int) Math.sqrt(getScore() / 10000);
     }
 
     public int getScore() {
