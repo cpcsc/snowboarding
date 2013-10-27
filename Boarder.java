@@ -113,7 +113,7 @@ public class Boarder extends Object
 
     public void dieObstacle(){
         Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 50 && airTime <= 0){
+        if (obstacle != null && invincible > 100 && airTime <= 0){
             SnowWorld w = (SnowWorld) getWorld();
             w.multCounter = 0;
             w.removeObject(this);
@@ -124,7 +124,7 @@ public class Boarder extends Object
     public void dieTree() {
         if (!dead) {
             Actor tree = getOneIntersectingObject(Tree.class);
-            if (tree != null && invincible > 50) {
+            if (tree != null && invincible > 100) {
                 SnowWorld w = (SnowWorld) getWorld();
                 w.multCounter = 0;
                 w.removeObject(this);

@@ -13,7 +13,7 @@ public class SnowWorld extends World
     public Counter score = new Counter("Score: ");
     public int scoreMult = 1;
     public int multCounter = 0;
-    
+
     public void act() {
         spawnPowerup();
         multCounter--;
@@ -68,9 +68,9 @@ public class SnowWorld extends World
         snow.setRotation(Greenfoot.getRandomNumber(360));
         addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
         }*/
-        for(int y = getHeight() + 50; y > -200; y -= 3) { //spawn in trees
+        for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
-        }       
+        }      
         addObject(score, getWidth()/2, 17);
     }
 
@@ -93,6 +93,18 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(1500) == 0) {
             addObject(new ScoreX2(), randX(-100), -100);
         }
+        if (Greenfoot.getRandomNumber(800) == 0) {
+            spawnLineOfCoins();
+        }
+    }
+
+    public void spawnLineOfCoins() {
+        int x1 = randX(-20);
+        int r = Greenfoot.getRandomNumber(5) + 5;
+        int x2 = randX(-20 - 60*r);
+        for (int i = 0; i < r; i++) {
+            addObject( new Coin(), (i * x2 + (r - i) * x1) / r, -20 - 60*i);
+        }
     }
 
     public int randX(int y) { //Returns random x-value between the trees at a given y-value
@@ -113,12 +125,12 @@ public class SnowWorld extends World
         multCounter = frames;
         scoreMult = multiplier;
     }
-    
+
     public void incScore(int pts) {
         scoreMult = (multCounter <= 0) ? 1 : scoreMult;
         score.add(scoreMult * pts);    
     }
-    
+
     public void showPowerup() {
         removeObjects(getObjects(Image.class));
         if (multCounter > 0 && scoreMult == 2) {
@@ -133,7 +145,7 @@ public class SnowWorld extends World
             }
         }
     }
-    
+
     public int getScore() {
         return score.getValue();
     }

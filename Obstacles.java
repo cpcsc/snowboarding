@@ -19,7 +19,7 @@ public class Obstacles extends Object
     public void act()
     {
         addSnowman();
-        addTree(-200);
+        addTree(-700);
         addLog();
         addBear();
     }
