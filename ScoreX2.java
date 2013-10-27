@@ -18,7 +18,7 @@ public class ScoreX2 extends Pickup
     public void pickUp () {
         if (!dead && isTouching(Boarder.class)) {
             SnowWorld w = (SnowWorld) getWorld();
-            w.scoreMult(2, 300);
+            w.scoreMult(2, 500);
             w.removeObject(this);
             dead = true;      
         }

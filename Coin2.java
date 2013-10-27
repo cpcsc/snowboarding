@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Coin2 extends Pickup
+public class Coin2 extends Coins
 {
     public Coin2() {
         getImage().scale(getImage().getWidth()*3/2, getImage().getHeight()*3/2);
@@ -14,26 +14,22 @@ public class Coin2 extends Pickup
         img.drawImage(getImage(), 4, 4);
         setImage(img);
     }
-    
+
     public void act() 
     {
-        killObst();
+        if (getY()<0) killObst();
         objMove();
         pickUp();
     }
 
     public void pickUp() {
         if (!dead) {
-            Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
-            if (getWorld().getObjects(Boarder.class).size() != 0) {
-                int air = ((Boarder) getWorld().getObjects(Boarder.class).get(0)).air();
-            
-                if (b != null && air >= 0) {
-                    SnowWorld w = (SnowWorld) getWorld();
-                    w.incScore(100);
-                    getWorld().removeObject(this);
-                    dead = true;
-                }
+            Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);         
+            if (b != null && (b.air() >= 0 || b.magnetTimer > 0)) {
+                SnowWorld w = (SnowWorld) getWorld();
+                w.incScore(100);
+                getWorld().removeObject(this);
+                dead = true;
             }
         }
     }

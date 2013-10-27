@@ -13,9 +13,10 @@ public class Bullet extends Weapon
     public void killSnowman() {
         for(int i = getY()-40; i <= getY(); i++) {
             if (isTouching(Snowman.class)) {
-                removeTouching(Snowman.class);
+                Actor s = getOneIntersectingObject(Snowman.class);
                 World w = getWorld();
-                w.addObject(new Coin(), getX(), getY());
+                w.addObject(new Coin(), s.getX(), s.getY());
+                w.removeObject(s);
                 w.removeObject(this);
                 dead = true;
                 break;
@@ -27,11 +28,12 @@ public class Bullet extends Weapon
         if (!dead) {
             for(int i = getY()-40; i <= getY(); i++) {
                 if (isTouching(Bear.class)) {
-                    removeTouching(Bear.class);
+                    Actor b = getOneIntersectingObject(Bear.class);
                     World w = getWorld();
                     for (int j = 1; j <= 4; j++) {
-                        w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(11) - 5, getY() + Greenfoot.getRandomNumber(11) - 5);
+                        w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
                     }
+                    w.removeObject(b);
                     w.removeObject(this);
                     dead = true;
                     break;

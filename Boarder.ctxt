@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=void\ respawnBlink()
 comment7.params=jumpTime
 comment7.target=void\ jump(int)
-numComments=8
+comment8.params=
+comment8.target=void\ magnet()
+numComments=9

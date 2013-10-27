@@ -33,7 +33,7 @@ public class SnowWorld extends World
         bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
         //Credit: Martin Garrix
         bkgMusic.playLoop();
-
+        Object.speed = 3;
         prepare();
     }
 
@@ -97,6 +97,9 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(800) == 0) {
             spawnLineOfCoins();
         }
+        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0) {
+            addObject(new Magnet(), randX(-100), -100);
+        }
     }
 
     public void spawnLineOfCoins() {
@@ -136,13 +139,20 @@ public class SnowWorld extends World
         removeObjects(getObjects(Image.class));
         if (multCounter > 0 && scoreMult == 2) {
             Image multImage = new Image("x2.png");
-            addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getImage().getWidth()/2, 15);
+            addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getImage().getWidth()/2 + 4, 15);
         }
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.gun > 0) {
                 Image gunImage = new Image("Handgun.png");
-                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getImage().getWidth()/2, 15);
+                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getImage().getWidth()/2 - 4, 15);
+            }
+        }
+        if (getObjects(Boarder.class).size() != 0) {
+            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            if (b.magnetTimer > 0) {
+                Image magImage = new Image("magnet.png");
+                addObject(magImage, score.getX() + score.getImage().getWidth()/2 + (new Image("x2.png")).getImage().getWidth() + magImage.getImage().getWidth()/2 + 8, 15);
             }
         }
     }

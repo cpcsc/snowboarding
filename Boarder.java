@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class Boarder here.
  * 
@@ -15,6 +15,7 @@ public class Boarder extends Object
     public int shotDelay = 20;
     public int jumpTime;
     public double jumpConst;
+    public int magnetTimer = 0;
     public void act() 
     {
         moveAround();
@@ -27,6 +28,7 @@ public class Boarder extends Object
         respawnBlink();
         ramp();
         jump(jumpTime);
+        magnet();
     }
 
     public void moveAround()
@@ -156,5 +158,19 @@ public class Boarder extends Object
             img.scale((int) xy,(int) xy);
             setImage(img);
         }
+    }
+    
+    public void magnet() {
+        magnetTimer--;
+        if (magnetTimer > 0 && !dead) {
+            List l = getNeighbours(200, false, Pickup.class);
+            for (int i = 0; i < l.size(); i++) {
+                Actor a = (Actor) l.get(i);
+                a.turnTowards(getX(), getY());
+                a.move(Object.speed + 2);
+                a.setRotation(0);
+            }
+        }
+        
     }
 }
