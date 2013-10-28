@@ -76,10 +76,11 @@ public class SnowWorld extends World
     }
 
     public void spawnPowerup() {
+        Boarder b = getBoarder();
         if (Greenfoot.getRandomNumber(2000) == 0) { 
             addObject(new Gun(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(3000) == 0) { 
+        if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null)) { 
             addObject(new Invincible(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(100) == 0) {
@@ -91,13 +92,13 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(400) == 0) {
             addObject(new Ramp(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(1500) == 0) {
+        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(ScoreX2.class).size() == 0 && scoreMult == 1) {
             addObject(new ScoreX2(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(800) == 0) {
             spawnLineOfCoins();
         }
-        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0) {
+        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0 && (b != null && b.magnetTimer <= 0 || b == null)) {
             addObject(new Magnet(), randX(-100), -100);
         }
     }
@@ -158,9 +159,13 @@ public class SnowWorld extends World
     }
 
     public void speedUp() { 
-        Object.speed = 3 + (int) Math.sqrt(getScore() / 10000);
+        Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
     }
 
+    public Boarder getBoarder() {
+        return (getObjects(Boarder.class).size() > 0) ? (Boarder) getObjects(Boarder.class).get(0) : null;
+    }
+    
     public int getScore() {
         return score.getValue();
     }
