@@ -28,7 +28,8 @@ public class Coin2 extends Coins
             if (b != null && (b.air() >= 0 || b.magnetTimer > 0)) {
                 SnowWorld w = (SnowWorld) getWorld();
                 w.incScore(100);
-                getWorld().removeObject(this);
+                w.removeObject(this);
+                w.addCoin(1);
                 dead = true;
             }
         }

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.Color;
 
 /**
  * Write a description of class SnowWorld here.
@@ -13,6 +14,7 @@ public class SnowWorld extends World
     public Counter score = new Counter("Score: ");
     public int scoreMult = 1;
     public int multCounter = 0;
+    public int coins = 0;
 
     public void act() {
         spawnPowerup();
@@ -138,22 +140,26 @@ public class SnowWorld extends World
 
     public void showPowerup() {
         removeObjects(getObjects(Image.class));
+        Image coinImage = new Image("coin.png");
+        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, null);
+        addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
+        addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);
         if (multCounter > 0 && scoreMult == 2) {
             Image multImage = new Image("x2.png");
-            addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getImage().getWidth()/2 + 4, 15);
+            addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getWidth()/2 + 4, 15);
         }
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.gun > 0) {
                 Image gunImage = new Image("Handgun.png");
-                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getImage().getWidth()/2 - 4, 15);
+                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 15);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.magnetTimer > 0) {
                 Image magImage = new Image("magnet.png");
-                addObject(magImage, score.getX() + score.getImage().getWidth()/2 + (new Image("x2.png")).getImage().getWidth() + magImage.getImage().getWidth()/2 + 8, 15);
+                addObject(magImage, score.getX() + score.getImage().getWidth()/2 + (new Image("x2.png")).getWidth() + magImage.getWidth()/2 + 8, 15);
             }
         }
     }
@@ -162,6 +168,10 @@ public class SnowWorld extends World
         Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
     }
 
+    public void addCoin(int quant) {
+        coins += scoreMult * quant;
+    }
+    
     public Boarder getBoarder() {
         return (getObjects(Boarder.class).size() > 0) ? (Boarder) getObjects(Boarder.class).get(0) : null;
     }
