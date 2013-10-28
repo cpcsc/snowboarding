@@ -12,11 +12,11 @@ public class Back extends Buttons
     public void act() 
     {
         if (getWorld() instanceof SnowWorld) {
-            setImage(new GreenfootImage("Quit", 30, Color.RED, Color.WHITE));
+            setImage(new GreenfootImage("Quit", 30, Color.RED, null));
             getImage().setTransparency(220);
 
             if (getX() > 80) {
-                setImage(new GreenfootImage("Restart", 30, Color.BLUE, Color.WHITE));
+                setImage(new GreenfootImage("Restart", 30, Color.BLUE, null));
                 getImage().setTransparency(220);
             }
         }
