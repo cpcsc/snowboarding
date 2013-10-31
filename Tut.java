@@ -36,12 +36,15 @@ public class Tut extends World
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
         /*for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
-            Snow snow = new Snow();
-            snow.setRotation(Greenfoot.getRandomNumber(360));
-            addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
+        Snow snow = new Snow();
+        snow.setRotation(Greenfoot.getRandomNumber(360));
+        addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
         }*/
         for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }   
+        instructions.setLocation(451, 120);
+        instructions.setLocation(446, 119);
+        tutorial.setLocation(450, 339);
     }
 }
