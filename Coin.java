@@ -14,7 +14,7 @@ public class Coin extends Coins
     
     public void act() 
     {
-        if (getY() < 0) killObst(); 
+        if (getY() < 0) killObst2(); 
         objMove();
         pickUp();
     }

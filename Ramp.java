@@ -15,8 +15,11 @@ public class Ramp extends Object
     public void act() 
     {
         setLocation(getX(), getY()+speed);
+        //Pickup p = (Pickup) getWorld().getObjects(Pickup.class);
+        
         if (atWorldBottom()){
             getWorld().removeObject(this);
         }
+        //if (getY()<0) p.killCoins();
     }
 }

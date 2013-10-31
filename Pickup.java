@@ -19,4 +19,21 @@ public class Pickup extends Object
             }
         }
     }
+    public void killObst2()
+    {
+        if (!dead) {
+            Class[] list = {Log.class, Snowman.class, Ramp.class};
+            for(Class obst : list) {
+                removeTouching(obst);
+            }
+        }
+    }
+    public void killCoins()
+    {
+        Class[] list = {Coin.class, Coin2.class};
+        for(Class obst : list)
+        {
+            removeTouching(obst);
+        }
+    }    
 }

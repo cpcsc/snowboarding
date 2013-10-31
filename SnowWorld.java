@@ -93,6 +93,16 @@ public class SnowWorld extends World
         }
         if (Greenfoot.getRandomNumber(400) == 0) {
             addObject(new Ramp(), randX(-100), -100);
+            Ramp r = (Ramp) getObjects(Ramp.class).get(0);
+            int rx = r.getX();
+            int ry = r.getY();
+            if (r != null)
+            {
+                addObject(new Coin2(), rx, ry -100);
+                addObject(new Coin2(), rx, ry -121);
+                addObject(new Coin2(), rx, ry -142);
+                addObject(new Coin2(), rx, ry -163);
+            }    
         }
         if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(ScoreX2.class).size() == 0 && scoreMult == 1) {
             addObject(new ScoreX2(), randX(-100), -100);
