@@ -14,7 +14,7 @@ public class Magnet extends Pickup
      */
     public void act() 
     {
-        killObst();
+        if (getY()<0) killObst();
         objMove();
         pickUp();
     }    

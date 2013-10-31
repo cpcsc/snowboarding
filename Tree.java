@@ -20,7 +20,7 @@ public class Tree extends Obstacles
        
     public void killObst() {
         if (!dead) {
-            Class[] list = {Log.class, Snowman.class, Ramp.class};
+            Class[] list = {Log.class, Snowman.class, Ramp.class, Coins.class};
             for(Class obst : list) {
                 removeTouching(obst);
             }

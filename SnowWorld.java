@@ -80,38 +80,39 @@ public class SnowWorld extends World
     public void spawnPowerup() {
         Boarder b = getBoarder();
         if (Greenfoot.getRandomNumber(2000) == 0) { 
-            addObject(new Gun(), randX(-100), -100);
+            addObject2(new Gun(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null)) { 
-            addObject(new Invincible(), randX(-100), -100);
+            addObject2(new Invincible(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(100) == 0) {
-            addObject(new Coin(), randX(-100), -100);
+            addObject2(new Coin(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(300) == 0) {
-            addObject(new Coin2(), randX(-100), -100);
+            addObject2(new Coin2(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(400) == 0) {
-            addObject(new Ramp(), randX(-100), -100);
-            Ramp r = (Ramp) getObjects(Ramp.class).get(0);
-            int rx = r.getX();
-            int ry = r.getY();
-            if (r != null)
-            {
-                addObject(new Coin2(), rx, ry -100);
-                addObject(new Coin2(), rx, ry -121);
-                addObject(new Coin2(), rx, ry -142);
-                addObject(new Coin2(), rx, ry -163);
-            }    
+            Ramp r = new Ramp();
+            int x = randX(-100, 30);
+            if (getObjectsAt(x, -100, Object.class).size() == 0) {
+                addObject2(r, x, -100);
+                int rx = r.getX();
+                int ry = r.getY();            
+                int rh = r.getImage().getHeight();
+                addObject2(new Coin2(), rx, ry - rh/2 - 8*Object.speed);
+                addObject2(new Coin2(), rx, ry - rh/2 - 24*Object.speed);
+                addObject2(new Coin2(), rx, ry - rh/2 - 40*Object.speed);
+                addObject2(new Coin2(), rx, ry - rh/2 - 56*Object.speed);  
+            }
         }
         if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(ScoreX2.class).size() == 0 && scoreMult == 1) {
-            addObject(new ScoreX2(), randX(-100), -100);
+            addObject2(new ScoreX2(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(800) == 0) {
             spawnLineOfCoins();
         }
         if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0 && (b != null && b.magnetTimer <= 0 || b == null)) {
-            addObject(new Magnet(), randX(-100), -100);
+            addObject2(new Magnet(), randX(-100), -100);
         }
     }
 
@@ -120,12 +121,16 @@ public class SnowWorld extends World
         int r = Greenfoot.getRandomNumber(5) + 5;
         int x2 = randX(-20 - 60*r);
         for (int i = 0; i < r; i++) {
-            addObject( new Coin(), (i * x2 + (r - i) * x1) / r, -20 - 60*i);
+            addObject2( new Coin(), (i * x2 + (r - i) * x1) / r, -20 - 60*i);
         }
     }
 
-    public int randX(int y) { //Returns random x-value between the trees at a given y-value
-        int min = 0;
+    public int randX(int y) {
+        return randX(y, 10);
+    }
+    
+    public int randX(int y, int precision) { //Returns random x-value between the trees at a given y-value
+        int min = 0;                         //x-value will be at least precision units away from the trees
         int max = 0;
         Tree tree = new Tree();
         int w = tree.getImage().getWidth();
@@ -135,7 +140,7 @@ public class SnowWorld extends World
         for(int i = min + w; getObjectsAt(i, y, Tree.class).size() == 0 && i < getWidth(); i += w) {
             max = i;
         }
-        return Greenfoot.getRandomNumber(max - min - 20) + min + 10;
+        return Greenfoot.getRandomNumber(max - min - 2*precision) + min + precision;
     }
 
     public void scoreMult(int multiplier, int frames) {
@@ -182,11 +187,15 @@ public class SnowWorld extends World
     public void addCoin(int quant) {
         coins += scoreMult * quant;
     }
-    
+
     public Boarder getBoarder() {
         return (getObjects(Boarder.class).size() > 0) ? (Boarder) getObjects(Boarder.class).get(0) : null;
     }
-    
+
+    public void addObject2(Actor a, int x, int y) { //adds an object at (x,y) if there is no object there already
+        if (getObjectsAt(x, y, Object.class).size() == 0) addObject(a, x ,y);        
+    }
+
     public int getScore() {
         return score.getValue();
     }

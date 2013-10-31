@@ -10,24 +10,17 @@ public class Pickup extends Object
 {   
     public void act() 
     {
-    }   
+    }  
+    
     public void killObst() {
         if (!dead) {
-            Class[] list = {Log.class, Snowman.class, Ramp.class};
+            Class[] list = {Log.class, Snowman.class};
             for(Class obst : list) {
                 removeTouching(obst);
             }
         }
     }
-    public void killObst2()
-    {
-        if (!dead) {
-            Class[] list = {Log.class, Snowman.class, Ramp.class};
-            for(Class obst : list) {
-                removeTouching(obst);
-            }
-        }
-    }
+
     public void killCoins()
     {
         Class[] list = {Coin.class, Coin2.class};

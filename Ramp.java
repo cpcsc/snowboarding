@@ -8,18 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ramp extends Object
 {
-    /**
-     * Act - do whatever the Ramp wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
-        setLocation(getX(), getY()+speed);
-        //Pickup p = (Pickup) getWorld().getObjects(Pickup.class);
-        
-        if (atWorldBottom()){
-            getWorld().removeObject(this);
+        objMove();
+        killObst();
+    }
+    
+    public void killObst() {
+        if (!dead) {
+            Class[] list = {Log.class, Snowman.class, Pickup.class, Ramp.class};
+            for(Class obst : list) {
+                removeTouching(obst);
+            }
         }
-        //if (getY()<0) p.killCoins();
     }
 }
