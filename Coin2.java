@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Coin2 extends Coins
 {
     public Coin2() {
-        getImage().scale(getImage().getWidth()*3/2, getImage().getHeight()*3/2);
+        getImage().scale(20*3/2, 20*3/2);
         GreenfootImage img = new GreenfootImage("shadow.png");
         img.drawImage(getImage(), 4, 4);
         setImage(img);

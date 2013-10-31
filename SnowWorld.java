@@ -141,6 +141,7 @@ public class SnowWorld extends World
     public void showPowerup() {
         removeObjects(getObjects(Image.class));
         Image coinImage = new Image("coin.png");
+        coinImage.getImage().scale(20,20);
         Image coinNumImage = new Image(""+coins, 30, Color.BLACK, null);
         addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
         addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);

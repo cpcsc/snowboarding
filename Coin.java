@@ -8,6 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Coin extends Coins
 {
+    public Coin() {
+        getImage().scale(20,20);
+    }
+    
     public void act() 
     {
         if (getY() < 0) killObst(); 
