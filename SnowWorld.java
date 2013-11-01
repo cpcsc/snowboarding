@@ -53,7 +53,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Counter.class, Image.class, Coin2.class, Pig.class, Boarder.class, Lives.class, Back.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
+        setPaintOrder(Counter.class, Coin2.class, Pig.class, Boarder.class, Image.class, Lives.class, Back.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         //Pig pig = new Pig();

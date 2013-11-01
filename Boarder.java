@@ -16,6 +16,7 @@ public class Boarder extends Object
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
+
     public void act() 
     {
         moveAround();
@@ -151,12 +152,11 @@ public class Boarder extends Object
     }
 
     public void jump(int jumpTime) {
-        if (airTime > 0) {
-            GreenfootImage img = new GreenfootImage("shadow.png");
-            img.drawImage(getImage(), 0, 0);
-            double xy = jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50 ; //parabolic path
-            img.scale((int) xy,(int) xy);
-            setImage(img);
+        if (!dead && airTime > 0) {
+            Image shadow = new Image("shadow.png");
+            double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
+            getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
+            getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
         }
     }
     
