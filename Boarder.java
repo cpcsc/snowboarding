@@ -37,19 +37,19 @@ public class Boarder extends Object
             if (!checkTree(-4) || invincible < 50) {
                 move(-4);
             }
-            setImage("left.png");
+            setImage("Left2.png");
         }
         if (Greenfoot.isKeyDown("right") && getX() <= getWorld().getWidth()){
             if (!checkTree(4) || invincible < 50) {
                 move(4);
             }
-            setImage("right.png");
+            setImage("Right2.png");
         }
         if (!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
-            setImage("straight.png");
+            setImage("Forward2.png");
         }
         if (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right")){
-            setImage("straight.png");
+            setImage("Forward2.png");
             move(0);
         }
         if (Greenfoot.isKeyDown("up")) {
