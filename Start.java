@@ -11,20 +11,21 @@ public class Start extends Buttons
 {
     public Start()
     {
-        setImage(new GreenfootImage("New Game", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Play", 50, Color.BLUE, null));
     }
     public void act() 
     {
-        setImage(new GreenfootImage("New Game", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Play", 50, Color.BLUE, null));
         
         if (Greenfoot.getMouseInfo() != null){
         if (Greenfoot.getMouseInfo().getX() >= 350 && Greenfoot.getMouseInfo().getX() <= 550 &&
             Greenfoot.getMouseInfo().getY() >= 155 && Greenfoot.getMouseInfo().getY() <= 185) {
-               setImage(new GreenfootImage("New Game", 50, Color.RED, null));
+               setImage(new GreenfootImage("Play", 50, Color.RED, null));
         }
         }
         
         if (Greenfoot.mouseClicked(this)) {
+           
             Greenfoot.setWorld(new SnowWorld());
         }
     }

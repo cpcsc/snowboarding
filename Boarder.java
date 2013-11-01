@@ -30,7 +30,7 @@ public class Boarder extends Object
         jump(jumpTime);
         magnet();
     }
-
+    GreenfootSound gunshot = new GreenfootSound("Gunshot.mp3");
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
@@ -60,6 +60,7 @@ public class Boarder extends Object
             }
         }
         if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= 0) {
+            gunshot.play();
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 20;

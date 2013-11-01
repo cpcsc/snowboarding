@@ -19,7 +19,7 @@ public class Intro extends World
         Object.speed = 3;
         prepare();
     }
-    
+    GreenfootSound bkg = new GreenfootSound("Intro.mp3");
     public void prepare() {
         setPaintOrder(Bot.class, Start.class, Credits.class, Instructions.class, Obstacles.class, Snow.class);
         Bot bot = new Bot();
@@ -39,8 +39,17 @@ public class Intro extends World
             snow.setRotation(Greenfoot.getRandomNumber(360));
             addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
         }*/
+        
         for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }       
+    }
+    public void act()
+    {
+        bkg.playLoop();
+    }
+    public void stopMusic()
+    {
+        bkg.stop();
     }
 }

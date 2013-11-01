@@ -23,11 +23,12 @@ public class Bullet extends Weapon
             }
         }
     }
-
+    GreenfootSound bear = new GreenfootSound("PolarBear.mp3");
     public void killBear() {
         if (!dead) {
             for(int i = getY()-40; i <= getY(); i++) {
                 if (isTouching(Bear.class)) {
+                    bear.play();
                     Actor b = getOneIntersectingObject(Bear.class);
                     World w = getWorld();
                     for (int j = 1; j <= 4; j++) {

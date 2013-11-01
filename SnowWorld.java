@@ -15,7 +15,7 @@ public class SnowWorld extends World
     public int scoreMult = 1;
     public int multCounter = 0;
     public int coins = 0;
-
+    //GreenfootSound speedup = new GreenfootSound("Speedboost.mp3");
     public void act() {
         spawnPowerup();
         multCounter--;
@@ -164,9 +164,10 @@ public class SnowWorld extends World
             }
         }
     }
-
+    
     public void speedUp() { 
         Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
+      
     }
 
     public void addCoin(int quant) {
@@ -180,4 +181,5 @@ public class SnowWorld extends World
     public int getScore() {
         return score.getValue();
     }
+
 }
