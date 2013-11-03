@@ -64,6 +64,7 @@ public class Boarder extends Object
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 20;
+            (new GreenfootSound("GunShotSound.mp3")).play();
             gun--;
         }
         // touchscreen (mouse drag) detection/movement
