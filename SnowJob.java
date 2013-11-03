@@ -10,6 +10,7 @@ public class SnowJob extends Actor
 {
     public SnowJob()
     {
+        setImage("images/SnowJob.png");
         getImage().scale(600,300);
     }
     /**
