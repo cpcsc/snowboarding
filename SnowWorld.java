@@ -181,7 +181,11 @@ public class SnowWorld extends World
     }
 
     public void speedUp() { 
+        int speed1 = Object.speed;
         Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
+        if (speed1 < Object.speed) {
+            (new GreenfootSound("Speedboost.mp3")).play();
+        }
     }
 
     public void addCoin(int quant) {

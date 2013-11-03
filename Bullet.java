@@ -15,7 +15,9 @@ public class Bullet extends Weapon
             if (isTouching(Snowman.class)) {
                 Actor s = getOneIntersectingObject(Snowman.class);
                 World w = getWorld();
-                w.addObject(new Coin(), s.getX(), s.getY());
+                for (int j = 1; j <= 2; j++) {
+                        w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
+                    }
                 w.removeObject(s);
                 w.removeObject(this);
                 dead = true;
@@ -33,6 +35,7 @@ public class Bullet extends Weapon
                     for (int j = 1; j <= 4; j++) {
                         w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
                     }
+                    (new GreenfootSound("PolarBearDead.mp3")).play();
                     w.removeObject(b);
                     w.removeObject(this);
                     dead = true;
