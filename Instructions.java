@@ -20,7 +20,7 @@ public class Instructions extends Buttons
         if (getWorld() instanceof Intro) {
          if (Greenfoot.getMouseInfo() != null){
          if (Greenfoot.getMouseInfo().getX() >= 350 && Greenfoot.getMouseInfo().getX() <= 550 &&
-             Greenfoot.getMouseInfo().getY() >= 235 && Greenfoot.getMouseInfo().getY() <= 265) {
+             Greenfoot.getMouseInfo().getY() >= 370 && Greenfoot.getMouseInfo().getY() <= 430) {
              setImage(new GreenfootImage("Instructions", 50, Color.RED, null));
          }
          }

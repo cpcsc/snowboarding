@@ -19,7 +19,7 @@ public class Start extends Buttons
         
         if (Greenfoot.getMouseInfo() != null){
         if (Greenfoot.getMouseInfo().getX() >= 350 && Greenfoot.getMouseInfo().getX() <= 550 &&
-            Greenfoot.getMouseInfo().getY() >= 155 && Greenfoot.getMouseInfo().getY() <= 185) {
+            Greenfoot.getMouseInfo().getY() >= 310 && Greenfoot.getMouseInfo().getY() <= 370) {
                setImage(new GreenfootImage("New Game", 50, Color.RED, null));
         }
         }

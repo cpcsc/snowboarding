@@ -20,7 +20,7 @@ public class Credits extends Buttons
         if (getWorld() instanceof Intro) {
          if (Greenfoot.getMouseInfo() != null){
          if (Greenfoot.getMouseInfo().getX() >= 385 && Greenfoot.getMouseInfo().getX() <= 515 &&
-             Greenfoot.getMouseInfo().getY() >= 320 && Greenfoot.getMouseInfo().getY() <= 340) {
+             Greenfoot.getMouseInfo().getY() >= 430 && Greenfoot.getMouseInfo().getY() <= 490) {
              setImage(new GreenfootImage("Credits", 50, Color.RED, null));
          }
          }
