@@ -21,7 +21,7 @@ public class Intro extends World
     }
     
     public void prepare() {
-        setPaintOrder(SnowJob.class, Bot.class, Start.class, Credits.class, Instructions.class, Obstacles.class, Snow.class);
+        setPaintOrder(SnowJob.class, Buttons.class, Obstacles.class);
         Bot bot = new Bot();
         addObject(bot, 450, 588);
         Start start = new Start();
@@ -32,17 +32,11 @@ public class Intro extends World
         addObject(credits, 450, 460);
         SnowJob snowjob = new SnowJob();
         addObject(snowjob, 450, 150);
-        // Background background = new Background();
-        //addObject(background, 882, 17);
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
-        /*for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
-        Snow snow = new Snow();
-        snow.setRotation(Greenfoot.getRandomNumber(360));
-        addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
-        }*/
         for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
-        }       
+        }
+        addObject(new Highscore(), 450, 520);
     }
 }
