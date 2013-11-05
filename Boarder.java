@@ -174,4 +174,8 @@ public class Boarder extends Object
         }
         
     }
+    
+    public int getGun() {
+        return gun;
+    }
 }
