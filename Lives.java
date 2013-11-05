@@ -48,7 +48,7 @@ public class Lives extends Object
                     setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
                     getImage().setTransparency(220);
                     
-                    if(!sent){
+                    /**if(!sent){
                         File scores = new File(".scores");
                         try{
                             if(scores.exists()==false){
@@ -62,7 +62,7 @@ public class Lives extends Object
                             System.out.println("COULD NOT LOG!!");
                         }
                         sent = true;
-                    }
+                    }**/
                 }
             if (dead == 0) {
                 if(!noLives()) {
