@@ -15,28 +15,35 @@ import java.io.IOException;
  */
 public class Highscore extends Buttons
 {
+    private boolean applet()  
+    {  
+        return null != System.getSecurityManager();  
+    }
+
     public Highscore() {
-        File scores = new File(".scores");
-        try{
-            if(scores.exists()==true){
-                FileInputStream fstream = new FileInputStream(".scores");
-                DataInputStream in = new DataInputStream(fstream);
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                try {
-                    while (true) {
-                        String line = br.readLine();
-                        if (line == null) break;
-                        String[] fields = line.split("\n");
-                        
-                        setImage(new GreenfootImage("Highscore: " + fields[0], 30, Color.BLACK, null));
+        if(!applet()){
+            File scores = new File(".scores");
+            try{
+                if(scores.exists()==true){
+                    FileInputStream fstream = new FileInputStream(".scores");
+                    DataInputStream in = new DataInputStream(fstream);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                    try {
+                        while (true) {
+                            String line = br.readLine();
+                            if (line == null) break;
+                            String[] fields = line.split("\n");
+
+                            setImage(new GreenfootImage("Highscore: " + fields[0], 30, Color.BLACK, null));
+                        }
+                    }
+                    finally {
+                        br.close();
                     }
                 }
-                finally {
-                    br.close();
-                }
+            }catch(IOException e){
+                System.out.println("COULD NOT LOG!!");
             }
-        }catch(IOException e){
-            System.out.println("COULD NOT LOG!!");
         }
     }
 }

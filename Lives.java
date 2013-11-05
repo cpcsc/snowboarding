@@ -21,6 +21,10 @@ public class Lives extends Object
     private int spawnTime = 0;
     private int dead = 0;
     private boolean sent = false;
+    private boolean applet()  
+    {  
+        return null != System.getSecurityManager();  
+    }
 
     public boolean noLives() {
         if (totalLives == 0){
@@ -52,50 +56,52 @@ public class Lives extends Object
                 setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
                 getImage().setTransparency(220);
 
-                if(!sent){
-                    File scores = new File(".scores");
-                    try{
-                        if(scores.exists()==false){
-                            scores.createNewFile();
-                            PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                            SnowWorld sw = (SnowWorld) getWorld();
-                            out.println(sw.getScore());
-                            out.close();
-                        }
-                        else{
-                            FileInputStream fstream = new FileInputStream(".scores");
-                            DataInputStream in = new DataInputStream(fstream);
-                            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                            try {
-                                while (true) {
-                                    String line = br.readLine();
-                                    if (line == null) break;
-                                    String[] fields = line.split("\n");
-                                    // old highscore
-                                    int hs = Integer.parseInt(fields[0]);
+                if(!applet()){
+                    if(!sent){
+                        File scores = new File(".scores");
+                        try{
+                            if(scores.exists()==false){
+                                scores.createNewFile();
+                                PrintWriter out = new PrintWriter(new FileWriter(scores, false));
+                                SnowWorld sw = (SnowWorld) getWorld();
+                                out.println(sw.getScore());
+                                out.close();
+                            }
+                            else{
+                                FileInputStream fstream = new FileInputStream(".scores");
+                                DataInputStream in = new DataInputStream(fstream);
+                                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                                try {
+                                    while (true) {
+                                        String line = br.readLine();
+                                        if (line == null) break;
+                                        String[] fields = line.split("\n");
+                                        // old highscore
+                                        int hs = Integer.parseInt(fields[0]);
 
-                                    // new score
-                                    SnowWorld sw = (SnowWorld) getWorld();
-                                    int score = sw.getScore();
+                                        // new score
+                                        SnowWorld sw = (SnowWorld) getWorld();
+                                        int score = sw.getScore();
 
-                                    // check if new score is greater than old highscore
-                                    if(score > hs){
-                                        PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                                        scores.delete();
-                                        scores.createNewFile();
-                                        out.println(score);
-                                        out.close();
+                                        // check if new score is greater than old highscore
+                                        if(score > hs){
+                                            PrintWriter out = new PrintWriter(new FileWriter(scores, false));
+                                            scores.delete();
+                                            scores.createNewFile();
+                                            out.println(score);
+                                            out.close();
+                                        }
                                     }
                                 }
+                                finally {
+                                    br.close();
+                                }
                             }
-                            finally {
-                                br.close();
-                            }
+                        }catch(IOException e){
+                            System.out.println("COULD NOT LOG!!");
                         }
-                    }catch(IOException e){
-                        System.out.println("COULD NOT LOG!!");
+                        sent = true;
                     }
-                    sent = true;
                 }
             }
             if (dead == 0) {

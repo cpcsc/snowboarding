@@ -1,4 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Highscore()
-numComments=1
+comment0.target=boolean\ applet()
+comment1.params=
+comment1.target=Highscore()
+numComments=2
