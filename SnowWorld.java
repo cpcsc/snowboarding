@@ -53,28 +53,21 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Counter.class, Coin2.class, Pig.class, Boarder.class, Image.class, Lives.class, Back.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
+        setPaintOrder(Counter.class, Coin2.class, Pig.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, Snow.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
-        //Pig pig = new Pig();
-        //addObject(pig, 464, 600);
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
         Back back = new Back();
         addObject(back, 30, 680);
         Back back2 = new Back();
         addObject(back2, 100, 680);
-        //Background background = new Background();
-        //addObject(background, 882, 17);
-        /*for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
-        Snow snow = new Snow();
-        snow.setRotation(Greenfoot.getRandomNumber(360));
-        addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
-        }*/
         for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }      
         addObject(score, getWidth()/2, 17);
+        Highscore hs = new Highscore();
+        addObject(hs, getWidth() - hs.getImage().getWidth()/2 - 5, 17);
     }
 
     public void spawnPowerup() {
