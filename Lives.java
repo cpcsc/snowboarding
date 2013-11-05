@@ -75,9 +75,9 @@ public class Lives extends Object
                                     while (true) {
                                         String line = br.readLine();
                                         if (line == null) break;
-                                        String[] fields = line.split("\n");
+                                        // String[] fields = line.split("\n");
                                         // old highscore
-                                        int hs = Integer.parseInt(fields[0]);
+                                        int hs = Integer.parseInt(line);
 
                                         // new score
                                         SnowWorld sw = (SnowWorld) getWorld();

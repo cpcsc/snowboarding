@@ -32,9 +32,9 @@ public class Highscore extends Buttons
                         while (true) {
                             String line = br.readLine();
                             if (line == null) break;
-                            String[] fields = line.split("\n");
+                            // String[] fields = line.split("\n");
 
-                            setImage(new GreenfootImage("Highscore: " + fields[0], 30, Color.BLACK, null));
+                            setImage(new GreenfootImage("Highscore: " + line, 30, Color.BLACK, null));
                         }
                     }
                     finally {
