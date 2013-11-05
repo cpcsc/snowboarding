@@ -22,7 +22,7 @@ public class Tut extends World
     }
     
     public void prepare() {
-        setPaintOrder(Bot.class, Tutorial.class, Back.class, Instructions.class, Obstacles.class, Snow.class);
+        setPaintOrder(Bot.class, Tutorial.class, Back.class, Instructions.class, Obstacles.class);
         Bot bot = new Bot();
         addObject(bot, 450, 588);
         Instructions instructions = new Instructions();

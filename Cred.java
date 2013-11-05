@@ -22,7 +22,7 @@ public class Cred extends World
     }
     
     public void prepare() {
-        setPaintOrder(Bot.class, Credits.class, Back.class, Creds.class, Obstacles.class, Snow.class);
+        setPaintOrder(Bot.class, Credits.class, Back.class, Creds.class, Obstacles.class);
         Bot bot = new Bot();
         addObject(bot, 450, 588);
         Credits credits = new Credits();
