@@ -41,8 +41,22 @@ public class Bear extends Obstacles
                 dir = 0;              
             }
         }
+        if(w instanceof Intro){
+            if (w.getObjects(Bot.class).size() != 0) {
+                Bot bot = (Bot) w.getObjects(Bot.class).get(0);
+                if (bot.getX() - getX() != 0) {
+                    dir = (bot.getX() - getX()) / Math.abs(bot.getX() - getX());
+                    if (dir != imgDir) {
+                        getImage().mirrorHorizontally();
+                        imgDir *= -1;
+                    }
+                } else {
+                    dir = 0;              
+                }
+            }
+        }
     }
-    
+
     public void killObst() {
         if (!dead) {
             Class[] list = {Snowman.class, Log.class};
