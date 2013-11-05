@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Nov 04 22:17:17 PST 2013
+#Mon Nov 04 22:40:37 PST 2013
 target24.type=ClassTarget
 target16.name=Image
 target13.editor.width=683
@@ -287,6 +287,7 @@ dependency10.from=Lives
 dependency120.from=Boarder
 target4.type=ClassTarget
 dependency62.from=Cred
+class.Highscore.image=blank.png
 dependency38.type=UsesDependency
 dependency54.to=Start
 class.Magnet.superclass=Pickup
