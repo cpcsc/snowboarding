@@ -8,6 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Log extends Obstacles
 {
+    public Log() {
+        getImage().scale(189,30);
+    }
     /**
      * Act - do whatever the Log wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
