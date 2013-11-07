@@ -16,11 +16,14 @@ public class Boarder extends Object
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
+    private int trailTimer = 0;
 
     public void act() 
     {
+        trailTimer++;
         moveAround();
         ramp();
+        trail();
         dieObstacle();
         dieTree();
         invincible++;
@@ -111,6 +114,13 @@ public class Boarder extends Object
         }
     }
 
+    public void trail() {
+        if (trailTimer >= 1 && airTime < 0) {
+            getWorld().addObject(new SnowTrail(),getX()-5,getY()+25);
+            trailTimer=0;
+        }
+    }
+   
     public int air() {
         return airTime;
     }

@@ -8,6 +8,9 @@ import java.awt.Color;
  */
 public class Image extends Actor
 {
+    public Image() {
+    }
+    
     public Image(String filename) {
         setImage(filename);
     }
