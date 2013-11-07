@@ -33,7 +33,7 @@ public class Bot extends Object
     public void trail() {
         if (timer >= 1) {
             getWorld().addObject(new SnowTrail(),getX(),getY()+25);
-            getWorld().addObject(new SnowTrail(),getX()-10,getY()+25);
+            getWorld().addObject(new SnowTrail(),getX()-5,getY()+25);
             timer=0;
         }
     }

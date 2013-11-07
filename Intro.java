@@ -21,7 +21,7 @@ public class Intro extends World
     }
     
     public void prepare() {
-        setPaintOrder(SnowJob.class, Buttons.class, Obstacles.class);
+        setPaintOrder(SnowJob.class, Buttons.class, Obstacles.class, Bot.class, SnowTrail.class);
         Bot bot = new Bot();
         addObject(bot, 450, 588);
         Start start = new Start();
