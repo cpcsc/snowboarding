@@ -23,11 +23,12 @@ public class SnowWorld extends World
         speedUp();
     }
 
-    public SnowWorld()
+    public SnowWorld(int Coins)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 700, 1, false); 
 
+        coins = Coins;
         theLives = new Lives();
         addObject(theLives, 820, 670);
 
@@ -185,6 +186,14 @@ public class SnowWorld extends World
 
     public void addCoin(int quant) {
         coins += scoreMult * quant;
+    }
+    
+    public int getCoins() {
+        return coins;
+    }
+    
+    public void setCoins(int Coins) {
+        coins = Coins;
     }
 
     public Boarder getBoarder() {

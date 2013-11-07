@@ -35,11 +35,16 @@ public class Back extends Buttons
                 SnowWorld sw = (SnowWorld) getWorld();
                 sw.stopMusic();
                 if(getX() > 80){
-                    Greenfoot.setWorld(new SnowWorld());
+                    Greenfoot.setWorld(new SnowWorld(0));
                 } else {
                     Greenfoot.setWorld(new Intro());
                 }
-            } else {
+            }
+            else if(getWorld() instanceof StoreWorld) {
+                StoreWorld sw = (StoreWorld) getWorld();
+                Greenfoot.setWorld(sw.getSnowWorld());
+            }
+            else {
                 Greenfoot.setWorld(new Intro());
             }
         }
