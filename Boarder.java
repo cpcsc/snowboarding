@@ -17,7 +17,7 @@ public class Boarder extends Object
     public double jumpConst;
     public int magnetTimer = 0;
     private int trailTimer = 0;
-
+    public int dir;
     public void act() 
     {
         trailTimer++;
@@ -38,19 +38,22 @@ public class Boarder extends Object
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
-            if (!checkTree(-4) || invincible < 50) {
+            if (!checkTree(-4) || invincible < 100) {
                 move(-4);
             }
             setImage("left.png");
+            dir = -4;
         }
         if (Greenfoot.isKeyDown("right") && getX() <= getWorld().getWidth()){
-            if (!checkTree(4) || invincible < 50) {
+            if (!checkTree(4) || invincible < 100) {
                 move(4);
             }
             setImage("right.png");
+            dir = 4;
         }
         if (!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
             setImage("straight.png");
+            dir = 0;
         }
         if (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right")){
             setImage("straight.png");
@@ -115,9 +118,12 @@ public class Boarder extends Object
     }
 
     public void trail() {
-        if (trailTimer >= 1 && airTime < 0) {
-            getWorld().addObject(new SnowTrail(),getX()-5,getY()+25);
-            trailTimer=0;
+        if (airTime < 0) {
+            World w = getWorld();
+            for (int i = 1; i <= Object.speed; i++) {
+                w.addObject(new SnowTrail(), getX() - 5 - i*dir/Object.speed, getY() + 20 + i); 
+                
+            }
         }
     }
    
