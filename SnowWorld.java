@@ -160,7 +160,7 @@ public class SnowWorld extends World
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.gun > 0) {
-                Image gunImage = new Image("Handgun.png");
+                Image gunImage = new Image("GunPowerup.png");
                 addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 15);
                 Image gunNumImage = new Image(""+b.getGun(), 30, Color.BLACK, null);
                 addObject(gunNumImage, gunImage.getX() - 40, 15);
