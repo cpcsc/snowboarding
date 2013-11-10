@@ -20,11 +20,13 @@ public class Bullet extends Weapon
                 w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
             }
             w.removeObject(s);
+            w.removeObject(this);
+            dead = true;
         }
     }
 
     public void killBear() {    
-        if (isTouching(Bear.class)) {
+        if (!dead && isTouching(Bear.class)) {
             Actor b = getOneIntersectingObject(Bear.class);
             World w = getWorld();
             for (int j = 1; j <= 4; j++) {
@@ -32,25 +34,31 @@ public class Bullet extends Weapon
             }
             (new GreenfootSound("PolarBearDead.mp3")).play();
             w.removeObject(b);
+            w.removeObject(this);
+            dead = true;
         }
     }
 
     public void killSnowMobile() {
-        if (isTouching(SnowMobile.class)) {
+        if (!dead && isTouching(SnowMobile.class)) {
             SnowMobile sm = (SnowMobile) getOneIntersectingObject(SnowMobile.class);
             World w = getWorld();
             for (int j = 1; j <= sm.coins; j++) {
                 w.addObject(new Coin(), sm.getX() + Greenfoot.getRandomNumber(21) - 10, sm.getY() + Greenfoot.getRandomNumber(21) - 10);
             }
             (new GreenfootSound("Explosion.mp3")).play();
+            w.addObject(new SnowMobileCrashed(Greenfoot.getRandomNumber(180)-90),sm.getX(),sm.getY());
             w.removeObject(sm);
+            w.removeObject(this);
+            dead = true;
         }
     }
 
     public void disappear(){       
-        if (getY() <= -20){
+        if (!dead && getY() <= -20){
             SnowWorld w = (SnowWorld) getWorld();
             w.removeObject(this);
+            dead = true;
         }
     }
 
