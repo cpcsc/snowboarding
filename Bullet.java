@@ -8,6 +8,7 @@ public class Bullet extends Weapon
         setLocation(getX(), getY()-40);
         killSnowman();
         killBear();
+        bump();
     }    
 
     public void killSnowman() {
@@ -19,15 +20,11 @@ public class Bullet extends Weapon
                         w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
                     }
                 w.removeObject(s);
-                w.removeObject(this);
-                dead = true;
-                break;
             }
         }
     }
 
-    public void killBear() {
-        if (!dead) {
+    public void killBear() {    
             for(int i = getY()-40; i <= getY(); i++) {
                 if (isTouching(Bear.class)) {
                     Actor b = getOneIntersectingObject(Bear.class);
@@ -37,11 +34,16 @@ public class Bullet extends Weapon
                     }
                     (new GreenfootSound("PolarBearDead.mp3")).play();
                     w.removeObject(b);
-                    w.removeObject(this);
-                    dead = true;
-                    break;
                 }
             }
+    }
+    
+     public void bump(){
+        Actor tree = getOneIntersectingObject(Tree.class);
+        Actor log = getOneIntersectingObject(Log.class);
+        if (tree != null || log != null || getY() <= -20){
+            SnowWorld w = (SnowWorld) getWorld();
+            w.removeObject(this);
         }
     }
 }

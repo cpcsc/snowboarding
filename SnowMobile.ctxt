@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ SnowMobile\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ trail()
+comment2.params=jumpTime
+comment2.target=void\ jump(int)
+comment3.params=
+comment3.target=void\ ramp()
+comment4.params=
+comment4.target=void\ killSnowman()
+comment5.params=
+comment5.target=void\ killBear()
+comment6.params=
+comment6.target=void\ bump()
+numComments=7

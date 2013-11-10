@@ -8,6 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SnowTrail extends Actor
 {
+    public SnowTrail(int w)
+    {
+        getImage().scale(w,15);
+    }
+    
+    public SnowTrail()
+    {
+    }
+    
     private int timer = 0;
     /**
      * Act - do whatever the SnowTral wants to do. This method is called whenever
@@ -29,6 +38,10 @@ public class SnowTrail extends Actor
         setLocation(getX(), getY() + Object.speed);
         if (getY() >= getWorld().getHeight()+20){
             getWorld().removeObject(this);
+        }
+        else if (timer > 150) {
+            getWorld().removeObject(this);
+            timer = 0;
         }
     }    
 }

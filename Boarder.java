@@ -121,7 +121,7 @@ public class Boarder extends Object
         if (airTime < 0) {
             World w = getWorld();
             for (int i = 1; i <= Object.speed; i++) {
-                w.addObject(new SnowTrail(), getX() - 5 - i*dir/Object.speed, getY() + 20 + i); 
+                w.addObject(new SnowTrail(12), getX() - 5 - i*dir/Object.speed, getY() + 20 + i); 
                 
             }
         }

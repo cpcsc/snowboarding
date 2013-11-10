@@ -20,6 +20,7 @@ public class SnowWorld extends World
         spawnPowerup();
         multCounter--;
         showPowerup();
+        addSnowMobile();
         speedUp();
     }
 
@@ -197,5 +198,12 @@ public class SnowWorld extends World
 
     public int getScore() {
         return score.getValue();
+    }
+    
+    public void addSnowMobile() {
+        Boarder boarder = getBoarder();
+        if (Greenfoot.getRandomNumber(1000)<=Object.speed && boarder!=null) {
+            addObject(new SnowMobile(),getBoarder().getX(),getHeight()+50);
+        }
     }
 }
