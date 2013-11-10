@@ -86,8 +86,8 @@ public class Lives extends Object
                                         // check if new score is greater than old highscore
                                         if(score > hs){
                                             PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                                            scores.delete();
-                                            scores.createNewFile();
+                                            //scores.delete();
+                                            //scores.createNewFile();
                                             out.println(score);
                                             out.close();
                                         }
