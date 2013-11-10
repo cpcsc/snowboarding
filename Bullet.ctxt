@@ -8,5 +8,5 @@ comment2.target=void\ killBear()
 comment3.params=
 comment3.target=void\ killSnowMobile()
 comment4.params=
-comment4.target=void\ bump()
+comment4.target=void\ disappear()
 numComments=5

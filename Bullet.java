@@ -9,7 +9,7 @@ public class Bullet extends Weapon
         killSnowman();
         killBear();
         killSnowMobile();
-        bump();
+        disappear();
     }    
 
     public void killSnowman() {
@@ -47,9 +47,8 @@ public class Bullet extends Weapon
         }
     }
 
-    public void bump(){
-        Actor tree = getOneIntersectingObject(Tree.class);
-        if (tree != null || getY() <= -20){
+    public void disappear(){       
+        if (getY() <= -20){
             SnowWorld w = (SnowWorld) getWorld();
             w.removeObject(this);
         }
