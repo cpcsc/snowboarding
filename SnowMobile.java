@@ -44,8 +44,8 @@ public class SnowMobile extends Obstacles
     public void logJump() {
         if (getOneObjectAtOffset(0, -getImage().getHeight()/2 - 8*Object.speed, Log.class) != null && airTime <= -5) {
             if (airTime <= -5) {
-                airTime = 50;
-                jumpTime = 50;
+                airTime = 30;
+                jumpTime = 30;
                 jumpConst = -50.0 / 1058.0;
             }
         }
@@ -65,8 +65,8 @@ public class SnowMobile extends Obstacles
     public void ramp() 
     {
         if (airTime < 0 && isTouching(Ramp.class)) {
-            airTime = 100;
-            jumpTime = 100;   
+            airTime = 60;
+            jumpTime = 60;   
             jumpConst = -25.0 / 1058.0;
         }
     }
@@ -105,6 +105,7 @@ public class SnowMobile extends Obstacles
             for (int j = 1; j <= coins; j++) {
                 w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
             }
+            w.addObject(new SnowMobileCrashed(Greenfoot.getRandomNumber(180)-90),getX(),getY());
             w.removeObject(this);
             dead = true;
             (new GreenfootSound("Explosion.mp3")).play();
