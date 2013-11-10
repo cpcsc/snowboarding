@@ -36,7 +36,7 @@ public class Lives extends Object
     }
 
     public Lives(){
-        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, Color.WHITE));
+        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, null));
         getImage().setTransparency(220);
     }
 
@@ -53,7 +53,7 @@ public class Lives extends Object
     public void respawn(){
         if (getWorld().getObjects(Boarder.class).size() == 0){
             if (noLives()){
-                setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, Color.WHITE));
+                setImage(new GreenfootImage("You Lose!  ", 50, Color.RED, null));
                 getImage().setTransparency(220);
 
                 if(!applet()){
