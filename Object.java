@@ -12,8 +12,9 @@ public class Object extends Actor
     public int score = 0;
     public static int speed = 3;
     public boolean dead = false;
+    public boolean air = false;
     public boolean atWorldBottom(){
-        return (getY() >= getWorld().getHeight() + 50);
+        return (getY() >= getWorld().getHeight() + 70);
     }
     
     public void objMove() {

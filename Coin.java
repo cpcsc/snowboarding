@@ -30,5 +30,14 @@ public class Coin extends Coins
                 dead = true;
             }
         }
+        if (!dead) {
+            SnowMobile sm = (SnowMobile) getOneIntersectingObject(SnowMobile.class);         
+            if (sm != null && sm.airTime < 0 ) {
+                World w = getWorld();
+                w.removeObject(this);
+                sm.coins++;
+                dead = true;
+            }
+        }
     }
 }

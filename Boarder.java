@@ -121,19 +121,18 @@ public class Boarder extends Object
         if (airTime < 0) {
             World w = getWorld();
             for (int i = 1; i <= Object.speed; i++) {
-                w.addObject(new SnowTrail(12), getX() - 5 - i*dir/Object.speed, getY() + 20 + i); 
-                
+                w.addObject(new SnowTrail(12), getX() - 5 - i*dir/Object.speed, getY() + 20 + i);                 
             }
         }
     }
-   
+
     public int air() {
         return airTime;
     }
 
     public void dieObstacle(){
-        Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 100 && airTime <= 0){
+        Object obstacle = (Object) getOneIntersectingObject(Obstacles.class);
+        if (obstacle != null && invincible > 100 && air == obstacle.air){
             SnowWorld w = (SnowWorld) getWorld();
             w.multCounter = 0;
             w.removeObject(this);
@@ -169,14 +168,22 @@ public class Boarder extends Object
     }
 
     public void jump(int jumpTime) {
-        if (!dead && airTime > 0) {
-            Image shadow = new Image("shadow.png");
-            double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
-            getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
-            getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
+        air = airTime > 0;
+        if (!dead) {
+            if (air) {
+                getWorld().setPaintOrder(Counter.class, Coin2.class, Boarder.class, SnowMobile.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+            } else {
+                getWorld().setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+            }
+            if (air) {
+                Image shadow = new Image("shadow.png");
+                double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
+                getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
+                getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
+            }
         }
     }
-    
+
     public void magnet() {
         magnetTimer--;
         if (magnetTimer > 0 && !dead) {
@@ -188,9 +195,9 @@ public class Boarder extends Object
                 a.setRotation(0);
             }
         }
-        
+
     }
-    
+
     public int getGun() {
         return gun;
     }

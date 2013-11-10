@@ -54,7 +54,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Counter.class, Coin2.class, Pig.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         Obstacles obstacles = new Obstacles();
@@ -202,8 +202,9 @@ public class SnowWorld extends World
     
     public void addSnowMobile() {
         Boarder boarder = getBoarder();
-        if (Greenfoot.getRandomNumber(1000)<=Object.speed && boarder!=null) {
-            addObject(new SnowMobile(),getBoarder().getX(),getHeight()+50);
+        if (Greenfoot.getRandomNumber(2000) <= Object.speed && boarder != null) {
+            //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
+            addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
         }
     }
 }

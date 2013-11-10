@@ -8,11 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SnowMobile extends Obstacles
 {
-    private int airTime = 0;
+    public int airTime = 0;
     public int jumpTime;
     public double jumpConst;
     private int trailTimer = 0;
-    public int dir;
+    public int coins = 1;
     /**
      * Act - do whatever the SnowMobile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,8 +22,10 @@ public class SnowMobile extends Obstacles
         trailTimer++;
         airTime--;
         setLocation(getX(),getY()-Object.speed);
+        setImage("SnowMobile.png");
         trail();
         ramp();
+        logJump();
         jump(jumpTime);
         killSnowman();
         killBear();
@@ -31,18 +33,31 @@ public class SnowMobile extends Obstacles
     }
 
     public void trail() {
-        if (airTime < 0) {
+        if (trailTimer >= 3 && !air) {
             World w = getWorld();
-            for (int i = 1; i <= Object.speed; i++) {
-                w.addObject(new SnowTrail(), getX() - i*dir/Object.speed, getY() + 20 + i);
+            w.addObject(new SnowMobileTrail(), getX() + 10 , getY() + 20);
+            w.addObject(new SnowMobileTrail(), getX() - 11 , getY() + 20);
+            trailTimer = 0;
+        }
+    }
+
+    public void logJump() {
+        if (getOneObjectAtOffset(0, -getImage().getHeight()/2 - 8*Object.speed, Log.class) != null && airTime <= -5) {
+            if (airTime <= -5) {
+                airTime = 50;
+                jumpTime = 50;
+                jumpConst = -50.0 / 1058.0;
             }
         }
     }
-    
+
     public void jump(int jumpTime) 
     {
-        if (airTime > 0) {
+        air = airTime > 0;
+        if (air) {
             Image shadow = new Image("shadow.png");
+            double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
+            getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
             getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
         }
     }
@@ -58,32 +73,26 @@ public class SnowMobile extends Obstacles
 
     public void killSnowman() 
     {
-        for(int i = getY()-40; i <= getY(); i++) {
-            if (isTouching(Snowman.class)) {
-                Actor s = getOneIntersectingObject(Snowman.class);
-                World w = getWorld();
-                for (int j = 1; j <= 2; j++) {
-                    w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
-                }
-                w.removeObject(s);
+        if (!dead && airTime < 0 && isTouching(Snowman.class)) {
+            Actor s = getOneIntersectingObject(Snowman.class);
+            World w = getWorld();
+            for (int j = 1; j <= 2; j++) {
+                w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
             }
+            w.removeObject(s);
         }
     }
 
     public void killBear() 
     {
-        if (!dead) {
-            for(int i = getY()-40; i <= getY(); i++) {
-                if (isTouching(Bear.class)) {
-                    Actor b = getOneIntersectingObject(Bear.class);
-                    World w = getWorld();
-                    for (int j = 1; j <= 4; j++) {
-                        w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
-                    }
-                    (new GreenfootSound("PolarBearDead.mp3")).play();
-                    w.removeObject(b);
-                }
+        if (!dead && airTime < 0 && isTouching(Bear.class)) {
+            Actor b = getOneIntersectingObject(Bear.class);
+            World w = getWorld();
+            for (int j = 1; j <= 4; j++) {
+                w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
             }
+            (new GreenfootSound("PolarBearDead.mp3")).play();
+            w.removeObject(b);
         }
     }
 
@@ -91,9 +100,18 @@ public class SnowMobile extends Obstacles
     {
         Actor tree = getOneIntersectingObject(Tree.class);
         Actor log = getOneIntersectingObject(Log.class);
-        if (tree != null || log != null || getY() <= -20){
-            SnowWorld w = (SnowWorld) getWorld();
+        SnowWorld w = (SnowWorld) getWorld();
+        if (tree != null || log != null && airTime < 0){
+            for (int j = 1; j <= coins; j++) {
+                w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
+            }
             w.removeObject(this);
+            dead = true;
+            (new GreenfootSound("Explosion.mp3")).play();
+        }
+        if (!dead && getY() <= -50) {
+            w.removeObject(this);
+            dead = true;
         }
     }
 
