@@ -64,7 +64,7 @@ public class Lives extends Object
                                 scores.createNewFile();
                                 PrintWriter out = new PrintWriter(new FileWriter(scores, false));
                                 SnowWorld sw = (SnowWorld) getWorld();
-                                out.println(sw.getScore());
+                                out.print(sw.getScore());
                                 out.close();
                             }
                             else{
@@ -74,8 +74,7 @@ public class Lives extends Object
                                 try {
                                     while (true) {
                                         String line = br.readLine();
-                                        if (line == null) break;
-                                        // String[] fields = line.split("\n");
+                                        if (line == null || line == "") break;
                                         // old highscore
                                         int hs = Integer.parseInt(line);
 
@@ -86,9 +85,7 @@ public class Lives extends Object
                                         // check if new score is greater than old highscore
                                         if(score > hs){
                                             PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                                            //scores.delete();
-                                            //scores.createNewFile();
-                                            out.println(score);
+                                            out.print(score);
                                             out.close();
                                         }
                                     }

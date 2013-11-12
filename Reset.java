@@ -34,12 +34,12 @@ public class Reset extends Buttons
                 if(scores.exists()==false){
                     scores.createNewFile();
                     PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                    out.println(0);
+                    out.print(0);
                     out.close();
                 }
                 else{
                     PrintWriter out = new PrintWriter(new FileWriter(scores, false));
-                    out.println(0);
+                    out.print(0);
                     out.close();
                 }
             }
