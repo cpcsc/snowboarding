@@ -21,7 +21,7 @@ public class SnowMobile extends Obstacles
     {
         trailTimer++;
         airTime--;
-        setLocation(getX(),getY()-Object.speed);
+        setLocation(getX(),getY()-Object.speed/2);
         setImage("SnowMobile.png");
         trail();
         ramp();
