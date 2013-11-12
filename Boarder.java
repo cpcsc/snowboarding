@@ -18,6 +18,7 @@ public class Boarder extends Object
     public int magnetTimer = 0;
     private int trailTimer = 0;
     public int dir;
+    public int hardDelay = 0;
     public void act() 
     {
         trailTimer++;
@@ -66,7 +67,7 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= 0) {
+        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= hardDelay) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 20;
@@ -201,4 +202,16 @@ public class Boarder extends Object
     public int getGun() {
         return gun;
     }
+    
+    public int getHardDelay()
+    {
+        return hardDelay;
+    }
+    
+    public int changeHardDelay()
+    {
+        hardDelay = getHardDelay();
+        hardDelay = hardDelay + 5;
+        return hardDelay;
+    }    
 }
