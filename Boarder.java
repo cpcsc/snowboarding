@@ -12,13 +12,13 @@ public class Boarder extends Object
     public int invincible = 0;
     private int airTime = 0;
     public int gun = 0;
-    public int shotDelay = 20;
+    public int shotDelay = 0;
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
     private int trailTimer = 0;
     public int dir;
-    public int hardDelay = 0;
+    public int delayMax = 20;
     public void act() 
     {
         trailTimer++;
@@ -29,7 +29,7 @@ public class Boarder extends Object
         dieTree();
         invincible++;
         airTime--;
-        shotDelay--;
+        shotDelay++;
         respawnBlink();
         ramp();
         jump(jumpTime);
@@ -67,10 +67,10 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= hardDelay) {
+        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay >= delayMax) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
-            shotDelay = 20;
+            shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
             gun--;
         }
@@ -202,16 +202,4 @@ public class Boarder extends Object
     public int getGun() {
         return gun;
     }
-    
-    public int getHardDelay()
-    {
-        return hardDelay;
-    }
-    
-    public int changeHardDelay()
-    {
-        hardDelay = getHardDelay();
-        hardDelay = hardDelay + 5;
-        return hardDelay;
-    }    
 }

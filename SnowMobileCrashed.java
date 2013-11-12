@@ -25,7 +25,7 @@ public class SnowMobileCrashed extends Object
 
     public void explode() {
         if (explodeTimer < 12) {
-            getWorld().addObject(new Image("explosion\\explosion_010_"+explodeTimer+".gif"), getX(), getY());
+            getWorld().addObject(new Image("explosion/explosion_010_"+explodeTimer+".gif"), getX(), getY());
             explodeTimer++;
         }
     }

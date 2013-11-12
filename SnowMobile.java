@@ -110,7 +110,7 @@ public class SnowMobile extends Obstacles
             dead = true;
             (new GreenfootSound("Explosion.mp3")).play();
         }
-        if (!dead && getY() <= -50) {
+        if (!dead && getY() <= -200) {
             w.removeObject(this);
             dead = true;
         }
