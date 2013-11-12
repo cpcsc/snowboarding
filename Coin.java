@@ -37,6 +37,7 @@ public class Coin extends Coins
                 w.removeObject(this);
                 sm.coins++;
                 dead = true;
+                Greenfoot.playSound("coin.wav");
             }
         }
     }
