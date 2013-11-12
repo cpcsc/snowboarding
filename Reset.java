@@ -16,6 +16,18 @@ public class Reset extends Buttons
     public Reset() 
     {
         setImage(new GreenfootImage("Reset Highscore", 30, Color.BLUE, null));
+        File scores = new File(".scores");
+        try{
+            if(scores.exists()==false){
+                scores.createNewFile();
+                PrintWriter out = new PrintWriter(new FileWriter(scores, false));
+                out.print(0);
+                out.close();
+            }
+        }
+        catch(IOException e){
+            System.out.println("COULD NOT LOG!!");
+        }
     }
 
     public void act() 
