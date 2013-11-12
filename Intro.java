@@ -38,5 +38,6 @@ public class Intro extends World
             obstacles.addTree(y);
         }
         addObject(new Highscore(), 450, 520);
+        addObject(new Reset(), 450, 675);
     }
 }
