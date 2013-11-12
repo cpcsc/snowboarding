@@ -28,6 +28,7 @@ public class Coin extends Coins
                 w.removeObject(this);
                 w.addCoin(1);
                 dead = true;
+                Greenfoot.playSound("coin.wav");
             }
         }
         if (!dead) {
@@ -36,8 +37,7 @@ public class Coin extends Coins
                 World w = getWorld();
                 w.removeObject(this);
                 sm.coins++;
-                dead = true;
-                Greenfoot.playSound("coin.wav");
+                dead = true;                
             }
         }
     }
