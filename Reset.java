@@ -29,6 +29,7 @@ public class Reset extends Buttons
                     PrintWriter out = new PrintWriter(new FileWriter(scores, false));
                     out.print(0);
                     out.close();
+                    Greenfoot.setWorld(new Intro());
                 }
             }
             catch(IOException e){
