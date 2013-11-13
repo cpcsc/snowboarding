@@ -1,6 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class GunUpgrade extends Pickup
+public class gunupgrade extends Pickup
 {
     public void act() {
         if (getY()<0) killObst();

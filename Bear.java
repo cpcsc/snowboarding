@@ -10,23 +10,49 @@ public class Bear extends Obstacles
 {
     public int dir = 1;
     public int imgDir = 1;
+    private GreenfootImage img = new GreenfootImage("images/PolarBear.png");
+    private GreenfootImage img2 = new GreenfootImage("images/PolarBear2.png");
+    private GreenfootImage img3 = new GreenfootImage("images/PolarBear3.png");
+    private GreenfootImage img4 = new GreenfootImage("images/PolarBear4.png");
+    private int animTimer = 0;
     public void act() 
     {
+        animTimer++;
         objMove();
+        bearAnim();
         if (!dead) {
             getDir();
-            bearMove(); 
+            bearMove();
             killObst();
         }
     }    
 
+    public void bearAnim() {
+        if (imgDir >= 0) {
+            if (getImage() == img) {
+                setImage(img2);
+            }
+            else {
+                setImage(img);
+            }
+        }
+        else if (imgDir <= 0) {
+            if (getImage() == img3) {
+                setImage(img4);
+            }
+            else {
+                setImage(img3);
+            }
+        }
+    }
+    
     public void bearMove() {
         if (getOneObjectAtOffset(dir + getImage().getWidth()/2, 0, Obstacles.class) != null) {
             dir = 0;
         }        
         setLocation(getX() + dir, getY());        
     }
-
+    
     public void getDir() {
         World w = getWorld();
         if (w.getObjects(Boarder.class).size() != 0) {
@@ -34,7 +60,7 @@ public class Bear extends Obstacles
             if (b.getX() - getX() != 0) {
                 dir = (b.getX() - getX()) / Math.abs(b.getX() - getX());
                 if (dir != imgDir) {
-                    getImage().mirrorHorizontally();
+                    //getImage().mirrorHorizontally();
                     imgDir *= -1;
                 }
             } else {
@@ -47,7 +73,7 @@ public class Bear extends Obstacles
                 if (bot.getX() - getX() != 0) {
                     dir = (bot.getX() - getX()) / Math.abs(bot.getX() - getX());
                     if (dir != imgDir) {
-                        getImage().mirrorHorizontally();
+                        //getImage().mirrorHorizontally();
                         imgDir *= -1;
                     }
                 } else {
