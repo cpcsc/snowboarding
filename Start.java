@@ -25,7 +25,7 @@ public class Start extends Buttons
         }
         
         if (Greenfoot.mouseClicked(this)) {
-            Greenfoot.setWorld(new SnowWorld());
+            Greenfoot.setWorld(new SnowWorld(0));
         }
     }
 }

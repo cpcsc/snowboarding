@@ -15,6 +15,7 @@ public class SnowWorld extends World
     public int scoreMult = 1;
     public int multCounter = 0;
     public int coins = 0;
+    public boolean ak = false;
 
     public void act() {
         spawnPowerup();
@@ -24,11 +25,12 @@ public class SnowWorld extends World
         speedUp();
     }
 
-    public SnowWorld()
+    public SnowWorld(int Coins)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(900, 700, 1, false); 
 
+        coins = Coins;
         theLives = new Lives();
         addObject(theLives, 820, 670);
 
@@ -190,6 +192,14 @@ public class SnowWorld extends World
     public void addCoin(int quant) {
         coins += scoreMult * quant;
     }
+    
+    public int getCoins() {
+        return coins;
+    }
+    
+    public void setCoins(int Coins) {
+        coins = Coins;
+    }
 
     public Boarder getBoarder() {
         return (getObjects(Boarder.class).size() > 0) ? (Boarder) getObjects(Boarder.class).get(0) : null;
@@ -209,5 +219,13 @@ public class SnowWorld extends World
             //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
             addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
         }
+    }
+    
+    // upgrades
+    public void Ak() {
+        ak = true;
+    }
+    public boolean getAk() {
+        return ak;
     }
 }

@@ -34,6 +34,7 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
+        upgrades();
     }
 
     public void moveAround()
@@ -201,5 +202,12 @@ public class Boarder extends Object
 
     public int getGun() {
         return gun;
+    }
+
+    public void upgrades(){
+        SnowWorld sw = (SnowWorld) getWorld();
+        if(!dead && sw.getAk()){
+
+        }
     }
 }
