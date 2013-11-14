@@ -69,6 +69,8 @@ public class SnowWorld extends World
         addObject(score, getWidth()/2, 17);
         Highscore hs = new Highscore();
         addObject(hs, getWidth() - hs.getImage().getWidth()/2 - 5, 17);
+        SpeakerButton sbutton = new SpeakerButton(bkgMusic);
+        addObject(sbutton, 30, 60);
     }
 
     public void spawnPowerup() {
