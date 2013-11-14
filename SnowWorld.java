@@ -15,7 +15,7 @@ public class SnowWorld extends World
     public int scoreMult = 1;
     public int multCounter = 0;
     public int coins = 0;
-    public boolean ak = false;
+    public boolean jumpU = false;
 
     public void act() {
         spawnPowerup();
@@ -222,10 +222,10 @@ public class SnowWorld extends World
     }
     
     // upgrades
-    public void Ak() {
-        ak = true;
+    public void JumpU() {
+        jumpU = true;
     }
-    public boolean getAk() {
-        return ak;
+    public boolean getJumpU() {
+        return jumpU;
     }
 }

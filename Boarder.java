@@ -63,8 +63,15 @@ public class Boarder extends Object
         }
         if (Greenfoot.isKeyDown("up")) {
             if (airTime <= -5) {
-                airTime = 50;
-                jumpTime = 50;
+                SnowWorld sw = (SnowWorld) getWorld();
+                if(!dead && sw.getJumpU()){
+                    airTime = 85;
+                    jumpTime = 85;
+                }
+                else{
+                    airTime = 50;
+                    jumpTime = 50;
+                }
                 jumpConst = -50.0 / 1058.0;
             }
         }
@@ -113,8 +120,15 @@ public class Boarder extends Object
 
     public void ramp() {
         if (airTime < 0 && !dead && isTouching(Ramp.class)) {
-            airTime = 100;
-            jumpTime = 100;   
+            SnowWorld sw = (SnowWorld) getWorld();
+            if(sw.getJumpU()){
+                airTime = 150;
+                jumpTime = 150;
+            }
+            else{
+                airTime = 100;
+                jumpTime = 100;   
+            }
             jumpConst = -25.0 / 1058.0;
         }
     }
@@ -206,7 +220,7 @@ public class Boarder extends Object
 
     public void upgrades(){
         SnowWorld sw = (SnowWorld) getWorld();
-        if(!dead && sw.getAk()){
+        if(!dead && sw.getJumpU()){
 
         }
     }
