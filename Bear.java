@@ -10,51 +10,64 @@ public class Bear extends Obstacles
 {
     public int dir = 1;
     public int imgDir = 1;
+    private GreenfootImage img1 = new GreenfootImage("images/PolarBear.png");
+    private GreenfootImage img2 = new GreenfootImage("images/PolarBear2.png");
+    private GreenfootImage img3 = new GreenfootImage("images/PolarBear3.png");
+    private GreenfootImage img4 = new GreenfootImage("images/PolarBear4.png");
+    private int animTimer = 0;
+    int dx;
     public void act() 
     {
         objMove();
-        if (!dead) {
-            getDir();
-            bearMove(); 
-            killObst();
-        }
+        dx = bearMove();
+        bearAnim();     
+        killObst();
     }    
 
-    public void bearMove() {
-        if (getOneObjectAtOffset(dir + getImage().getWidth()/2, 0, Obstacles.class) != null) {
-            dir = 0;
-        }        
-        setLocation(getX() + dir, getY());        
+    public void bearAnim() {
+        if (!dead) {
+            if (dx > 0) {
+                if (animTimer%20 < 10) {
+                    setImage(img1);
+                } else {
+                    setImage(img2);
+                }
+            } else if(dx < 0) {
+                if (animTimer%20 < 10) {
+                    setImage(img3);
+                } else {
+                    setImage(img4);
+                }
+            }
+        }
     }
 
-    public void getDir() {
-        World w = getWorld();
-        if (w.getObjects(Boarder.class).size() != 0) {
-            Boarder b = (Boarder) w.getObjects(Boarder.class).get(0);
-            if (b.getX() - getX() != 0) {
-                dir = (b.getX() - getX()) / Math.abs(b.getX() - getX());
-                if (dir != imgDir) {
-                    getImage().mirrorHorizontally();
-                    imgDir *= -1;
-                }
+    public int bearMove() {
+        dx = 0;
+        if (!dead) {
+            Actor b;
+            if (getWorld() instanceof SnowWorld) {
+                SnowWorld w = (SnowWorld) getWorld();
+                b = (Actor) w.getBoarder();
+            } else if (getWorld() instanceof Intro) {
+                Intro w = (Intro) getWorld();
+                b = (Actor) w.getBot();
+            } else if (getWorld() instanceof Tut) {
+                Tut w = (Tut) getWorld();
+                b = (Actor) w.getBot();
             } else {
-                dir = 0;              
+                Cred w = (Cred) getWorld();
+                b = (Actor) w.getBot();
+            }
+            if (b != null) {
+                dx = (int) Math.signum(0.0 + b.getX() - getX());
+            }
+            if(canMove(dx, 0, Obstacles.class)) {
+                setLocation(getX() + dx, getY());
+                animTimer++;
             }
         }
-        if(w instanceof Intro){
-            if (w.getObjects(Bot.class).size() != 0) {
-                Bot bot = (Bot) w.getObjects(Bot.class).get(0);
-                if (bot.getX() - getX() != 0) {
-                    dir = (bot.getX() - getX()) / Math.abs(bot.getX() - getX());
-                    if (dir != imgDir) {
-                        getImage().mirrorHorizontally();
-                        imgDir *= -1;
-                    }
-                } else {
-                    dir = 0;              
-                }
-            }
-        }
+        return dx;
     }
 
     public void killObst() {

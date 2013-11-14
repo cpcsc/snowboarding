@@ -15,11 +15,13 @@ public class SnowWorld extends World
     public int scoreMult = 1;
     public int multCounter = 0;
     public int coins = 0;
+    public boolean ak = false;
 
     public void act() {
         spawnPowerup();
         multCounter--;
         showPowerup();
+        addSnowMobile();
         speedUp();
     }
 
@@ -54,7 +56,7 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Counter.class, Coin2.class, Pig.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, SnowTrail.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         Obstacles obstacles = new Obstacles();
@@ -151,9 +153,10 @@ public class SnowWorld extends World
         removeObjects(getObjects(Image.class));
         Image coinImage = new Image("coin.png");
         coinImage.getImage().scale(20,20);
-        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, null);
+        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, Color.WHITE);
         addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
         addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);
+        coinNumImage.getImage().setTransparency(220);
         if (multCounter > 0 && scoreMult == 2) {
             Image multImage = new Image("x2.png");
             addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getWidth()/2 + 4, 15);
@@ -161,7 +164,7 @@ public class SnowWorld extends World
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.gun > 0) {
-                Image gunImage = new Image("Handgun.png");
+                Image gunImage = new Image("GunPowerup.png");
                 addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 15);
                 Image gunNumImage = new Image(""+b.getGun(), 30, Color.BLACK, null);
                 addObject(gunNumImage, gunImage.getX() - 40, 15);
@@ -206,5 +209,21 @@ public class SnowWorld extends World
 
     public int getScore() {
         return score.getValue();
+    }
+    
+    public void addSnowMobile() {
+        Boarder boarder = getBoarder();
+        if (Greenfoot.getRandomNumber(2000) <= Object.speed && boarder != null) {
+            //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
+            addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
+        }
+    }
+    
+    // upgrades
+    public void Ak() {
+        ak = true;
+    }
+    public boolean getAk() {
+        return ak;
     }
 }

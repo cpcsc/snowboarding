@@ -12,8 +12,9 @@ public class Object extends Actor
     public int score = 0;
     public static int speed = 3;
     public boolean dead = false;
+    public boolean air = false;
     public boolean atWorldBottom(){
-        return (getY() >= getWorld().getHeight() + 50);
+        return (getY() >= getWorld().getHeight() + 70);
     }
     
     public void objMove() {
@@ -38,5 +39,12 @@ public class Object extends Actor
             move(-dir);
             return false;
         }    
+    }
+    
+    public boolean canMove(int dx, int dy, Class cls) { //Returns whether or not the object can move to (x + dx, y + dy) and not be intersecting am object of class cls 
+        setLocation(getX() + dx, getY() + dy);
+        boolean c = getOneIntersectingObject(cls) == null;
+        setLocation(getX() - dx, getY() - dy);
+        return c;
     }
 }

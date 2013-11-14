@@ -12,42 +12,50 @@ public class Boarder extends Object
     public int invincible = 0;
     private int airTime = 0;
     public int gun = 0;
-    public int shotDelay = 20;
+    public int shotDelay = 0;
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
-
+    private int trailTimer = 0;
+    public int dir;
+    public int delayMax = 20;
     public void act() 
     {
+        trailTimer++;
         moveAround();
         ramp();
+        trail();
         dieObstacle();
         dieTree();
         invincible++;
         airTime--;
-        shotDelay--;
+        shotDelay++;
         respawnBlink();
         ramp();
         jump(jumpTime);
         magnet();
+        upgrades();
     }
 
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
-            if (!checkTree(-4) || invincible < 50) {
+            if (canMove(-4, 0, Tree.class) || invincible < 100) {
                 move(-4);
             }
             setImage("left.png");
+            dir = -4;
         }
         if (Greenfoot.isKeyDown("right") && getX() <= getWorld().getWidth()){
-            if (!checkTree(4) || invincible < 50) {
+            if (canMove(4, 0, Tree.class) || invincible < 100) {
                 move(4);
             }
             setImage("right.png");
+            dir = 4;
         }
         if (!Greenfoot.isKeyDown("left") && !Greenfoot.isKeyDown("right")){
             setImage("straight.png");
+            dir = 0;
         }
         if (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right")){
             setImage("straight.png");
@@ -60,10 +68,10 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay <= 0) {
+        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay >= delayMax) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
-            shotDelay = 20;
+            shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
             gun--;
         }
@@ -111,13 +119,22 @@ public class Boarder extends Object
         }
     }
 
+    public void trail() {
+        if (airTime < 0) {
+            World w = getWorld();
+            for (int i = 1; i <= Object.speed; i++) {
+                w.addObject(new SnowTrail(12), getX() - 5 - i*dir/Object.speed, getY() + 20 + i);                 
+            }
+        }
+    }
+
     public int air() {
         return airTime;
     }
 
     public void dieObstacle(){
-        Actor obstacle = getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 100 && airTime <= 0){
+        Object obstacle = (Object) getOneIntersectingObject(Obstacles.class);
+        if (obstacle != null && invincible > 100 && air == obstacle.air){
             SnowWorld w = (SnowWorld) getWorld();
             w.multCounter = 0;
             w.removeObject(this);
@@ -153,14 +170,22 @@ public class Boarder extends Object
     }
 
     public void jump(int jumpTime) {
-        if (!dead && airTime > 0) {
-            Image shadow = new Image("shadow.png");
-            double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
-            getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
-            getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
+        air = airTime > 0;
+        if (!dead) {
+            if (air) {
+                getWorld().setPaintOrder(Counter.class, Coin2.class, Boarder.class, SnowMobile.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+            } else {
+                getWorld().setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+            }
+            if (air) {
+                Image shadow = new Image("shadow.png");
+                double scaleFactor = (jumpConst * airTime * airTime - jumpConst * jumpTime * airTime + 50) / 50 ; //parabolic path
+                getImage().scale((int) (scaleFactor * getImage().getWidth()),(int) (scaleFactor * getImage().getHeight()));
+                getWorld().addObject(shadow, getX(), getY() + (int) getImage().getHeight() / 2 );
+            }
         }
     }
-    
+
     public void magnet() {
         magnetTimer--;
         if (magnetTimer > 0 && !dead) {
@@ -172,10 +197,17 @@ public class Boarder extends Object
                 a.setRotation(0);
             }
         }
-        
+
     }
-    
+
     public int getGun() {
         return gun;
+    }
+
+    public void upgrades(){
+        SnowWorld sw = (SnowWorld) getWorld();
+        if(!dead && sw.getAk()){
+
+        }
     }
 }

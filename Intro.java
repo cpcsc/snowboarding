@@ -16,7 +16,7 @@ public class Intro extends World
     }
     
     public void prepare() {
-        setPaintOrder(SnowJob.class, Buttons.class, Obstacles.class);
+        setPaintOrder(SnowJob.class, Buttons.class, Obstacles.class, Bot.class, SnowTrail.class);
         Bot bot = new Bot();
         addObject(bot, 450, 588);
         Start start = new Start();
@@ -33,5 +33,10 @@ public class Intro extends World
             obstacles.addTree(y);
         }
         addObject(new Highscore(), 450, 520);
+        addObject(new Reset(), 450, 675);
+    }
+    
+    public Bot getBot() {
+        return (Bot) getObjects(Bot.class).get(0);      
     }
 }

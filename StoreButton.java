@@ -20,6 +20,7 @@ public class StoreButton extends Buttons
         if (Greenfoot.mouseClicked(this)) {
             if(sw.getCoins() >= 10){
                 sw.rmCoin(10);
+                sw.Ak();
             }
         }
     }    
