@@ -1,14 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment1.params=y
-comment1.target=int\ randX(int)
-comment2.params=
-comment2.target=void\ addSnowman()
-comment3.params=y
-comment3.target=void\ addTree(int)
+comment1.params=
+comment1.target=void\ addSnowman()
+comment2.params=y
+comment2.target=void\ addTree(int)
+comment3.params=
+comment3.target=void\ addLog()
 comment4.params=
-comment4.target=void\ addLog()
-comment5.params=
-comment5.target=void\ addBear()
-numComments=6
+comment4.target=void\ addBear()
+numComments=5
