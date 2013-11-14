@@ -31,12 +31,15 @@ public class SpeakerButton extends Buttons
         if (Greenfoot.mouseClicked(this) && isOff == false) {
             setImage(img2);
             isOff = true;
-            bgm.setVolume(0);
         }
         else if (Greenfoot.mouseClicked(this) && isOff == true) {
             setImage(img);
             isOff = false;
-            bgm.setVolume(80);
         }
+    }
+    
+    public boolean getOff()
+    {
+        return isOff;
     }    
 }

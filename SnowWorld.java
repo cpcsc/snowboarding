@@ -9,6 +9,7 @@ import java.awt.Color;
  */
 public class SnowWorld extends World
 {
+    private SpeakerButton sbutton = new SpeakerButton();
     private GreenfootSound bkgMusic;
     private Lives theLives;
     public Counter score = new Counter("Score: ");
@@ -23,6 +24,7 @@ public class SnowWorld extends World
         showPowerup();
         addSnowMobile();
         speedUp();
+        volumeAdjust();
     }
 
     public SnowWorld(int Coins)
@@ -71,7 +73,6 @@ public class SnowWorld extends World
         addObject(score, getWidth()/2, 17);
         Highscore hs = new Highscore();
         addObject(hs, getWidth() - hs.getImage().getWidth()/2 - 5, 17);
-        SpeakerButton sbutton = new SpeakerButton(bkgMusic);
         addObject(sbutton, 30, 60);
     }
 
@@ -221,6 +222,20 @@ public class SnowWorld extends World
         }
     }
     
+    public SpeakerButton getSpeaker()
+    {
+        return sbutton;
+    }
+    
+    public void volumeAdjust()
+    {
+        if (getSpeaker().getOff()==true) {
+            bkgMusic.setVolume(0);
+        }
+        else if (getSpeaker().getOff()==false) {
+            bkgMusic.setVolume(80);
+        }
+    }
     // upgrades
     public void JumpU() {
         jumpU = true;
