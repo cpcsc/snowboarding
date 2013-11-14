@@ -36,5 +36,14 @@ public class Coin2 extends Coins
                 Greenfoot.playSound("coin.wav");
             }
         }
+        if (!dead) {
+            SnowMobile sm = (SnowMobile) getOneIntersectingObject(SnowMobile.class);         
+            if (sm != null && sm.airTime >= 0 ) {
+                World w = getWorld();
+                w.removeObject(this);
+                sm.coins++;
+                dead = true;                
+            }
+        }
     }
 }
