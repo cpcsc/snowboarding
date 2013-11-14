@@ -151,9 +151,10 @@ public class SnowWorld extends World
         removeObjects(getObjects(Image.class));
         Image coinImage = new Image("coin.png");
         coinImage.getImage().scale(20,20);
-        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, null);
+        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, Color.WHITE);
         addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
         addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);
+        coinNumImage.getImage().setTransparency(220);
         if (multCounter > 0 && scoreMult == 2) {
             Image multImage = new Image("x2.png");
             addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getWidth()/2 + 4, 15);

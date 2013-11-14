@@ -36,7 +36,7 @@ public class Lives extends Object
     }
 
     public Lives(){
-        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, null));
+        setImage(new GreenfootImage("Lives: " + lives, 50, Color.BLACK, Color.WHITE));
         getImage().setTransparency(220);
     }
 
