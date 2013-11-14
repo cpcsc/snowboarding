@@ -40,4 +40,11 @@ public class Object extends Actor
             return false;
         }    
     }
+    
+    public boolean canMove(int dx, int dy, Class cls) { //Returns whether or not the object can move to (x + dx, y + dy) and not be intersecting am object of class cls 
+        setLocation(getX() + dx, getY() + dy);
+        boolean c = getOneIntersectingObject(cls) == null;
+        setLocation(getX() - dx, getY() - dy);
+        return c;
+    }
 }

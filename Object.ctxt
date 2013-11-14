@@ -7,4 +7,6 @@ comment2.params=
 comment2.target=void\ act()
 comment3.params=dir
 comment3.target=boolean\ checkTree(int)
-numComments=4
+comment4.params=dx\ dy\ cls
+comment4.target=boolean\ canMove(int,\ int,\ java.lang.Class)
+numComments=5

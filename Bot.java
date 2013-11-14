@@ -14,7 +14,7 @@ public class Bot extends Object
     public void act() 
     {
         timer++;
-        if (!checkTree(10*speed)) {
+        if (canMove(10*speed, 0, Tree.class)) {
             setLocation(getX() + speed, getY());
         } else {
             turn();

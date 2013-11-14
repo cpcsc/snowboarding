@@ -39,14 +39,14 @@ public class Boarder extends Object
     public void moveAround()
     {
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
-            if (!checkTree(-4) || invincible < 100) {
+            if (canMove(-4, 0, Tree.class) || invincible < 100) {
                 move(-4);
             }
             setImage("left.png");
             dir = -4;
         }
         if (Greenfoot.isKeyDown("right") && getX() <= getWorld().getWidth()){
-            if (!checkTree(4) || invincible < 100) {
+            if (canMove(4, 0, Tree.class) || invincible < 100) {
                 move(4);
             }
             setImage("right.png");
