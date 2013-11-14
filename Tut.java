@@ -47,4 +47,8 @@ public class Tut extends World
         instructions.setLocation(446, 119);
         tutorial.setLocation(450, 339);
     }
+    
+    public Bot getBot() {
+        return (Bot) getObjects(Bot.class).get(0);      
+    }
 }

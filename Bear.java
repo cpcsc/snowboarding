@@ -49,8 +49,14 @@ public class Bear extends Obstacles
             if (getWorld() instanceof SnowWorld) {
                 SnowWorld w = (SnowWorld) getWorld();
                 b = (Actor) w.getBoarder();
-            } else {
+            } else if (getWorld() instanceof Intro) {
                 Intro w = (Intro) getWorld();
+                b = (Actor) w.getBot();
+            } else if (getWorld() instanceof Tut) {
+                Tut w = (Tut) getWorld();
+                b = (Actor) w.getBot();
+            } else {
+                Cred w = (Cred) getWorld();
                 b = (Actor) w.getBot();
             }
             if (b != null) {

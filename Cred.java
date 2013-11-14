@@ -44,4 +44,8 @@ public class Cred extends World
             obstacles.addTree(y);
         }   
     }
+    
+    public Bot getBot() {
+        return (Bot) getObjects(Bot.class).get(0);      
+    }
 }
