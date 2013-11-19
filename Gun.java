@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Gun extends Pickup
 {
+    public static int clipsize = 10;
+    
     /**
      * Act - do whatever the Gun wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,7 +25,7 @@ public class Gun extends Pickup
         if (!dead) {
             Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
             if (b != null) {
-                b.gun += 10;
+                b.gun += clipsize;
                 getWorld().removeObject(this);
                 dead = true;
             }

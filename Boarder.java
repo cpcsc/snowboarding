@@ -20,6 +20,7 @@ public class Boarder extends Object
     private int trailTimer = 0;
     public int dir;
     public int delayMax = 20;
+    public static int thedelaymax = 20;
     public void act() 
     {
         trailTimer++;
@@ -79,7 +80,7 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay >= delayMax) {
+        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay >= thedelaymax) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 0;

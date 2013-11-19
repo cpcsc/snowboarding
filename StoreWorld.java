@@ -33,6 +33,7 @@ public class StoreWorld extends World
     public void prepare() {
         addObject(new Back(), 450, 650);
         addObject(new StoreButton(), 450, 300);
+        addObject(new Clipsize(), 450, 200);
     }
 
     public void act() {
