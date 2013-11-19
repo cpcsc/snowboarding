@@ -13,6 +13,7 @@ public class Boarder extends Object
     private int airTime = 0;
     public int gun = 0;
     public int shotDelay = 0;
+    public int sword = 0;
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
@@ -25,6 +26,9 @@ public class Boarder extends Object
         moveAround();
         ramp();
         trail();
+        if (sword > 0) {
+            blade();
+        }
         dieObstacle();
         dieTree();
         invincible++;
@@ -142,13 +146,36 @@ public class Boarder extends Object
         }
     }
 
+    public void blade()
+    {
+        if (isTouching(Snowman.class) && airTime < 0) {
+            Actor s = getOneIntersectingObject(Snowman.class);
+            World w = getWorld();
+            for (int j = 1; j <= 2; j++) {
+                w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
+            }
+            w.removeObject(s);
+            sword = sword - 1;
+        }
+        if (!dead && isTouching(Bear.class) && airTime < 0) {
+            Actor b = getOneIntersectingObject(Bear.class);
+            World w = getWorld();
+            for (int j = 1; j <= 4; j++) {
+                w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
+            }
+            (new GreenfootSound("PolarBearDead.mp3")).play();
+            w.removeObject(b);
+            sword = sword - 1;
+        }
+    }
+
     public int air() {
         return airTime;
     }
 
     public void dieObstacle(){
         Object obstacle = (Object) getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 100 && air == obstacle.air){
+        if (obstacle != null && invincible > 100 && air == obstacle.air && sword == 0){
             SnowWorld w = (SnowWorld) getWorld();
             w.multCounter = 0;
             w.removeObject(this);
@@ -216,6 +243,10 @@ public class Boarder extends Object
 
     public int getGun() {
         return gun;
+    }
+    
+    public int getSword() {
+        return sword;
     }
 
     public void upgrades(){

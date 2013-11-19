@@ -16,6 +16,7 @@ public class Tutorial extends Buttons
             + "Press the up arrow key to jump\n"
             + "(For touchscreens: drag up to jump)\n\n"
             + "Press the spacebar to fire the gun\n\n"
+            + "Press Q to turn the music on/off\n\n"
             + "Avoid the obstacles and survive as long as possible\n\n"
             + "Good luck! :)", 30, Color.BLACK, null));
         

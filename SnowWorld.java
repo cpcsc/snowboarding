@@ -81,6 +81,9 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(2000) == 0) { 
             addObject2(new Gun(), randX(-100), -100);
         }
+        if (Greenfoot.getRandomNumber(2000) == 0) { 
+            addObject2(new Blade(), randX(-100), -100);
+        }
         if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null)) { 
             addObject2(new Invincible(), randX(-100), -100);
         }
@@ -180,6 +183,15 @@ public class SnowWorld extends World
                 addObject(magImage, score.getX() + score.getImage().getWidth()/2 + (new Image("x2.png")).getWidth() + magImage.getWidth()/2 + 8, 15);
             }
         }
+        if (getObjects(Boarder.class).size() != 0) {
+            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            if (b.sword > 0) {
+                Image swordImage = new Image("Blade.png");
+                addObject(swordImage, score.getX() - score.getImage().getWidth()/2 - swordImage.getWidth()/2 - 100, 20);
+                Image swordNumImage = new Image(""+b.getSword(), 30, Color.BLACK, null);
+                addObject(swordNumImage, swordImage.getX() - 30, 15);
+            }
+        }
     }
 
     public void speedUp() { 
@@ -216,7 +228,7 @@ public class SnowWorld extends World
     
     public void addSnowMobile() {
         Boarder boarder = getBoarder();
-        if (Greenfoot.getRandomNumber(2000) <= Object.speed && boarder != null) {
+        if (Greenfoot.getRandomNumber(2000) <= Object.speed && getScore()>=50000) {
             //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
             addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
         }
