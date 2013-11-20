@@ -32,6 +32,7 @@ public class Boarder extends Object
             blade();
         }
         dieObstacle();
+        dieLog();
         dieTree();
         invincible++;
         airTime--;
@@ -192,6 +193,18 @@ public class Boarder extends Object
         }
     }
 
+    public void dieLog() {
+        if (!dead) {
+            Actor log = getOneIntersectingObject(Log.class);
+            if (log != null && invincible > 100 && airTime < 0) {
+                SnowWorld w = (SnowWorld) getWorld();
+                w.multCounter = 0;
+                w.removeObject(this);
+                dead = true;
+            }
+        }
+    }
+    
     public void dieTree() {
         if (!dead) {
             Actor tree = getOneIntersectingObject(Tree.class);
