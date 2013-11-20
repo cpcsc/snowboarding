@@ -12,7 +12,7 @@ public class SpeakerButton extends Buttons
     private GreenfootImage img = new GreenfootImage("images/Speaker.png");
     private GreenfootImage img2 = new GreenfootImage("images/SpeakerOff.png");
     private int keyDelay = 0;
-    boolean isOff = false;
+    public static boolean isOff = false;
     public SpeakerButton(GreenfootSound bkgMusic)
     {
         bgm = bkgMusic;
@@ -20,7 +20,10 @@ public class SpeakerButton extends Buttons
     
     public SpeakerButton()
     {
-       
+       isOff = SpeakerButton.isOff;
+       if (isOff == true) {
+           setImage(img2);
+       }
     }
     
     /**

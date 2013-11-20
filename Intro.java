@@ -34,6 +34,7 @@ public class Intro extends World
         }
         addObject(new Highscore(), 450, 520);
         addObject(new Reset(), 450, 675);
+        addObject(new SpeakerButton(),30,30);
     }
     
     public Bot getBot() {
