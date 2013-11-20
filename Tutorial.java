@@ -11,14 +11,16 @@ public class Tutorial extends Buttons
 {
     public Tutorial()
     {
-        setImage(new GreenfootImage("Use the left and right arrow keys to move\n"
-            + "(For touchscreens: drag left and right to move)\n\n"
-            + "Press the up arrow key to jump\n"
-            + "(For touchscreens: drag up to jump)\n\n"
-            + "Press the spacebar to fire the gun\n\n"
-            + "Press Q to turn the music on/off\n\n"
-            + "Avoid the obstacles and survive as long as possible\n\n"
-            + "Good luck! :)", 30, Color.BLACK, null));
+        setImage(new GreenfootImage("- Use the left and right arrow keys to move\n"
+           // + "(For touchscreens: drag left and right to move)\n\n"
+            + "- Press the up arrow key to jump\n"
+           // + "(For touchscreens: drag up to jump)\n\n"
+            + " - Pick up power-ups along the way\n"
+            + "- Press the spacebar to fire the gun\n"
+            + "- Press Z to fire the rocket launcher\n"
+            + "- Press Q to turn the music on/off\n"
+            + "- Avoid the obstacles and survive as long as possible\n"
+            + "- Good luck! :)", 30, Color.red, null));
         
     }
     /**
