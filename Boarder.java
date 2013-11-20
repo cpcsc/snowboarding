@@ -12,6 +12,7 @@ public class Boarder extends Object
     public int invincible = 0;
     private int airTime = 0;
     public int gun = 0;
+    public int rocket = 0;
     public int shotDelay = 0;
     public int sword = 0;
     public int jumpTime;
@@ -86,6 +87,13 @@ public class Boarder extends Object
             shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
             gun--;
+        }
+        if (Greenfoot.isKeyDown("z") && rocket > 0 && shotDelay >= thedelaymax) {
+            Rocket r = new Rocket();
+            getWorld().addObject(r, getX(), getY());
+            shotDelay = 0;
+            (new GreenfootSound("GunShotSound.mp3")).play();
+            rocket--;
         }
         // touchscreen (mouse drag) detection/movement
         if (Greenfoot.mousePressed(null))  

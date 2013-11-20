@@ -35,9 +35,9 @@ public class SnowWorld extends World
         coins = Coins;
         theLives = new Lives();
         addObject(theLives, 820, 670);
-
+        bkgMusic = new GreenfootSound("chase.mp3");
         //start music in the snow world
-        bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
+        //bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
         //Credit: Martin Garrix
         bkgMusic.playLoop();
         Object.speed = 3;
@@ -58,11 +58,12 @@ public class SnowWorld extends World
      */
     private void prepare()
     {
-        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, SnowTrail.class);
+        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class,
+                      Obstacles.class, Weapon.class, Pickup.class, SnowMobileCrashed.class ,SnowTrail.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         Obstacles obstacles = new Obstacles();
-        addObject(obstacles, 0, 0);
+        addObject(obstacles, 1000, 1000);
         Back back = new Back();
         addObject(back, 30, 680);
         Back back2 = new Back();
@@ -80,6 +81,9 @@ public class SnowWorld extends World
         Boarder b = getBoarder();
         if (Greenfoot.getRandomNumber(2000) == 0) { 
             addObject2(new Gun(), randX(-100), -100);
+        }
+        if (Greenfoot.getRandomNumber(1000) == 0) { 
+            addObject2(new RocketLauncher(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(2000) == 0) { 
             addObject2(new Blade(), randX(-100), -100);
@@ -231,6 +235,7 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(2000) <= Object.speed && getScore()>=50000) {
             //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
             addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
+            (new GreenfootSound("policeSound.mp3")).play();
         }
     }
     

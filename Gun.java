@@ -25,6 +25,7 @@ public class Gun extends Pickup
         if (!dead) {
             Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
             if (b != null) {
+                (new GreenfootSound("reload.mp3")).play();
                 b.gun += clipsize;
                 getWorld().removeObject(this);
                 dead = true;

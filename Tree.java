@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Tree extends Obstacles
 {
     public Tree() {
-        getImage().scale(59,74);
+        //getImage().scale(59,74);
     }
     
     public void act() 

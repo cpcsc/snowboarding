@@ -55,7 +55,7 @@ public class Bullet extends Weapon
     }
 
     public void disappear(){       
-        if (!dead && getY() <= -20){
+        if (!dead && getY() <= -200){
             SnowWorld w = (SnowWorld) getWorld();
             w.removeObject(this);
             dead = true;
