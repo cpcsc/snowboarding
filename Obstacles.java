@@ -41,13 +41,13 @@ public class Obstacles extends Object
             treeTimer--;
         }
         else {
-            lTrees += Greenfoot.getRandomNumber(3) - 1; // num of trees on left edge
-            rTrees += Greenfoot.getRandomNumber(3) - 1; // num of  trees on right edge
-            if (lTrees + rTrees > 9) {                  // can't cover whole screen w/ trees
+            lTrees += Greenfoot.getRandomNumber(3) - 1;                            // num of trees on left edge
+            rTrees += Greenfoot.getRandomNumber(3) - 1;                            // num of  trees on right edge
+            if (lTrees + rTrees > Math.min(Object.speed + 3, 9)) {                  // can't cover whole screen w/ trees
                 lTrees--;
                 rTrees--;
             }
-            if (lTrees < 1) lTrees = 1;                 //always at least one tree on both sides
+            if (lTrees < 1) lTrees = 1;                                            //always at least one tree on both sides
             if (rTrees < 1) rTrees = 1;
 
             for(int i = 1; i <= lTrees; i++) 
