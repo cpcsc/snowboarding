@@ -41,7 +41,6 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
-        upgrades();
     }
 
     public void moveAround()
@@ -95,38 +94,6 @@ public class Boarder extends Object
             shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
             rocket--;
-        }
-        // touchscreen (mouse drag) detection/movement
-        if (Greenfoot.mousePressed(null))  
-        {  
-            MouseInfo mouse = Greenfoot.getMouseInfo();  
-            dragFromX = mouse.getX();  
-            dragFromY = mouse.getY();  
-        }  
-        if (Greenfoot.mouseDragged(null) || Greenfoot.mouseDragEnded(null))  
-        {  
-            MouseInfo mouse = Greenfoot.getMouseInfo();  
-            int newX = mouse.getX(), newY = mouse.getY();  
-            // check difference(s) and act upon them 
-
-            if (newX > dragFromX + 30 && getX() <= getWorld().getWidth())
-            {
-                move(4);
-                setImage("right.png");
-            }
-
-            if (newX < dragFromX - 30 && getX() >= 0)
-            {
-                move(-4);
-                setImage("left.png");
-            }
-
-            if (newY < dragFromY - 30)
-            {
-                if (airTime <= -20) {
-                    airTime = 46;
-                }
-            }
         }
         SnowWorld w = (SnowWorld) getWorld();
         w.incScore(1);
@@ -273,12 +240,5 @@ public class Boarder extends Object
     
     public int getRocket() {
         return rocket;
-    }
-
-    public void upgrades(){
-        SnowWorld sw = (SnowWorld) getWorld();
-        if(!dead && sw.getJumpU()){
-
-        }
     }
 }
