@@ -17,6 +17,7 @@ public class SnowWorld extends World
     public int multCounter = 0;
     public int coins = 0;
     public boolean jumpU = false;
+    public static int rampcoins = 0;
 
     public void act() {
         volumeAdjust();
@@ -109,6 +110,14 @@ public class SnowWorld extends World
                 addObject2(new Coin2(), rx, ry - rh/2 - 24*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 40*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 56*Object.speed);  
+                
+                if (rampcoins >= 1)
+                {
+                    addObject2(new Coin2(), rx, ry - rh/2 - 16*Object.speed);
+                    addObject2(new Coin2(), rx, ry - rh/2 - 32*Object.speed);
+                    addObject2(new Coin2(), rx, ry - rh/2 - 48*Object.speed);
+                    addObject2(new Coin2(), rx, ry - rh/2 - 64*Object.speed);  
+                }    
             }
         }
         if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(ScoreX2.class).size() == 0 && scoreMult == 1) {
