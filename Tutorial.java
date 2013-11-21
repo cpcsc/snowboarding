@@ -18,7 +18,7 @@ public class Tutorial extends Buttons
             + "- Press Z to fire the rocket launcher\n"
             + "- Press Q to turn the music on/off\n"
             + "- Avoid the obstacles and survive as long as possible\n"
-            + "- Good luck! :)", 30, Color.BLACK, null));
-        
+            + "- Good luck! :)", 30, Color.BLACK, Color.WHITE));
+        getImage().setTransparency(220);
     } 
 }

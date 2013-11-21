@@ -19,6 +19,7 @@ public class Creds extends Buttons
             + "Tyeler Bridges, Ricky Escobar, Mark McKinney, Tarrant Starck,\n"
             + "Andrew Tran, Jeffrey Xie, Megan Voss\n\n\n"
             + "\n\n"
-            + "", 30, Color.BLACK, null));
+            + "", 30, Color.BLACK, Color.WHITE));
+        getImage().setTransparency(220);
     }    
 }
