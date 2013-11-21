@@ -81,7 +81,7 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("space") && gun > 0 && shotDelay >= thedelaymax) {
+        if (Greenfoot.isKeyDown("x") && gun > 0 && shotDelay >= thedelaymax) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 0;
