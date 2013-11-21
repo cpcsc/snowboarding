@@ -10,7 +10,7 @@ import java.util.*;
 public class Rocket extends Weapon
 {
     public void act() {
-        setLocation(getX(), getY() - 40);
+        setLocation(getX(), getY() - 25);
         destroy();
         disappear();
     }    

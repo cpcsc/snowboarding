@@ -175,7 +175,7 @@ public class SnowWorld extends World
             Boarder b = (Boarder) getObjects(Boarder.class).get(0);
             if (b.gun > 0) {
                 Image gunImage = new Image("GunPowerup.png");
-                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 15);
+                addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 20);
                 Image gunNumImage = new Image(""+b.getGun(), 30, Color.BLACK, null);
                 addObject(gunNumImage, gunImage.getX() - 40, 15);
             }
@@ -194,6 +194,15 @@ public class SnowWorld extends World
                 addObject(swordImage, score.getX() - score.getImage().getWidth()/2 - swordImage.getWidth()/2 - 100, 20);
                 Image swordNumImage = new Image(""+b.getSword(), 30, Color.BLACK, null);
                 addObject(swordNumImage, swordImage.getX() - 30, 15);
+            }
+        }
+        if (getObjects(Boarder.class).size() != 0) {
+            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            if (b.rocket > 0) {
+                Image rocketImage = new Image("RocketAndrew.png");
+                addObject(rocketImage, score.getX() - score.getImage().getWidth()/2 - rocketImage.getWidth()/2 - 160, 20);
+                Image rNumImage = new Image(""+b.getRocket(), 30, Color.BLACK, null);
+                addObject(rNumImage, rocketImage.getX() - 30, 15);
             }
         }
     }

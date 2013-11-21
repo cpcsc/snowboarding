@@ -270,6 +270,10 @@ public class Boarder extends Object
     public int getSword() {
         return sword;
     }
+    
+    public int getRocket() {
+        return rocket;
+    }
 
     public void upgrades(){
         SnowWorld sw = (SnowWorld) getWorld();

@@ -33,12 +33,12 @@ public class SpeakerButton extends Buttons
     public void act() 
     {
         keyDelay++;
-        if (Greenfoot.isKeyDown("q") && isOff == false && keyDelay >= 50) {
+        if (Greenfoot.isKeyDown("q") && isOff == false && keyDelay >= 30) {
             setImage(img2);
             isOff = true;
             keyDelay = 0;
         }        
-        else if (Greenfoot.isKeyDown("q") && isOff == true && keyDelay >= 50) {
+        else if (Greenfoot.isKeyDown("q") && isOff == true && keyDelay >= 30) {
             setImage(img);
             isOff = false;
             keyDelay = 0;
