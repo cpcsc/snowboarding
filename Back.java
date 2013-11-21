@@ -21,11 +21,13 @@ public class Back extends Buttons
             }
         }
         else {
-            setImage(new GreenfootImage("Back", 50, Color.BLUE, null));
+            setImage(new GreenfootImage("Back", 50, Color.BLUE, Color.WHITE));
+            getImage().setTransparency(220);
             if (Greenfoot.getMouseInfo() != null){
                 if (Greenfoot.getMouseInfo().getX() >= 405 && Greenfoot.getMouseInfo().getX() <= 495 &&
                     Greenfoot.getMouseInfo().getY() >= 640 && Greenfoot.getMouseInfo().getY() <= 670) {
-                    setImage(new GreenfootImage("Back", 50, Color.RED, null));
+                    setImage(new GreenfootImage("Back", 50, Color.RED, Color.WHITE));
+                    getImage().setTransparency(220);
                 }
             }
         }
