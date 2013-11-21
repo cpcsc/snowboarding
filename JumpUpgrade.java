@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class StoreButton extends Buttons
+public class JumpUpgrade extends Buttons
 {
     /**
      * Act - do whatever the StoreButton wants to do. This method is called whenever

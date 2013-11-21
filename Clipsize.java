@@ -12,10 +12,7 @@ public class Clipsize extends Buttons
     {
         setImage(new GreenfootImage("Pistol to AK-47", 50, Color.BLUE, null));
     }    
-    /**
-     * Act - do whatever the Clipsize wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public void act() 
     {
         setImage(new GreenfootImage("Pistol to AK-47", 50, Color.BLUE, null));
