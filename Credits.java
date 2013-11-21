@@ -15,13 +15,15 @@ public class Credits extends Buttons
     }
     public void act() 
     {
-        setImage(new GreenfootImage("Credits", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Credits", 50, Color.BLUE, Color.WHITE));
+        getImage().setTransparency(220);
         
         if (getWorld() instanceof Intro) {
          if (Greenfoot.getMouseInfo() != null){
          if (Greenfoot.getMouseInfo().getX() >= 385 && Greenfoot.getMouseInfo().getX() <= 515 &&
              Greenfoot.getMouseInfo().getY() >= 430 && Greenfoot.getMouseInfo().getY() <= 490) {
-             setImage(new GreenfootImage("Credits", 50, Color.RED, null));
+             setImage(new GreenfootImage("Credits", 50, Color.RED, Color.WHITE));
+             getImage().setTransparency(220);
          }
          }
         

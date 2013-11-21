@@ -21,7 +21,8 @@ public class Reset extends Buttons
     public Reset() 
     {
         if(!applet()){
-            setImage(new GreenfootImage("Reset Highscore", 30, Color.BLUE, null));
+            setImage(new GreenfootImage("Reset Highscore", 30, Color.BLUE, Color.WHITE));
+            getImage().setTransparency(220);
             File scores = new File(".scores");
             try{
                 if(scores.exists()==false){
@@ -41,12 +42,14 @@ public class Reset extends Buttons
     public void act() 
     {
         if(!applet()){
-            setImage(new GreenfootImage("Reset Highscore", 30, Color.BLUE, null));
+            setImage(new GreenfootImage("Reset Highscore", 30, Color.BLUE, Color.WHITE));
+            getImage().setTransparency(220);
 
             if (Greenfoot.getMouseInfo() != null){
                 if (Greenfoot.getMouseInfo().getX() >= 360 && Greenfoot.getMouseInfo().getX() <= 540 &&
                 Greenfoot.getMouseInfo().getY() >= 665 && Greenfoot.getMouseInfo().getY() <= 685) {
-                    setImage(new GreenfootImage("Reset Highscore", 30, Color.RED, null));
+                    setImage(new GreenfootImage("Reset Highscore", 30, Color.RED, Color.WHITE));
+                    getImage().setTransparency(220);
                 }
             }
             if (Greenfoot.mouseClicked(this)) {

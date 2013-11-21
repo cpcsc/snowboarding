@@ -34,7 +34,8 @@ public class Highscore extends Buttons
                             if (line == null) break;
                             // String[] fields = line.split("\n");
 
-                            setImage(new GreenfootImage("Highscore: " + line, 30, Color.BLACK, null));
+                            setImage(new GreenfootImage("Highscore: " + line, 30, Color.BLACK, Color.WHITE));
+                            getImage().setTransparency(220);
                         }
                     }
                     finally {
