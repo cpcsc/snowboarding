@@ -69,6 +69,14 @@ public class Obstacles extends Object
         if (logTimer > 0){
             logTimer--;
         }
+        else if (getWorld() instanceof SnowWorld) {
+            SnowWorld w = (SnowWorld) getWorld();
+            if (w.getScore() >= 10000) {
+                Log log = new Log();
+                getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -100);
+                logTimer = 90;
+            }
+        }
         else {
             Log log = new Log();
             getWorld().addObject(log, Greenfoot.getRandomNumber(getWorld().getWidth() - 20) + 10, -100);
@@ -79,7 +87,7 @@ public class Obstacles extends Object
     public void addBear() {
         if (getWorld() instanceof SnowWorld) {
             SnowWorld w = (SnowWorld) getWorld();
-            if (Greenfoot.getRandomNumber(500) == 0 && w.getScore() >= 20000) {
+            if (Greenfoot.getRandomNumber(500) == 0 && w.getScore() >= 30000) {
                 w.addObject2(new Bear(), w.randX(-100, 50), -100);
             }
         }

@@ -79,16 +79,16 @@ public class SnowWorld extends World
 
     public void spawnPowerup() {
         Boarder b = getBoarder();
-        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 10000) { 
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 15000) { 
             addObject2(new Gun(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
             addObject2(new RocketLauncher(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 20000) { 
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 25000) { 
             addObject2(new Blade(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null)) { 
+        if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null) && getScore() >= 15000) { 
             addObject2(new Invincible(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(100) == 0) {
@@ -97,7 +97,7 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(300) == 0) {
             addObject2(new Coin2(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(400) == 0) {
+        if (Greenfoot.getRandomNumber(400) == 0 && getScore() >= 20000) {
             Ramp r = new Ramp();
             int x = randX(-100, 30);
             if (getObjectsAt(x, -100, Object.class).size() == 0) {
@@ -117,7 +117,7 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(800) == 0) {
             spawnLineOfCoins();
         }
-        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0 && (b != null && b.magnetTimer <= 0 || b == null)) {
+        if (Greenfoot.getRandomNumber(1500) == 0 && getObjects(Magnet.class).size() == 0 && (b != null && b.magnetTimer <= 0 || b == null) && getScore() >= 35000) {
             addObject2(new Magnet(), randX(-100), -100);
         }
     }
