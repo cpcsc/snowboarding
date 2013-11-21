@@ -13,7 +13,7 @@ public class RocketLauncher extends Pickup
             Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
             if (b != null) {
                 (new GreenfootSound("reload.mp3")).play();
-                b.rocket += 10;
+                b.rocket += 5;
                 getWorld().removeObject(this);
                 dead = true;
             }

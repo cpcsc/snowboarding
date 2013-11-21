@@ -79,13 +79,13 @@ public class SnowWorld extends World
 
     public void spawnPowerup() {
         Boarder b = getBoarder();
-        if (Greenfoot.getRandomNumber(2000) == 0) { 
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 10000) { 
             addObject2(new Gun(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(1000) == 0) { 
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
             addObject2(new RocketLauncher(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(2000) == 0) { 
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 20000) { 
             addObject2(new Blade(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null)) { 

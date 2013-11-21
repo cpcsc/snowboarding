@@ -15,6 +15,7 @@ public class Obstacles extends Object
     private boolean hasDied;
     private int lTrees = 1;
     private int rTrees = 1;
+    public SnowWorld sw = (SnowWorld) getWorld();
 
     public void act()
     {
@@ -78,7 +79,7 @@ public class Obstacles extends Object
     public void addBear() {
         if (getWorld() instanceof SnowWorld) {
             SnowWorld w = (SnowWorld) getWorld();
-            if (Greenfoot.getRandomNumber(500) == 0) {
+            if (Greenfoot.getRandomNumber(500) == 0 && w.getScore() >= 20000) {
                 w.addObject2(new Bear(), w.randX(-100, 50), -100);
             }
         }
