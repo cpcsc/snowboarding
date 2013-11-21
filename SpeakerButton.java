@@ -37,8 +37,18 @@ public class SpeakerButton extends Buttons
             setImage(img2);
             isOff = true;
             keyDelay = 0;
-        }        
+        }
+        else if (Greenfoot.mouseClicked(this) && isOff == false && keyDelay >= 30) {
+            setImage(img2);
+            isOff = true;
+            keyDelay = 0;
+        }
         else if (Greenfoot.isKeyDown("q") && isOff == true && keyDelay >= 30) {
+            setImage(img);
+            isOff = false;
+            keyDelay = 0;
+        }
+        else if (Greenfoot.mouseClicked(this) && isOff == true && keyDelay >= 30) {
             setImage(img);
             isOff = false;
             keyDelay = 0;

@@ -19,12 +19,12 @@ public class SnowWorld extends World
     public boolean jumpU = false;
 
     public void act() {
+        volumeAdjust();
         spawnPowerup();
         multCounter--;
         showPowerup();
         addSnowMobile();
         speedUp();
-        volumeAdjust();
     }
 
     public SnowWorld(int Coins)

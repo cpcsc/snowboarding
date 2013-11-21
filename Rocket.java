@@ -17,7 +17,7 @@ public class Rocket extends Weapon
 
     public void destroy() {
         if (isTouching(Obstacles.class)) {
-            getWorld().addObject(new Explosion(300),getX(),getY());
+            getWorld().addObject(new Explosion(250),getX(),getY());
             dead = true;
             getWorld().removeObject(this);
         }
