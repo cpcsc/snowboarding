@@ -43,7 +43,7 @@ public class Obstacles extends Object
         else {
             lTrees += Greenfoot.getRandomNumber(3) - 1;                            // num of trees on left edge
             rTrees += Greenfoot.getRandomNumber(3) - 1;                            // num of  trees on right edge
-            if (lTrees + rTrees > Math.min(Object.speed + 3, 9) {                  // can't cover whole screen w/ trees
+            if (lTrees + rTrees > Math.min(Object.speed + 3, 9)) {                  // can't cover whole screen w/ trees
                 lTrees--;
                 rTrees--;
             }
