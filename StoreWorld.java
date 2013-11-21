@@ -34,6 +34,7 @@ public class StoreWorld extends World
         addObject(new Back(), 450, 650);
         addObject(new JumpUpgrade(), 450, 300);
         addObject(new Clipsize(), 450, 200);
+        addObject(new RampCoins(), 450, 100);
     }
 
     public void act() {

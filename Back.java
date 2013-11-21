@@ -38,6 +38,11 @@ public class Back extends Buttons
                 sw.stopMusic();
                 if(getX() > 80){
                     Greenfoot.setWorld(new SnowWorld(0));
+                    Gun.clipsize = 10;
+                    Boarder.thedelaymax = 20;
+                    RampCoins.canclick = 0;
+                    SnowWorld.rampcoins = 0;
+                    Clipsize.canclick = 0;
                 } else {
                     Greenfoot.setWorld(new Intro());
                 }

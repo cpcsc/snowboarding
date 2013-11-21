@@ -8,6 +8,7 @@ import java.awt.Color;
  */
 public class Clipsize extends Buttons
 {
+    public static int canclick = 0;
     public Clipsize()
     {
         setImage(new GreenfootImage("Pistol to AK-47", 50, Color.BLUE, null));
@@ -15,18 +16,22 @@ public class Clipsize extends Buttons
 
     public void act() 
     {
-        setImage(new GreenfootImage("Pistol to AK-47", 50, Color.BLUE, null));
+        StoreWorld w = (StoreWorld) getWorld();
         
-        if (Greenfoot.mouseClicked(this))
+        if (canclick < 1 && w.getCoins() >= 10)
         {
-            StoreWorld w = (StoreWorld) getWorld();
-            
-            if(w.getCoins() >= 10)
+            if (Greenfoot.mouseClicked(this))
             {
                 Gun.clipsize += 20;
                 Boarder.thedelaymax -= 10;
                 w.rmCoin(10);
+                Clipsize.canclick += 1;
             }
-        }    
+        }   
+        else
+        {
+            setImage(new GreenfootImage("Pistol to AK-47", 50, Color.GRAY, null));
+    
+        }
     }    
-}
+} 

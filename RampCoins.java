@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
-
 /**
  * Write a description of class RampCoins here.
  * 
@@ -21,33 +20,20 @@ public class RampCoins extends Buttons
      */
     public void act() 
     {
-        setImage(new GreenfootImage("More Ramp Coins", 50, Color.BLUE, null));
+        StoreWorld w = (StoreWorld) getWorld();
         
-        if ( canclick < 1)
+        if ( canclick < 1 && w.getCoins() >= 10)
         {
             if (Greenfoot.mouseClicked(this))
             {
-                StoreWorld w = (StoreWorld) getWorld();
-                //SnowWorld sw = (SnowWorld) getWorld();
-                if(w.getCoins() >= 10)
-                {
-                    SnowWorld.rampcoins += 1;
-                    w.rmCoin(10);
-                    RampCoins.canclick += 1;
-                }
+                SnowWorld.rampcoins += 1;
+                w.rmCoin(10);
+                RampCoins.canclick += 1;
             }   
+        }    
+        else
+        {
+            setImage(new GreenfootImage("More Ramp Coins", 50, Color.GRAY, null));
         }    
     }    
 }
-
-
-
-
-
-
-
-
-
-
-
-
