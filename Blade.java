@@ -23,7 +23,7 @@ public class Blade extends Pickup
         if (!dead) {
             Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
             if (b != null) {
-                b.sword += 3;
+                b.sword += 1;
                 getWorld().removeObject(this);
                 dead = true;
             }

@@ -132,6 +132,8 @@ public class Boarder extends Object
                 w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
             }
             w.removeObject(s);
+            invincible = 0;
+            respawnBlink();
             sword = sword - 1;
         }
         if (!dead && isTouching(Bear.class) && airTime < 0) {
@@ -142,6 +144,8 @@ public class Boarder extends Object
             }
             (new GreenfootSound("PolarBearDead.mp3")).play();
             w.removeObject(b);
+            invincible = 0;
+            respawnBlink();
             sword = sword - 1;
         }
     }
