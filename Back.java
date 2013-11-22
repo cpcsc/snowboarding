@@ -25,7 +25,7 @@ public class Back extends Buttons
             getImage().setTransparency(220);
             if (Greenfoot.getMouseInfo() != null){
                 if (Greenfoot.getMouseInfo().getX() >= 405 && Greenfoot.getMouseInfo().getX() <= 495 &&
-                    Greenfoot.getMouseInfo().getY() >= 640 && Greenfoot.getMouseInfo().getY() <= 670) {
+                Greenfoot.getMouseInfo().getY() >= 640 && Greenfoot.getMouseInfo().getY() <= 670) {
                     setImage(new GreenfootImage("Back", 50, Color.RED, Color.WHITE));
                     getImage().setTransparency(220);
                 }
@@ -36,13 +36,13 @@ public class Back extends Buttons
             if (getWorld() instanceof SnowWorld) {
                 SnowWorld sw = (SnowWorld) getWorld();
                 sw.stopMusic();
+                Gun.clipsize = 10;
+                Boarder.thedelaymax = 20;
+                RampCoins.canclick = 0;
+                SnowWorld.rampcoins = 0;
+                Clipsize.canclick = 0;
                 if(getX() > 80){
                     Greenfoot.setWorld(new SnowWorld(0));
-                    Gun.clipsize = 10;
-                    Boarder.thedelaymax = 20;
-                    RampCoins.canclick = 0;
-                    SnowWorld.rampcoins = 0;
-                    Clipsize.canclick = 0;
                 } else {
                     Greenfoot.setWorld(new Intro());
                 }
