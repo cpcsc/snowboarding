@@ -5,12 +5,6 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- * Write a description of class Reset here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Reset extends Buttons
 {
     private boolean applet()  

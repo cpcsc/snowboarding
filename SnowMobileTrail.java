@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class SnowMobileTrail here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class SnowMobileTrail extends Actor
 {
     public SnowMobileTrail() {
@@ -26,5 +20,4 @@ public class SnowMobileTrail extends Actor
         }
         getImage().setTransparency((50-timer)*255/75);
     }  
-    
 }

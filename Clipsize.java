@@ -1,11 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
-/**
- * Write a description of class Clipsize here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class Clipsize extends Buttons
 {
     public static int canclick = 0;

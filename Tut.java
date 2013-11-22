@@ -8,16 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tut extends World
 {
-
-    /**
-     * Constructor for objects of class Tut.
-     * 
-     */
     public Tut()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    {
         super(900, 700, 1, false); 
-        
         prepare();
     }
     
@@ -31,15 +24,8 @@ public class Tut extends World
         addObject(back, 450, 655);
         Tutorial tutorial = new Tutorial();
         addObject(tutorial, 450, 350);
-        //Background background = new Background();
-        //addObject(background, 882, 17);
         Obstacles obstacles = new Obstacles();
         addObject(obstacles, 0, 0);
-        /*for(int y = -50; y < getHeight() + 50; y += 6) { //spawn in snow
-        Snow snow = new Snow();
-        snow.setRotation(Greenfoot.getRandomNumber(360));
-        addObject(snow, Greenfoot.getRandomNumber(getWidth()), y);
-        }*/
         for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
             obstacles.addTree(y);
         }   

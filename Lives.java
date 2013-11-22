@@ -9,12 +9,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.IOException;
 
-/**
- * Write a description of class Lives here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Lives extends Object
 {
     private int totalLives = 3;

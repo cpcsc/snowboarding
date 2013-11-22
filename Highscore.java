@@ -7,12 +7,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-/**
- * Write a description of class Highscore here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Highscore extends Buttons
 {
     private boolean applet()  

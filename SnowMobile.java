@@ -1,11 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class SnowMobile here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class SnowMobile extends Obstacles
 {
     public int airTime = 0;
@@ -13,10 +7,7 @@ public class SnowMobile extends Obstacles
     public double jumpConst;
     private int trailTimer = 0;
     public int coins = 1;
-    /**
-     * Act - do whatever the SnowMobile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public void act() 
     {
         trailTimer++;
@@ -115,5 +106,4 @@ public class SnowMobile extends Obstacles
             dead = true;
         }
     }
-
 }

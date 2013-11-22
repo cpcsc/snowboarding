@@ -1,12 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
-/**
- * Write a description of class Tutorial here.
- * 
- * @author (your name) 
- * @version (1.0)
- */
 public class Tutorial extends Buttons
 {
     public Tutorial()
