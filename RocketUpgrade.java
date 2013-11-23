@@ -21,7 +21,7 @@ public class RocketUpgrade extends Buttons
     public void act() 
     {
         StoreWorld w = (StoreWorld) getWorld();
-        //SnowWorld sw = (SnowWorld) getWorld();
+        
         if (canclick < 1 && w.getCoins() >= 10)
         {
             if (Greenfoot.mouseClicked(this))
@@ -29,8 +29,6 @@ public class RocketUpgrade extends Buttons
                 SnowWorld.rocketsspawn += 1;
                 w.rmCoin(10);
                 RocketUpgrade.canclick += 1;
-                //Boarder b = (Boarder) sw.getObjects(Boarder.class).get(0);
-                //b.rocket += 5;
                 Boarder.rocket += 5;
             }
         }

@@ -35,6 +35,8 @@ public class Back extends Buttons
                 RampCoins.canclick = 0;
                 SnowWorld.rampcoins = 0;
                 Clipsize.canclick = 0;
+                RocketUpgrade.canclick = 0;
+                SnowWorld.rocketsspawn = 0;
                 if(getX() > 80){
                     Greenfoot.setWorld(new SnowWorld(0));
                 } else {
