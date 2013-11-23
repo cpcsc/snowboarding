@@ -7,7 +7,7 @@ public class Boarder extends Object
     public int invincible = 0;
     private int airTime = 0;
     public int gun = 0;
-    public int rocket = 0;
+    public static int rocket = 0;
     public int shotDelay = 0;
     public int sword = 0;
     public int jumpTime;
@@ -36,6 +36,10 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
+        if (dead)
+        {
+            Boarder.rocket = 0;
+        }    
     }
 
     public void moveAround()

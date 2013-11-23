@@ -12,6 +12,7 @@ public class SnowWorld extends World
     public int coins = 0;
     public boolean jumpU = false;
     public static int rampcoins = 0;
+    public static int rocketsspawn = 0;
 
     public void act() {
         volumeAdjust();
@@ -77,9 +78,12 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 15000) { 
             addObject2(new Gun(), randX(-100), -100);
         }
-        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
-            addObject2(new RocketLauncher(), randX(-100), -100);
-        }
+        if (rocketsspawn >= 1)
+        {    
+            if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
+                addObject2(new RocketLauncher(), randX(-100), -100);
+            }
+        }    
         if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 25000) { 
             addObject2(new Blade(), randX(-100), -100);
         }
