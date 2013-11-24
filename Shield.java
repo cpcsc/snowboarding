@@ -1,9 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Blade extends Pickup
+public class Shield extends Pickup
 {
-    public void act() 
-    {
+    public void act() {
         if (getY()<0) killObst();
         objMove();
         pickUp();
@@ -13,7 +12,7 @@ public class Blade extends Pickup
         if (!dead) {
             Boarder b = (Boarder) getOneIntersectingObject(Boarder.class);
             if (b != null) {
-                b.sword += 1;
+                b.shield = true;
                 getWorld().removeObject(this);
                 dead = true;
             }

@@ -3,18 +3,15 @@ import java.awt.Color;
 
 public class Back extends Buttons
 {
-    public void act() 
-    {
+    public void act() {
         if (getWorld() instanceof SnowWorld) {
             setImage(new GreenfootImage("Quit", 30, Color.RED, Color.WHITE));
             getImage().setTransparency(220);
-
             if (getX() > 80) {
                 setImage(new GreenfootImage("Restart", 30, Color.BLUE, Color.WHITE));
                 getImage().setTransparency(220);
             }
-        }
-        else {
+        } else {
             setImage(new GreenfootImage("Back", 50, Color.BLUE, Color.WHITE));
             getImage().setTransparency(220);
             if (Greenfoot.getMouseInfo() != null){
@@ -30,24 +27,22 @@ public class Back extends Buttons
             if (getWorld() instanceof SnowWorld) {
                 SnowWorld sw = (SnowWorld) getWorld();
                 sw.stopMusic();
-                Gun.clipsize = 10;
-                Boarder.thedelaymax = 20;
-                RampCoins.canclick = 0;
-                SnowWorld.rampcoins = 0;
-                Clipsize.canclick = 0;
-                RocketUpgrade.canclick = 0;
-                SnowWorld.rocketsspawn = 0;
-                if(getX() > 80){
+                Gun.clipSize = 10;
+                Boarder.delayMax = 20;
+                RampCoins.canClick = true;
+                SnowWorld.rampCoins = false;
+                Clipsize.canClick = true;
+                RocketUpgrade.canClick = true;
+                SnowWorld.rocketsSpawn = false;
+                if(getX() > 80) {
                     Greenfoot.setWorld(new SnowWorld(0));
                 } else {
                     Greenfoot.setWorld(new Intro());
                 }
-            }
-            else if(getWorld() instanceof StoreWorld) {
+            } else if(getWorld() instanceof StoreWorld) {
                 StoreWorld sw = (StoreWorld) getWorld();
                 Greenfoot.setWorld(sw.getSnowWorld());
-            }
-            else {
+            } else {
                 Greenfoot.setWorld(new Intro());
             }
         }

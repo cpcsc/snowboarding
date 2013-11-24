@@ -9,25 +9,20 @@ public class Boarder extends Object
     public int gun = 0;
     public static int rocket = 0;
     public int shotDelay = 0;
-    public int sword = 0;
+    public boolean shield = false;
     public int jumpTime;
     public double jumpConst;
     public int magnetTimer = 0;
     private int trailTimer = 0;
     public int dir;
-    public int delayMax = 20;
-    public static int thedelaymax = 20;
-    public void act() 
-    {
+    public static int delayMax = 20;
+    
+    public void act() {
         trailTimer++;
         moveAround();
         ramp();
         trail();
-        if (sword > 0) {
-            blade();
-        }
         dieObstacle();
-        dieLog();
         dieTree();
         invincible++;
         airTime--;
@@ -36,14 +31,10 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
-        if (dead)
-        {
-            Boarder.rocket = 0;
-        }    
+        if (dead) Boarder.rocket = 0; 
     }
 
-    public void moveAround()
-    {
+    public void moveAround() {
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
             if (canMove(-4, 0, Tree.class) || invincible < 100) {
                 move(-4);
@@ -80,14 +71,14 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("x") && gun > 0 && shotDelay >= thedelaymax) {
+        if (Greenfoot.isKeyDown("z") && gun > 0 && shotDelay >= delayMax) {
             Bullet bullet = new Bullet();
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
             gun--;
         }
-        if (Greenfoot.isKeyDown("z") && rocket > 0 && shotDelay >= thedelaymax) {
+        if (Greenfoot.isKeyDown("x") && rocket > 0 && shotDelay >= delayMax) {
             Rocket r = new Rocket();
             getWorld().addObject(r, getX(), getY());
             shotDelay = 0;
@@ -122,67 +113,38 @@ public class Boarder extends Object
         }
     }
 
-    public void blade()
-    {
-        if (isTouching(Snowman.class) && airTime < 0) {
-            Actor s = getOneIntersectingObject(Snowman.class);
-            World w = getWorld();
-            for (int j = 1; j <= 2; j++) {
-                w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
-            }
-            w.removeObject(s);
-            invincible = 0;
-            respawnBlink();
-            sword = sword - 1;
-        }
-        if (!dead && isTouching(Bear.class) && airTime < 0) {
-            Actor b = getOneIntersectingObject(Bear.class);
-            World w = getWorld();
-            for (int j = 1; j <= 4; j++) {
-                w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
-            }
-            (new GreenfootSound("PolarBearDead.mp3")).play();
-            w.removeObject(b);
-            invincible = 0;
-            respawnBlink();
-            sword = sword - 1;
-        }
-    }
-
     public int air() {
         return airTime;
     }
 
     public void dieObstacle(){
         Object obstacle = (Object) getOneIntersectingObject(Obstacles.class);
-        if (obstacle != null && invincible > 100 && air == obstacle.air && sword == 0){
-            SnowWorld w = (SnowWorld) getWorld();
-            w.multCounter = 0;
-            w.removeObject(this);
-            dead = true;
-        }
-    }
-
-    public void dieLog() {
-        if (!dead) {
-            Actor log = getOneIntersectingObject(Log.class);
-            if (log != null && invincible > 100 && airTime < 0) {
+        if (obstacle != null && invincible > 100 && air == obstacle.air) {
+            if (!shield) {
                 SnowWorld w = (SnowWorld) getWorld();
                 w.multCounter = 0;
                 w.removeObject(this);
                 dead = true;
+            } else {
+                shield = false;
+                invincible = 0;
             }
         }
     }
-    
+
     public void dieTree() {
         if (!dead) {
             Actor tree = getOneIntersectingObject(Tree.class);
             if (tree != null && invincible > 100) {
-                SnowWorld w = (SnowWorld) getWorld();
-                w.multCounter = 0;
-                w.removeObject(this);
-                dead = true;
+                if (!shield) {
+                    SnowWorld w = (SnowWorld) getWorld();
+                    w.multCounter = 0;
+                    w.removeObject(this);
+                    dead = true;
+                } else {
+                    shield = false;
+                    invincible = 0;
+                }
             }
         }
     }
@@ -196,9 +158,7 @@ public class Boarder extends Object
             setImage(img);      
         }
         if (invincible == 100) {
-            GreenfootImage img = getImage();
-            img.setTransparency(255);
-            setImage(img);        
+            getImage().setTransparency(255);     
         }
     }
 
@@ -230,18 +190,5 @@ public class Boarder extends Object
                 a.setRotation(0);
             }
         }
-
-    }
-
-    public int getGun() {
-        return gun;
-    }
-    
-    public int getSword() {
-        return sword;
-    }
-    
-    public int getRocket() {
-        return rocket;
     }
 }

@@ -3,7 +3,7 @@ import java.awt.Color;
 
 public class SnowWorld extends World
 {
-    private SpeakerButton sbutton = new SpeakerButton();
+    private SpeakerButton sButton = new SpeakerButton();
     private GreenfootSound bkgMusic;
     private Lives theLives;
     public Counter score = new Counter("Score: ");
@@ -11,8 +11,8 @@ public class SnowWorld extends World
     public int multCounter = 0;
     public int coins = 0;
     public boolean jumpU = false;
-    public static int rampcoins = 0;
-    public static int rocketsspawn = 0;
+    public static boolean rampCoins = false;
+    public static boolean rocketsSpawn = false;
 
     public void act() {
         volumeAdjust();
@@ -23,11 +23,8 @@ public class SnowWorld extends World
         speedUp();
     }
 
-    public SnowWorld(int Coins)
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public SnowWorld(int Coins) {    
         super(900, 700, 1, false); 
-
         coins = Coins;
         theLives = new Lives();
         addObject(theLives, 820, 670);
@@ -40,7 +37,7 @@ public class SnowWorld extends World
         prepare();
     }
 
-    public Lives getLives(){
+    public Lives getLives() {
         return theLives;
     }
 
@@ -48,14 +45,8 @@ public class SnowWorld extends World
         bkgMusic.stop();
     }
 
-    /**
-     * Prepare the world for the start of the program. That is: create the initial
-     * objects and add them to the world.
-     */
-    private void prepare()
-    {
-        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class,
-                      Obstacles.class, Weapon.class, Pickup.class, SnowMobileCrashed.class ,SnowTrail.class);
+    private void prepare() {
+        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, SnowMobileCrashed.class ,SnowTrail.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         Obstacles obstacles = new Obstacles();
@@ -70,7 +61,7 @@ public class SnowWorld extends World
         addObject(score, getWidth()/2, 17);
         Highscore hs = new Highscore();
         addObject(hs, getWidth() - hs.getImage().getWidth()/2 - 5, 17);
-        addObject(sbutton, 30, 60);
+        addObject(sButton, 30, 60);
     }
 
     public void spawnPowerup() {
@@ -78,14 +69,11 @@ public class SnowWorld extends World
         if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 15000) { 
             addObject2(new Gun(), randX(-100), -100);
         }
-        if (rocketsspawn >= 1)
-        {    
-            if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
-                addObject2(new RocketLauncher(), randX(-100), -100);
-            }
-        }    
-        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 25000) { 
-            addObject2(new Blade(), randX(-100), -100);
+        if (rocketsSpawn && Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 75000) { 
+            addObject2(new RocketLauncher(), randX(-100), -100);
+        }
+        if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 25000  && getObjects(Shield.class).size() == 0 && (b != null && !b.shield || b == null)) { 
+            addObject2(new Shield(), randX(-100), -100);
         }
         if (Greenfoot.getRandomNumber(3000) == 0 && getObjects(Invincible.class).size() == 0 && (b != null && b.invincible > 100 || b == null) && getScore() >= 15000) { 
             addObject2(new Invincible(), randX(-100), -100);
@@ -108,9 +96,7 @@ public class SnowWorld extends World
                 addObject2(new Coin2(), rx, ry - rh/2 - 24*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 40*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 56*Object.speed);  
-                
-                if (rampcoins >= 1)
-                {
+                if (rampCoins) {
                     addObject2(new Coin2(), rx, ry - rh/2 - 16*Object.speed);
                     addObject2(new Coin2(), rx, ry - rh/2 - 32*Object.speed);
                     addObject2(new Coin2(), rx, ry - rh/2 - 48*Object.speed);
@@ -141,7 +127,7 @@ public class SnowWorld extends World
     public int randX(int y) {
         return randX(y, 10);
     }
-    
+
     public int randX(int y, int precision) { //Returns random x-value between the trees at a given y-value
         int min = 0;                         //x-value will be at least precision units away from the trees
         int max = 0;
@@ -169,8 +155,8 @@ public class SnowWorld extends World
     public void showPowerup() {
         removeObjects(getObjects(Image.class));
         Image coinImage = new Image("coin.png");
-        coinImage.getImage().scale(20,20);
-        Image coinNumImage = new Image(""+coins, 30, Color.BLACK, Color.WHITE);
+        coinImage.getImage().scale(20, 20);
+        Image coinNumImage = new Image("" + coins, 30, Color.BLACK, Color.WHITE);
         addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
         addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);
         coinNumImage.getImage().setTransparency(220);
@@ -179,36 +165,34 @@ public class SnowWorld extends World
             addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getWidth()/2 + 4, 15);
         }
         if (getObjects(Boarder.class).size() != 0) {
-            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            Boarder b = getBoarder();
             if (b.gun > 0) {
                 Image gunImage = new Image("GunPowerup.png");
                 addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 20);
-                Image gunNumImage = new Image(""+b.getGun(), 30, Color.BLACK, null);
+                Image gunNumImage = new Image("" + b.gun, 30, Color.BLACK, null);
                 addObject(gunNumImage, gunImage.getX() - 40, 15);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
-            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            Boarder b = getBoarder();
             if (b.magnetTimer > 0) {
                 Image magImage = new Image("magnet.png");
                 addObject(magImage, score.getX() + score.getImage().getWidth()/2 + (new Image("x2.png")).getWidth() + magImage.getWidth()/2 + 8, 15);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
-            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
-            if (b.sword > 0) {
-                Image swordImage = new Image("Blade.png");
-                addObject(swordImage, score.getX() - score.getImage().getWidth()/2 - swordImage.getWidth()/2 - 100, 20);
-                Image swordNumImage = new Image(""+b.getSword(), 30, Color.BLACK, null);
-                addObject(swordNumImage, swordImage.getX() - 30, 15);
+            Boarder b = getBoarder();
+            if (b.shield) {
+                Image shieldImage = new Image("shield.png");
+                addObject(shieldImage, score.getX() - score.getImage().getWidth()/2 - shieldImage.getWidth()/2 - 100, 20);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
-            Boarder b = (Boarder) getObjects(Boarder.class).get(0);
+            Boarder b = getBoarder();
             if (b.rocket > 0) {
                 Image rocketImage = new Image("RocketAndrew.png");
                 addObject(rocketImage, score.getX() - score.getImage().getWidth()/2 - rocketImage.getWidth()/2 - 160, 20);
-                Image rNumImage = new Image(""+b.getRocket(), 30, Color.BLACK, null);
+                Image rNumImage = new Image("" + b.rocket, 30, Color.BLACK, null);
                 addObject(rNumImage, rocketImage.getX() - 30, 15);
             }
         }
@@ -225,11 +209,11 @@ public class SnowWorld extends World
     public void addCoin(int quant) {
         coins += scoreMult * quant;
     }
-    
+
     public int getCoins() {
         return coins;
     }
-    
+
     public void setCoins(int Coins) {
         coins = Coins;
     }
@@ -245,7 +229,7 @@ public class SnowWorld extends World
     public int getScore() {
         return score.getValue();
     }
-    
+
     public void addSnowMobile() {
         Boarder boarder = getBoarder();
         if (Greenfoot.getRandomNumber(2000) <= Object.speed && getScore()>=50000) {
@@ -254,14 +238,12 @@ public class SnowWorld extends World
             (new GreenfootSound("policeSound.mp3")).play();
         }
     }
-    
-    public SpeakerButton getSpeaker()
-    {
-        return sbutton;
+
+    public SpeakerButton getSpeaker() {
+        return sButton;
     }
-    
-    public void volumeAdjust()
-    {
+
+    public void volumeAdjust() {
         if (getSpeaker().getOff()==true) {
             bkgMusic.setVolume(0);
         }
@@ -273,6 +255,7 @@ public class SnowWorld extends World
     public void JumpU() {
         jumpU = true;
     }
+
     public boolean getJumpU() {
         return jumpU;
     }

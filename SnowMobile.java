@@ -8,11 +8,10 @@ public class SnowMobile extends Obstacles
     private int trailTimer = 0;
     public int coins = 1;
 
-    public void act() 
-    {
+    public void act() {
         trailTimer++;
         airTime--;
-        setLocation(getX(),getY()-Object.speed/2);
+        setLocation(getX(), getY() - Object.speed/2);
         setImage("SnowMobile.png");
         trail();
         ramp();
@@ -26,24 +25,21 @@ public class SnowMobile extends Obstacles
     public void trail() {
         if (trailTimer >= 3 && !air) {
             World w = getWorld();
-            w.addObject(new SnowMobileTrail(), getX() + 10 , getY() + 20);
-            w.addObject(new SnowMobileTrail(), getX() - 11 , getY() + 20);
+            w.addObject(new SnowMobileTrail(), getX() + 10, getY() + 20);
+            w.addObject(new SnowMobileTrail(), getX() - 11, getY() + 20);
             trailTimer = 0;
         }
     }
 
     public void logJump() {
-        if (getOneObjectAtOffset(0, -getImage().getHeight()/2 - 8*Object.speed, Log.class) != null && airTime <= -5) {
-            if (airTime <= -5) {
-                airTime = 30;
-                jumpTime = 30;
-                jumpConst = -50.0 / 1058.0;
-            }
+        if (!canMove(0, -8 * Object.speed, Log.class) && airTime <= -5) {
+            airTime = 30;
+            jumpTime = 30;
+            jumpConst = -50.0 / 1058.0;
         }
     }
 
-    public void jump(int jumpTime) 
-    {
+    public void jump(int jumpTime) {
         air = airTime > 0;
         if (air) {
             Image shadow = new Image("shadow.png");
@@ -53,8 +49,7 @@ public class SnowMobile extends Obstacles
         }
     }
 
-    public void ramp() 
-    {
+    public void ramp() {
         if (airTime < 0 && isTouching(Ramp.class)) {
             airTime = 60;
             jumpTime = 60;   
@@ -62,48 +57,38 @@ public class SnowMobile extends Obstacles
         }
     }
 
-    public void killSnowman() 
-    {
+    public void killSnowman() {
         if (!dead && airTime < 0 && isTouching(Snowman.class)) {
-            Actor s = getOneIntersectingObject(Snowman.class);
-            World w = getWorld();
-            for (int j = 1; j <= 2; j++) {
-                w.addObject(new Coin(), s.getX() + Greenfoot.getRandomNumber(21) - 10, s.getY() + Greenfoot.getRandomNumber(21) - 10);
-            }
-            w.removeObject(s);
+            Snowman s = (Snowman) getOneIntersectingObject(Snowman.class);
+            s.die();
         }
     }
 
-    public void killBear() 
-    {
+    public void killBear() {
         if (!dead && airTime < 0 && isTouching(Bear.class)) {
-            Actor b = getOneIntersectingObject(Bear.class);
-            World w = getWorld();
-            for (int j = 1; j <= 4; j++) {
-                w.addObject(new Coin(), b.getX() + Greenfoot.getRandomNumber(21) - 10, b.getY() + Greenfoot.getRandomNumber(21) - 10);
-            }
-            (new GreenfootSound("PolarBearDead.mp3")).play();
-            w.removeObject(b);
+            Bear b = (Bear) getOneIntersectingObject(Bear.class);
+            b.die();
         }
     }
 
-    public void bump()
-    {
-        Actor tree = getOneIntersectingObject(Tree.class);
-        Actor log = getOneIntersectingObject(Log.class);
-        SnowWorld w = (SnowWorld) getWorld();
-        if (tree != null || log != null && airTime < 0){
-            for (int j = 1; j <= coins; j++) {
-                w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
-            }
-            w.addObject(new SnowMobileCrashed(Greenfoot.getRandomNumber(180)-90),getX(),getY());
-            w.removeObject(this);
-            dead = true;
-            (new GreenfootSound("Explosion.mp3")).play();
+    public void bump() {
+        if((isTouching(Log.class) && !air) || isTouching(Tree.class)) {
+            die();
         }
         if (!dead && getY() <= -200) {
-            w.removeObject(this);
+            getWorld().removeObject(this);
             dead = true;
         }
+    }
+
+    public void die() {
+        World w = getWorld();
+        for (int j = 1; j <= coins; j++) {
+            w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
+        }
+        (new GreenfootSound("Explosion.mp3")).play();
+        w.addObject(new SnowMobileCrashed(Greenfoot.getRandomNumber(180)-90), getX(), getY());
+        w.removeObject(this);
+        dead = true;
     }
 }

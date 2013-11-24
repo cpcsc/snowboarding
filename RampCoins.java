@@ -3,28 +3,21 @@ import java.awt.Color;
 
 public class RampCoins extends Buttons
 {
-    public static int canclick = 0;
+    public static boolean canClick = true;
     
-    public RampCoins()
-    {
+    public RampCoins() {
         setImage(new GreenfootImage("More Ramp Coins", 50, Color.BLUE, null));
     }    
 
-    public void act() 
-    {
-        StoreWorld w = (StoreWorld) getWorld();
-        
-        if ( canclick < 1 && w.getCoins() >= 10)
-        {
-            if (Greenfoot.mouseClicked(this))
-            {
-                SnowWorld.rampcoins += 1;
+    public void act() {
+        StoreWorld w = (StoreWorld) getWorld();        
+        if (canClick && w.getCoins() >= 10) {
+            if (Greenfoot.mouseClicked(this)) {
+                SnowWorld.rampCoins = true;
                 w.rmCoin(10);
-                RampCoins.canclick += 1;
+                RampCoins.canClick = false;
             }   
-        }    
-        else
-        {
+        } else {
             setImage(new GreenfootImage("More Ramp Coins", 50, Color.GRAY, null));
         }    
     }    

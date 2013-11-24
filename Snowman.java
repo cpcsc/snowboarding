@@ -5,8 +5,8 @@ public class Snowman extends Obstacles
     public Snowman() {
        getImage().scale(36,65);             
     }
-    public void act() 
-    {
+    
+    public void act() {
         objMove();
         killObst();
     }
@@ -18,5 +18,14 @@ public class Snowman extends Obstacles
                 removeTouching(obst);
             }
         }
+    }
+    
+    public void die() {
+        World w = getWorld();
+        for (int j = 1; j <= 2; j++) {
+            w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
+        }
+        w.removeObject(this);
+        dead = true;
     }
 }

@@ -1,39 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
-/**
- * Write a description of class RocketUpgrade here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class RocketUpgrade extends Buttons
 {
-    public static int canclick = 0;
-    public RocketUpgrade()
-    {
+    public static boolean canClick = true;
+    public RocketUpgrade() {
         setImage(new GreenfootImage("Rockets Spawn", 50, Color.BLUE, null));
     }    
-    /**
-     * Act - do whatever the RocketUpgrade wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        StoreWorld w = (StoreWorld) getWorld();
-        
-        if (canclick < 1 && w.getCoins() >= 10)
-        {
-            if (Greenfoot.mouseClicked(this))
-            {
-                SnowWorld.rocketsspawn += 1;
+
+    public void act() {
+        StoreWorld w = (StoreWorld) getWorld();        
+        if (canClick && w.getCoins() >= 10) {
+            if (Greenfoot.mouseClicked(this)) {
+                SnowWorld.rocketsSpawn = true;
                 w.rmCoin(10);
-                RocketUpgrade.canclick += 1;
+                RocketUpgrade.canClick = false;
                 Boarder.rocket += 5;
             }
-        }
-        else
-        {
+        } else {
             setImage(new GreenfootImage("Rockets Spawn", 50, Color.GRAY, null));
         }    
     }    

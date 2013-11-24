@@ -10,8 +10,7 @@ public class Bear extends Obstacles
     private GreenfootImage img4 = new GreenfootImage("images/PolarBear4.png");
     private int animTimer = 0;
     int dx;
-    public void act() 
-    {
+    public void act() {
         objMove();
         dx = bearMove();
         bearAnim();     
@@ -71,5 +70,15 @@ public class Bear extends Obstacles
                 removeTouching(obst);
             }
         }
+    }
+
+    public void die() {
+        World w = getWorld();
+        for (int j = 1; j <= 4; j++) {
+            w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
+        }
+        (new GreenfootSound("PolarBearDead.mp3")).play();
+        w.removeObject(this);
+        dead = true;
     }
 }
