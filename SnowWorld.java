@@ -208,7 +208,7 @@ public class SnowWorld extends World
     }
 
     public void musicChange() {
-        if (getScore() >= 50000 && musicChange == false) {
+        if (getScore() >= 60000 && musicChange == false) {
             bkgMusic.stop();
             bkgMusic = new GreenfootSound("chase.mp3");
             bkgMusic.playLoop();
