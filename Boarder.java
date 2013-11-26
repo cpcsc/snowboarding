@@ -159,12 +159,14 @@ public class Boarder extends Object
             img.setTransparency((int) transparency);
             setImage(img);      
 
-            if(storeSpawned == false){
-                getWorld().addObject(new StoreText(), 450, 150);
-                storeSpawned = true;
-            }
-            if (Greenfoot.isKeyDown("s")){
-                Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
+            if(w.getLives().getTotalLives() < 3){
+                if(storeSpawned == false){
+                    getWorld().addObject(new StoreText(), 450, 150);
+                    storeSpawned = true;
+                }
+                if (Greenfoot.isKeyDown("s")){
+                    Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
+                }
             }
         }
         if (invincible == 100) {
