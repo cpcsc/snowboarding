@@ -125,6 +125,9 @@ public class Boarder extends Object
                 w.multCounter = 0;
                 w.removeObject(this);
                 dead = true;
+                if (w.getLives().getTotalLives() >= 1) {
+                Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
+                }
             } else {
                 shield = false;
                 invincible = 0;
@@ -141,6 +144,7 @@ public class Boarder extends Object
                     w.multCounter = 0;
                     w.removeObject(this);
                     dead = true;
+                    Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
                 } else {
                     shield = false;
                     invincible = 0;

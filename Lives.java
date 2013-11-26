@@ -135,4 +135,9 @@ public class Lives extends Object
     {
         respawn();
     }
+    
+    public int getTotalLives()
+    {
+        return totalLives;
+    }
 }

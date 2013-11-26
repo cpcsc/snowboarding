@@ -15,4 +15,6 @@ comment5.target=int\ getRespawnX(int)
 comment5.text=\r\n\ Returns\ the\ x-value\ of\ the\ middle\ of\ the\ gap\ between\ the\ trees\r\n\ so\ you\ don't\ spawn\ in\ the\ trees.\r\n
 comment6.params=
 comment6.target=void\ act()
-numComments=7
+comment7.params=
+comment7.target=int\ getTotalLives()
+numComments=8
