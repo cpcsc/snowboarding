@@ -5,6 +5,7 @@ public class SnowWorld extends World
 {
     private SpeakerButton sButton = new SpeakerButton();
     private GreenfootSound bkgMusic;
+    private boolean musicChange = false;
     private Lives theLives;
     public Counter score = new Counter("Score: ");
     public int scoreMult = 1;
@@ -21,6 +22,7 @@ public class SnowWorld extends World
         showPowerup();
         addSnowMobile();
         speedUp();
+        musicChange();
     }
 
     public SnowWorld(int Coins) {    
@@ -28,9 +30,8 @@ public class SnowWorld extends World
         coins = Coins;
         theLives = new Lives();
         addObject(theLives, 820, 670);
-        bkgMusic = new GreenfootSound("chase.mp3");
         //start music in the snow world
-        //bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
+        bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
         //Credit: Martin Garrix
         bkgMusic.playLoop();
         Object.speed = 3;
@@ -206,6 +207,15 @@ public class SnowWorld extends World
         }
     }
 
+    public void musicChange() {
+        if (getScore() >= 50000 && musicChange == false) {
+            bkgMusic.stop();
+            bkgMusic = new GreenfootSound("chase.mp3");
+            bkgMusic.playLoop();
+            musicChange = true;
+        }
+    }
+    
     public void addCoin(int quant) {
         coins += scoreMult * quant;
     }
