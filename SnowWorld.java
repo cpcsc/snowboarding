@@ -46,6 +46,7 @@ public class SnowWorld extends World
 
     public void stopMusic() {
         bkgMusic.stop();
+        bkgMusic2.stop();
     }
 
     private void prepare() {
