@@ -16,7 +16,8 @@ public class Boarder extends Object
     private int trailTimer = 0;
     public int dir;
     public static int delayMax = 20;
-    
+    public boolean storeSpawned = false;
+
     public void act() {
         trailTimer++;
         moveAround();
@@ -125,9 +126,6 @@ public class Boarder extends Object
                 w.multCounter = 0;
                 w.removeObject(this);
                 dead = true;
-                if (w.getLives().getTotalLives() >= 1) {
-                Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
-                }
             } else {
                 shield = false;
                 invincible = 0;
@@ -144,7 +142,6 @@ public class Boarder extends Object
                     w.multCounter = 0;
                     w.removeObject(this);
                     dead = true;
-                    Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
                 } else {
                     shield = false;
                     invincible = 0;
@@ -154,16 +151,29 @@ public class Boarder extends Object
     }
 
     public void respawnBlink() {
+        SnowWorld w = (SnowWorld) getWorld();
         if (invincible < 100) {
             GreenfootImage img = getImage();
             int fast = (invincible >= 0) ? 2 : 1;
             double transparency = 127 * Math.sin(fast * invincible / 4.0) + 128;
             img.setTransparency((int) transparency);
             setImage(img);      
+
+            if(storeSpawned == false){
+                getWorld().addObject(new StoreText(), 450, 150);
+                storeSpawned = true;
+            }
+            if (Greenfoot.isKeyDown("s")){
+                Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
+            }
         }
         if (invincible == 100) {
-            getImage().setTransparency(255);     
+            getImage().setTransparency(255);
         }
+    }
+
+    public int getInvincible(){
+        return invincible;
     }
 
     public void jump(int jumpTime) {

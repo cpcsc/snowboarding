@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ act()
+comment0.target=StoreText()
 comment1.params=
-comment1.target=void\ killObst()
+comment1.target=void\ act()
 numComments=2
