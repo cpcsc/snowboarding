@@ -2,8 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Object extends Actor
 {
-    public int lives = 3;
-    public int score = 0;
     public static int speed = 3;
     public boolean dead = false;
     public boolean air = false;

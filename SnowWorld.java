@@ -4,7 +4,7 @@ import java.awt.Color;
 public class SnowWorld extends World
 {
     private SpeakerButton sButton = new SpeakerButton();
-    private GreenfootSound bkgMusic;
+    private GreenfootSound bkgMusic, bkgMusic2;
     private boolean musicChange = false;
     private Lives theLives;
     public Counter score = new Counter("Score: ");
@@ -14,6 +14,7 @@ public class SnowWorld extends World
     public boolean jumpU = false;
     public static boolean rampCoins = false;
     public static boolean rocketsSpawn = false;
+    public boolean chase = false;
 
     public void act() {
         volumeAdjust();
@@ -22,7 +23,6 @@ public class SnowWorld extends World
         showPowerup();
         addSnowMobile();
         speedUp();
-        musicChange();
     }
 
     public SnowWorld(int Coins) {    
@@ -33,6 +33,8 @@ public class SnowWorld extends World
         //start music in the snow world
         bkgMusic = new GreenfootSound("Animals - Martin Garrix.mp3");
         //Credit: Martin Garrix
+        bkgMusic2 = new GreenfootSound("chase.mp3");
+        //Credit: ????
         bkgMusic.playLoop();
         Object.speed = 3;
         prepare();
@@ -206,15 +208,6 @@ public class SnowWorld extends World
             (new GreenfootSound("Speedboost.mp3")).play();
         }
     }
-
-    public void musicChange() {
-        if (getScore() >= 60000 && musicChange == false) {
-            bkgMusic.stop();
-            bkgMusic = new GreenfootSound("chase.mp3");
-            bkgMusic.playLoop();
-            musicChange = true;
-        }
-    }
     
     public void addCoin(int quant) {
         coins += scoreMult * quant;
@@ -246,6 +239,11 @@ public class SnowWorld extends World
             //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
             addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
             (new GreenfootSound("policeSound.mp3")).play();
+            if(chase == false){
+                bkgMusic.stop();
+                bkgMusic2.playLoop();
+                chase = true;
+            }
         }
     }
 

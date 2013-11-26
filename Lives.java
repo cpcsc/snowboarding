@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class Lives extends Object
 {
+    public int lives = 3;
     private int totalLives = 3;
     private int spawnTime = 0;
     private int dead = 0;
@@ -135,7 +136,7 @@ public class Lives extends Object
     {
         respawn();
     }
-    
+
     public int getTotalLives()
     {
         return totalLives;
