@@ -58,16 +58,24 @@ public class Boarder extends Object
             setImage("straight.png");
             move(0);
         }
-        if (Greenfoot.isKeyDown("up")) {
-            if (airTime <= -5) {
-                SnowWorld sw = (SnowWorld) getWorld();
-                if(!dead && sw.getJumpU()){
+        if (!dead && Greenfoot.isKeyDown("up")) {
+            SnowWorld sw = (SnowWorld) getWorld();
+            if (airTime <= -20) {
+                if(sw.getJumpU()){
                     airTime = 85;
                     jumpTime = 85;
-                }
-                else{
+                } else {
                     airTime = 50;
                     jumpTime = 50;
+                }
+                jumpConst = -50.0 / 1058.0;
+            } else if (airTime <= -5) {
+                if(sw.getJumpU()){
+                    airTime = 40;
+                    jumpTime = 40;
+                } else {
+                    airTime = 20;
+                    jumpTime = 20;
                 }
                 jumpConst = -50.0 / 1058.0;
             }
