@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=
-comment0.target=StoreText()
+comment0.params=w\ coin
+comment0.target=StoreText(SnowWorld,\ int)
 comment1.params=
 comment1.target=void\ act()
 numComments=2

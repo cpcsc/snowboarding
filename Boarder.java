@@ -169,11 +169,8 @@ public class Boarder extends Object
 
             if(w.getLives().getTotalLives() < 3){
                 if(storeSpawned == false){
-                    getWorld().addObject(new StoreText(), 450, 150);
+                    getWorld().addObject(new StoreText(w,w.getCoins()), 450, 150);
                     storeSpawned = true;
-                }
-                if (Greenfoot.isKeyDown("s")){
-                    Greenfoot.setWorld(new StoreWorld(w,w.getCoins()));
                 }
             }
         }

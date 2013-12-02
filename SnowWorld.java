@@ -255,8 +255,10 @@ public class SnowWorld extends World
     public void volumeAdjust() {
         if (getSpeaker().getOff()==true) {
             bkgMusic.setVolume(0);
+            bkgMusic2.setVolume(0);
         }
         else if (getSpeaker().getOff()==false) {
+            bkgMusic.setVolume(80);
             bkgMusic.setVolume(80);
         }
     }
