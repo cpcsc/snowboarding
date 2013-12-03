@@ -10,21 +10,21 @@ public class MultiplierUpgrade extends Buttons
 {
     public static boolean canClick = true;
     public MultiplierUpgrade() {
-        setImage(new GreenfootImage("Multiplier Now x3", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Multiplier Now x3 (200 coins)", 50, Color.BLUE, null));
     }
     
     public void act() 
     {
         StoreWorld w = (StoreWorld) getWorld();
-        if (canClick && w.getCoins() >= 10) {
+        if (canClick && w.getCoins() >= 200) {
             if (Greenfoot.mouseClicked(this)){
-                w.rmCoin(10);
+                w.rmCoin(200);
                 MultiplierUpgrade.canClick = false;
                 ScoreX2.Multiplier = 3;
             }
         }
         else {
-            setImage(new GreenfootImage("Multiplier Now x3", 50, Color.GRAY, null));
+            setImage(new GreenfootImage("Multiplier Now x3 (200 coins)", 50, Color.GRAY, null));
         }    
     }    
 }

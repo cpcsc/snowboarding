@@ -6,16 +6,16 @@ public class JumpUpgrade extends Buttons
     public void act() 
     {
         StoreWorld sw = (StoreWorld) getWorld();
-        if(!sw.getJumpU() && sw.getCoins() >= 10){
-            setImage(new GreenfootImage("Buy Jump Upgrade (10 coins)", 50, Color.BLUE, null));
+        if(!sw.getJumpU() && sw.getCoins() >= 200){
+            setImage(new GreenfootImage("Buy Jump Upgrade (200 coins)", 50, Color.BLUE, null));
         }
         else{
-            setImage(new GreenfootImage("Buy Jump Upgrade (10 coins)", 50, Color.GRAY, null));
+            setImage(new GreenfootImage("Buy Jump Upgrade (200 coins)", 50, Color.GRAY, null));
         }
 
         if (Greenfoot.mouseClicked(this)) {
-            if(sw.getCoins() >= 10 && !sw.getJumpU()){
-                sw.rmCoin(10);
+            if(sw.getCoins() >= 200 && !sw.getJumpU()){
+                sw.rmCoin(200);
                 sw.JumpU();
             }
         }

@@ -5,20 +5,20 @@ public class RocketUpgrade extends Buttons
 {
     public static boolean canClick = true;
     public RocketUpgrade() {
-        setImage(new GreenfootImage("Rockets Spawn", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Rockets Spawn (250 coins)", 50, Color.BLUE, null));
     }    
 
     public void act() {
         StoreWorld w = (StoreWorld) getWorld();        
-        if (canClick && w.getCoins() >= 10) {
+        if (canClick && w.getCoins() >= 250) {
             if (Greenfoot.mouseClicked(this)) {
                 SnowWorld.rocketsSpawn = true;
-                w.rmCoin(10);
+                w.rmCoin(250);
                 RocketUpgrade.canClick = false;
                 Boarder.rocket += 5;
             }
         } else {
-            setImage(new GreenfootImage("Rockets Spawn", 50, Color.GRAY, null));
+            setImage(new GreenfootImage("Rockets Spawn (250 coins)", 50, Color.GRAY, null));
         }    
     }    
 }

@@ -6,19 +6,19 @@ public class RampCoins extends Buttons
     public static boolean canClick = true;
     
     public RampCoins() {
-        setImage(new GreenfootImage("More Ramp Coins", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("More Ramp Coins (200 coins)", 50, Color.BLUE, null));
     }    
 
     public void act() {
         StoreWorld w = (StoreWorld) getWorld();        
-        if (canClick && w.getCoins() >= 10) {
+        if (canClick && w.getCoins() >= 200) {
             if (Greenfoot.mouseClicked(this)) {
                 SnowWorld.rampCoins = true;
-                w.rmCoin(10);
+                w.rmCoin(200);
                 RampCoins.canClick = false;
             }   
         } else {
-            setImage(new GreenfootImage("More Ramp Coins", 50, Color.GRAY, null));
+            setImage(new GreenfootImage("More Ramp Coins (200 coins)", 50, Color.GRAY, null));
         }    
     }    
 }
