@@ -17,7 +17,6 @@ public class SnowWorld extends World
     public boolean chase = false;
     private int storeTimer = 0;
     private int c;
-    private SnowWorld sw;
     public void act() {
         volumeAdjust();
         spawnPowerup();
@@ -28,7 +27,7 @@ public class SnowWorld extends World
         storeTimer++;
         
         if (Greenfoot.isKeyDown("s") && storeTimer >= 600){
-            Greenfoot.setWorld(new StoreWorld(sw,coins));
+            Greenfoot.setWorld(new StoreWorld(this,coins));
             storeTimer = 0;
         }    
     }

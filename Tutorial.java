@@ -13,7 +13,7 @@ public class Tutorial extends Buttons
             + "- Press Q to turn the music on/off\n"
             + "- Avoid the obstacles and survive as long as possible\n"
             + "- Good luck! :)\n"
-            + "- Press s to go to store", 30, Color.BLACK, Color.WHITE));
+            + "- Press s to go into the store", 30, Color.BLACK, Color.WHITE));
         getImage().setTransparency(220);
     } 
 }
