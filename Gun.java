@@ -8,6 +8,9 @@ public class Gun extends Pickup
         if (getY()<0) killObst();
         objMove();
         pickUp();
+        if (clipSize != 10) {
+            setImage("ak47.png");
+        } 
     }    
 
     public void pickUp() {

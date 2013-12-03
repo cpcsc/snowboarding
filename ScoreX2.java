@@ -9,8 +9,7 @@ public class ScoreX2 extends Pickup
         if (getY()<0) killObst();
         objMove();
         pickUp();
-        if (Multiplier == 3)
-        {
+        if (Multiplier == 3) {
             setImage("x3.png");
         }    
     }   

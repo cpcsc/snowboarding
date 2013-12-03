@@ -82,6 +82,9 @@ public class Boarder extends Object
         }
         if (Greenfoot.isKeyDown("z") && gun > 0 && shotDelay >= delayMax) {
             Bullet bullet = new Bullet();
+            if (shotDelay == delayMax) {
+                bullet.angle = Greenfoot.getRandomNumber(11) - 5;
+            }
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 0;
             (new GreenfootSound("GunShotSound.mp3")).play();
