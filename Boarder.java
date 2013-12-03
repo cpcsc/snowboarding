@@ -60,7 +60,7 @@ public class Boarder extends Object
         }
         if (!dead && Greenfoot.isKeyDown("up")) {
             SnowWorld sw = (SnowWorld) getWorld();
-            if (airTime <= -20) {
+            if (airTime <= -6) {
                 if(sw.getJumpU()){
                     airTime = 85;
                     jumpTime = 85;
@@ -74,8 +74,8 @@ public class Boarder extends Object
                     airTime = 40;
                     jumpTime = 40;
                 } else {
-                    airTime = 20;
-                    jumpTime = 20;
+                    airTime = 25;
+                    jumpTime = 25;
                 }
                 jumpConst = -50.0 / 1058.0;
             }
