@@ -11,11 +11,13 @@ public class SnowWorld extends World
     public int scoreMult = 1;
     public int multCounter = 0;
     public int coins = 0;
-    public boolean jumpU = false;
+    public static boolean jumpU = false;
     public static boolean rampCoins = false;
     public static boolean rocketsSpawn = false;
     public boolean chase = false;
-
+    private int storeTimer = 0;
+    private int c;
+    private SnowWorld sw;
     public void act() {
         volumeAdjust();
         spawnPowerup();
@@ -23,11 +25,18 @@ public class SnowWorld extends World
         showPowerup();
         addSnowMobile();
         speedUp();
+        storeTimer++;
+        
+        if (Greenfoot.isKeyDown("s") && storeTimer >= 600){
+            Greenfoot.setWorld(new StoreWorld(sw,coins));
+            storeTimer = 0;
+        }    
     }
 
     public SnowWorld(int Coins) {    
         super(900, 700, 1, false); 
         coins = Coins;
+        
         theLives = new Lives();
         addObject(theLives, 820, 670);
         //start music in the snow world

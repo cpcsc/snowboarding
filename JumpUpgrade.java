@@ -6,7 +6,7 @@ public class JumpUpgrade extends Buttons
     public void act() 
     {
         StoreWorld sw = (StoreWorld) getWorld();
-        if(!sw.getJumpU() && sw.getCoins() >= 200){
+        if(/**!sw.getJumpU()*/ SnowWorld.jumpU == false && sw.getCoins() >= 200){
             setImage(new GreenfootImage("Buy Jump Upgrade (200 coins)", 50, Color.BLUE, null));
         }
         else{
@@ -14,7 +14,7 @@ public class JumpUpgrade extends Buttons
         }
 
         if (Greenfoot.mouseClicked(this)) {
-            if(sw.getCoins() >= 200 && !sw.getJumpU()){
+            if(sw.getCoins() >= 200 && /**!sw.getJumpU()*/ SnowWorld.jumpU == false){
                 sw.rmCoin(200);
                 sw.JumpU();
             }

@@ -17,7 +17,9 @@ public class Boarder extends Object
     public int dir;
     public static int delayMax = 20;
     public boolean storeSpawned = false;
-
+    public int timerStore = 0;
+    private SnowWorld sw;
+    private int c;
     public void act() {
         trailTimer++;
         moveAround();
@@ -32,6 +34,7 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
+        timerStore++;
         if (dead) Boarder.rocket = 0; 
     }
 
@@ -57,7 +60,7 @@ public class Boarder extends Object
         if (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("right")){
             setImage("straight.png");
             move(0);
-        }
+        }  
         if (!dead && Greenfoot.isKeyDown("up")) {
             SnowWorld sw = (SnowWorld) getWorld();
             if (airTime <= -6) {
@@ -170,12 +173,12 @@ public class Boarder extends Object
             img.setTransparency((int) transparency);
             setImage(img);      
 
-            if(w.getLives().getTotalLives() < 3){
+            /**if(w.getLives().getTotalLives() < 3){
                 if(storeSpawned == false){
                     getWorld().addObject(new StoreText(w,w.getCoins()), 450, 150);
                     storeSpawned = true;
                 }
-            }
+            }*/
         }
         if (invincible == 100) {
             getImage().setTransparency(255);

@@ -3,6 +3,7 @@ import java.awt.Color;
 
 public class Back extends Buttons
 {
+    private int coins;
     public void act() {
         if (getWorld() instanceof SnowWorld) {
             setImage(new GreenfootImage("Quit", 30, Color.RED, Color.WHITE));
@@ -36,6 +37,7 @@ public class Back extends Buttons
                 SnowWorld.rocketsSpawn = false;
                 MultiplierUpgrade.canClick = true;
                 ScoreX2.Multiplier = 2;
+                SnowWorld.jumpU = false;
                 if(getX() > 80) {
                     Greenfoot.setWorld(new SnowWorld(0));
                 } else {
@@ -43,7 +45,9 @@ public class Back extends Buttons
                 }
             } else if(getWorld() instanceof StoreWorld) {
                 StoreWorld sw = (StoreWorld) getWorld();
+                //coins = sw.getCoins();
                 Greenfoot.setWorld(sw.getSnowWorld());
+                //Greenfoot.setWorld(new SnowWorld(coins));
             } else {
                 Greenfoot.setWorld(new Intro());
             }
