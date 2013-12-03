@@ -272,7 +272,7 @@ public class SnowWorld extends World
         }
         else if (getSpeaker().getOff()==false) {
             bkgMusic.setVolume(80);
-            bkgMusic.setVolume(80);
+            bkgMusic2.setVolume(80);
         }
     }
     // upgrades
