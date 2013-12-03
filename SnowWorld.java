@@ -168,6 +168,10 @@ public class SnowWorld extends World
             Image multImage = new Image("x2.png");
             addObject(multImage, score.getX() + score.getImage().getWidth()/2 + multImage.getWidth()/2 + 4, 15);
         }
+        if(multCounter > 0 && ScoreX2.Multiplier == 3){
+            Image multImage2 = new Image("x3.png");
+            addObject(multImage2, score.getX() + score.getImage().getWidth()/2 + multImage2.getWidth()/2 + 4, 15);
+        }    
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = getBoarder();
             if (b.gun > 0) {

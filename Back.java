@@ -34,6 +34,8 @@ public class Back extends Buttons
                 Clipsize.canClick = true;
                 RocketUpgrade.canClick = true;
                 SnowWorld.rocketsSpawn = false;
+                MultiplierUpgrade.canClick = true;
+                ScoreX2.Multiplier = 2;
                 if(getX() > 80) {
                     Greenfoot.setWorld(new SnowWorld(0));
                 } else {
