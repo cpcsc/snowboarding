@@ -29,6 +29,11 @@ public class SnowWorld extends World
         if (Greenfoot.isKeyDown("s") && storeTimer >= 600){
             Greenfoot.setWorld(new StoreWorld(this,coins));
             storeTimer = 0;
+            Boarder b = getBoarder();
+            if (b.getInvincible() > 100) {
+                b.setInvincible(0);
+                b.respawnBlink();
+            }
         }    
     }
 

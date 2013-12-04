@@ -185,6 +185,10 @@ public class Boarder extends Object
         }
     }
 
+    public void setInvincible(int i) {
+        invincible = i;
+    }
+    
     public int getInvincible(){
         return invincible;
     }
