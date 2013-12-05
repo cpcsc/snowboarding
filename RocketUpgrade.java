@@ -28,6 +28,8 @@ public class RocketUpgrade extends Buttons
                     setImage(new GreenfootImage("Unlock Rocket Launcher (250 coins)", 50, Color.RED, null));
                 }
             }
+        } else if(SnowWorld.rocketsSpawn) {
+            setImage(new GreenfootImage("Unlock Rocket Launcher (BOUGHT)", 50, Color.GRAY, null));
         } else {
             setImage(new GreenfootImage("Unlock Rocket Launcher (250 coins)", 50, Color.BLACK, null));
         }    

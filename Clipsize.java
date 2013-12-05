@@ -6,7 +6,7 @@ import java.awt.Color;
 public class Clipsize extends Buttons
 {
     public static boolean canClick = true;
-    
+
     public void act() {
         StoreWorld w = (StoreWorld) getWorld();
         setImage(new GreenfootImage("Gun Upgrade (250 coins)", 50, Color.BLUE, null));
@@ -30,6 +30,8 @@ public class Clipsize extends Buttons
                     setImage(new GreenfootImage("Gun Upgrade (250 coins)", 50, Color.RED, null));
                 }
             }
+        } else if(Gun.clipSize > 20) {
+            setImage(new GreenfootImage("Gun Upgrade (BOUGHT)", 50, Color.GRAY, null));
         } else {
             setImage(new GreenfootImage("Gun Upgrade (250 coins)", 50, Color.BLACK, null));
         }    

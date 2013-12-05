@@ -27,8 +27,10 @@ public class MultiplierUpgrade extends Buttons
                     setImage(new GreenfootImage("Multiplier Upgrade (200 coins)", 50, Color.RED, null));
                 }
             }
+        } else if(ScoreX2.Multiplier == 3) {
+            setImage(new GreenfootImage("Multiplier Upgrade (BOUGHT)", 50, Color.GRAY, null));
         } else {
             setImage(new GreenfootImage("Multiplier Upgrade (200 coins)", 50, Color.BLACK, null));
-        }    
+        }
     } 
 }

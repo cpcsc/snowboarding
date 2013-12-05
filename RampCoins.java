@@ -27,6 +27,8 @@ public class RampCoins extends Buttons
                     setImage(new GreenfootImage("Extra Ramp Coins (200 coins)", 50, Color.RED, null));
                 }
             }
+        } else if(SnowWorld.rampCoins) {
+            setImage(new GreenfootImage("Extra Ramp Coins (BOUGHT)", 50, Color.GRAY, null));
         } else {
             setImage(new GreenfootImage("Extra Ramp Coins (200 coins)", 50, Color.BLACK, null));
         }    

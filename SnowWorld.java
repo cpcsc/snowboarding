@@ -4,6 +4,7 @@ import java.awt.Color;
 public class SnowWorld extends World
 {
     // Everyone (look through code)
+    // For a full view of the entire project with version control, look at https://github.com/cpcsc/snowboarding
     
     private SpeakerButton sButton = new SpeakerButton();
     private GreenfootSound bkgMusic, bkgMusic2;

@@ -27,6 +27,8 @@ public class JumpUpgrade extends Buttons
                     setImage(new GreenfootImage("Jump Upgrade (200 coins)", 50, Color.RED, null));
                 }
             }
+        } else if(SnowWorld.jumpU){
+            setImage(new GreenfootImage("Jump Upgrade (BOUGHT)", 50, Color.GRAY, null));
         } else {
             setImage(new GreenfootImage("Jump Upgrade (200 coins)", 50, Color.BLACK, null));
         }    
