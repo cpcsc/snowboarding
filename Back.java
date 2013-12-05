@@ -49,9 +49,10 @@ public class Back extends Buttons
                 }
             } else if(getWorld() instanceof StoreWorld) {
                 StoreWorld sw = (StoreWorld) getWorld();
-                //coins = sw.getCoins();
+                SnowWorld snowWorld = (SnowWorld) sw.getSnowWorld();
+                Boarder b = snowWorld.getBoarder();
+                b.invincible = Math.min(0, b.invincible);
                 Greenfoot.setWorld(sw.getSnowWorld());
-                //Greenfoot.setWorld(new SnowWorld(coins));
             } else {
                 Greenfoot.setWorld(new Intro());
             }

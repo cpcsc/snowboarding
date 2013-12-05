@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=w
-comment0.target=SnowTrail(int)
-comment1.params=
-comment1.target=SnowTrail()
+comment0.params=
+comment0.target=SnowTrail()
+comment1.params=w
+comment1.target=SnowTrail(int)
 comment2.params=
 comment2.target=void\ act()
 numComments=3
