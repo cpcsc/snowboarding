@@ -34,7 +34,6 @@ public class Boarder extends Object
         ramp();
         jump(jumpTime);
         magnet();
-        timerStore++;
         if (dead) Boarder.rocket = 0; 
     }
 
@@ -171,14 +170,7 @@ public class Boarder extends Object
             int fast = (invincible >= 0) ? 2 : 1;
             double transparency = 127 * Math.sin(fast * invincible / 4.0) + 128;
             img.setTransparency((int) transparency);
-            setImage(img);      
-
-            /**if(w.getLives().getTotalLives() < 3){
-                if(storeSpawned == false){
-                    getWorld().addObject(new StoreText(w,w.getCoins()), 450, 150);
-                    storeSpawned = true;
-                }
-            }*/
+            setImage(img);
         }
         if (invincible == 100) {
             getImage().setTransparency(255);

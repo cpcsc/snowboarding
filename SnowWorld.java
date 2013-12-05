@@ -25,16 +25,6 @@ public class SnowWorld extends World
         addSnowMobile();
         speedUp();
         storeTimer++;
-        
-        if (Greenfoot.isKeyDown("s") && storeTimer >= 600){
-            Greenfoot.setWorld(new StoreWorld(this,coins));
-            storeTimer = 0;
-            Boarder b = getBoarder();
-            if (b.getInvincible() > 100) {
-                b.setInvincible(0);
-                b.respawnBlink();
-            }
-        }    
     }
 
     public SnowWorld(int Coins) {    
@@ -224,7 +214,20 @@ public class SnowWorld extends World
         Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
         if (speed1 < Object.speed) {
             (new GreenfootSound("Speedboost.mp3")).play();
+            addObject(new Store(), getMiddleX(-100), -100);
         }
+    }
+
+    public int getMiddleX(int y) {
+        int min = 0;
+        int max = getWidth();
+        for(int i = 1; getObjectsAt(i, y, Tree.class).size() != 0; i += 10) {
+            min = i;
+        }
+        for(int i = min + 10; getObjectsAt(i, y, Tree.class).size() == 0; i += 10) {
+            max = i;
+        }
+        return (max + min) / 2;
     }
     
     public void addCoin(int quant) {
