@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Obstacles extends Object
 {
+    // Ricky Escobar && Mark McKinney
+    
     public int snowmanTimer = 0;
     public int treeTimer = 0;
     public int logTimer = 0;

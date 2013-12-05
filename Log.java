@@ -1,5 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Ricky Escobar
+// Image: Megan Voss
+
 public class Log extends Obstacles
 {
     public Log() {

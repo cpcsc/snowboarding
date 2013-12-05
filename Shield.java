@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Shield extends Pickup
 {
+    // Ricky Escobar
+    // Image: Tyeler Bridges
+    
     public void act() {
         if (getY()<0) killObst();
         objMove();

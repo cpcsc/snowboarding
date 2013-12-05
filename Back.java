@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
+// Mark McKinney
+
 public class Back extends Buttons
 {
     private int coins;
@@ -26,6 +28,8 @@ public class Back extends Buttons
 
         if (Greenfoot.mouseClicked(this)) {
             if (getWorld() instanceof SnowWorld) {
+                // Tarrant Starck
+                
                 SnowWorld sw = (SnowWorld) getWorld();
                 sw.stopMusic();
                 Gun.clipSize = 10;

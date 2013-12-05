@@ -1,16 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
-/**
- * Write a description of class MultiplierUpgrade here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
+// Tarrant Starck
+
 public class MultiplierUpgrade extends Buttons
 {
     public static boolean canClick = true;
     public MultiplierUpgrade() {
-        setImage(new GreenfootImage("Multiplier Now x3 (200 coins)", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Multiplier Upgrade (200 coins)", 50, Color.BLUE, null));
     }
     
     public void act() 
@@ -24,7 +21,7 @@ public class MultiplierUpgrade extends Buttons
             }
         }
         else {
-            setImage(new GreenfootImage("Multiplier Now x3 (200 coins)", 50, Color.GRAY, null));
+            setImage(new GreenfootImage("Multiplier Upgrade (200 coins)", 50, Color.GRAY, null));
         }    
     }    
 }

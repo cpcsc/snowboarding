@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Magnet extends Pickup
 {
+    // Ricky Escobar && Tyeler Bridges
+    
     public void act() 
     {
         if (getY()<0) killObst();

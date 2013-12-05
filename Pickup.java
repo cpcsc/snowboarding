@@ -1,7 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Pickup extends Object
-{    
+{
+    // Ricky Escobar
+    
     public void killObst() {
         if (!dead) {
             Class[] list = {Log.class, Snowman.class};
@@ -14,8 +16,7 @@ public class Pickup extends Object
     public void killCoins()
     {
         Class[] list = {Coin.class, Coin2.class};
-        for(Class obst : list)
-        {
+        for(Class obst : list) {
             removeTouching(obst);
         }
     }    

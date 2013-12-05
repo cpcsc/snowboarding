@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Coin extends Coins
 {
+    // Ricky Escobar
+    // Image: Megan Voss
+    
     public Coin() {
         getImage().scale(20,20);
     }

@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+// Mark McKinney and Jeffrey Xie
+
 public class Highscore extends Buttons
 {
     private boolean applet()  
@@ -26,8 +28,6 @@ public class Highscore extends Buttons
                         while (true) {
                             String line = br.readLine();
                             if (line == null) break;
-                            // String[] fields = line.split("\n");
-
                             setImage(new GreenfootImage("Highscore: " + line, 30, Color.BLACK, Color.WHITE));
                             getImage().setTransparency(220);
                         }

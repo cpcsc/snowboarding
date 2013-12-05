@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Bullet extends Weapon
 {
+    // Ricky Escobar
+    
     public int angle = 0;
     public void act() 
     {

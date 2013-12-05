@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Gun extends Pickup
 {
+    // Ricky Escobar
+    // Image: Andrew Tran && Tyeler Bridges
+    
     public static int clipSize = 10;
     
     public void act() {

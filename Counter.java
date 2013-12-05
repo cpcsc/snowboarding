@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
+// Image made by Andrew Tran
+
 public class Counter extends Actor
 {
     private static final Color transparent = new Color(0,0,0,0);

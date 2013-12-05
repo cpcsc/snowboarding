@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class SnowMobile extends Obstacles
 {
+    // Andrew Tran && Ricky Escobar
+    
     public int airTime = 0;
     public int jumpTime;
     public double jumpConst;

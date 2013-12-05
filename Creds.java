@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
+// See credits for credits
+
 public class Creds extends Buttons
 {
     public void act() 

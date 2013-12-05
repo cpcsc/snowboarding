@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Snowman extends Obstacles
 {
+    // Mark McKinney
+    
     public Snowman() {
        getImage().scale(36,65);             
     }

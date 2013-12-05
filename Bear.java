@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Bear extends Obstacles
 {
+    // Ricky Escobar
+    // Image: Andrew Tran && Tyeler Bridges
+    
     public int dir = 1;
     public int imgDir = 1;
     private GreenfootImage img1 = new GreenfootImage("images/PolarBear.png");

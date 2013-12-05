@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class ScoreX2 extends Pickup
 {
+    // Ricky Escobar
+    
     public static int Multiplier = 2;
     
     public void act() 

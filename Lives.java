@@ -11,6 +11,8 @@ import java.io.IOException;
 
 public class Lives extends Object
 {
+    // Mark McKinney && 2 lines by Jeffrey Xie
+    
     public int lives = 3;
     private int totalLives = 3;
     private int spawnTime = 0;
@@ -119,7 +121,7 @@ public class Lives extends Object
      * Returns the x-value of the middle of the gap between the trees
      * so you don't spawn in the trees.
      */
-    public int getRespawnX(int y) {
+    public int getRespawnX(int y) { // Ricky Escobar
         World w = getWorld();
         int min = 0;
         int max = getWorld().getWidth();

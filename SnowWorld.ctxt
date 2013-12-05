@@ -11,7 +11,6 @@ comment12.params=
 comment12.target=void\ speedUp()
 comment13.params=y
 comment13.target=int\ getMiddleX(int)
-comment13.text=\r\n\ Returns\ the\ x-value\ of\ the\ middle\ of\ the\ gap\ between\ the\ trees\r\n\ so\ you\ don't\ spawn\ in\ the\ trees.\r\n
 comment14.params=quant
 comment14.target=void\ addCoin(int)
 comment15.params=

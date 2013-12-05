@@ -1,5 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Andrew Tran
+// Image by Ricky Escobar
+
 public class SpeakerButton extends Buttons
 {
     private GreenfootSound bgm;

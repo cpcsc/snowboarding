@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Ricky Escobar
+
 public class SnowMobileTrail extends Actor
 {
     public SnowMobileTrail() {

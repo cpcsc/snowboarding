@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Invincible extends Pickup
 {
+    // Andrew Tran
+    
     public void act() 
     {
         if (getY()<0) killObst();

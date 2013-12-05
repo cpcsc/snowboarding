@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Boarder extends Object
 {   
+    // Everyone (look through)
+    
     private int dragFromX, dragFromY;
     public int invincible = 0;
     private int airTime = 0;
@@ -37,7 +39,7 @@ public class Boarder extends Object
         if (dead) Boarder.rocket = 0; 
     }
 
-    public void moveAround() {
+    public void moveAround() {    // Mark McKinney
         if (Greenfoot.isKeyDown("left") && getX() >= 0){
             if (canMove(-4, 0, Tree.class) || invincible < 100) {
                 move(-4);
@@ -60,7 +62,7 @@ public class Boarder extends Object
             setImage("straight.png");
             move(0);
         }  
-        if (!dead && Greenfoot.isKeyDown("up")) {
+        if (!dead && Greenfoot.isKeyDown("up")) {    // Ricky Escobar
             SnowWorld sw = (SnowWorld) getWorld();
             if (airTime <= -6) {
                 if(sw.getJumpU()){
@@ -82,21 +84,21 @@ public class Boarder extends Object
                 jumpConst = -50.0 / 1058.0;
             }
         }
-        if (Greenfoot.isKeyDown("z") && gun > 0 && shotDelay >= delayMax) {
+        if (Greenfoot.isKeyDown("z") && gun > 0 && shotDelay >= delayMax) {    // Ricky Escobar
             Bullet bullet = new Bullet();
             if (shotDelay == delayMax) {
                 bullet.angle = Greenfoot.getRandomNumber(11) - 5;
             }
             getWorld().addObject(bullet, getX(), getY());
             shotDelay = 0;
-            (new GreenfootSound("GunShotSound.mp3")).play();
+            (new GreenfootSound("GunShotSound.mp3")).play();    // Tyeler Bridges
             gun--;
         }
-        if (Greenfoot.isKeyDown("x") && rocket > 0 && shotDelay >= delayMax) {
+        if (Greenfoot.isKeyDown("x") && rocket > 0 && shotDelay >= delayMax) {    // Tyeler Bridges
             Rocket r = new Rocket();
             getWorld().addObject(r, getX(), getY());
             shotDelay = 0;
-            (new GreenfootSound("GunShotSound.mp3")).play();
+            (new GreenfootSound("GunShotSound.mp3")).play();    // Tyeler Bridges
             rocket--;
         }
         SnowWorld w = (SnowWorld) getWorld();
@@ -104,7 +106,7 @@ public class Boarder extends Object
     }
 
     public void ramp() {
-        if (airTime < 0 && !dead && isTouching(Ramp.class)) {
+        if (airTime < 0 && !dead && isTouching(Ramp.class)) {    // Ricky Escobar
             SnowWorld sw = (SnowWorld) getWorld();
             if(sw.getJumpU()){
                 airTime = 150;
@@ -118,7 +120,7 @@ public class Boarder extends Object
         }
     }
 
-    public void trail() {
+    public void trail() {    // Ricky Escobar && Andrew Tran
         if (airTime < 0) {
             World w = getWorld();
             for (int i = 1; i <= Object.speed; i++) {
@@ -131,7 +133,7 @@ public class Boarder extends Object
         return airTime;
     }
 
-    public void dieObstacle(){
+    public void dieObstacle(){    // Ricky
         Object obstacle = (Object) getOneIntersectingObject(Obstacles.class);
         if (obstacle != null && invincible > 100 && air == obstacle.air) {
             if (!shield) {
@@ -163,7 +165,7 @@ public class Boarder extends Object
         }
     }
 
-    public void respawnBlink() {
+    public void respawnBlink() {    // Ricky
         SnowWorld w = (SnowWorld) getWorld();
         if (invincible < 100) {
             GreenfootImage img = getImage();
@@ -177,7 +179,7 @@ public class Boarder extends Object
         }
     }
 
-    public void setInvincible(int i) {
+    public void setInvincible(int i) {    // Andrew
         invincible = i;
     }
     
@@ -185,7 +187,7 @@ public class Boarder extends Object
         return invincible;
     }
 
-    public void jump(int jumpTime) {
+    public void jump(int jumpTime) {    // Ricky
         air = airTime > 0;
         if (!dead) {
             if (air) {
@@ -202,7 +204,7 @@ public class Boarder extends Object
         }
     }
 
-    public void magnet() {
+    public void magnet() {    // Ricky
         magnetTimer--;
         if (magnetTimer > 0 && !dead) {
             List l = getNeighbours(200, false, Pickup.class);

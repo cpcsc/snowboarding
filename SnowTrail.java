@@ -2,19 +2,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class SnowTrail extends Actor
 {
-    public SnowTrail(int w)
-    {
+    // Ricky Escobar && Andrew Tran
+
+    public int timer = 0;
+    
+    public SnowTrail() {
+    }
+
+    public SnowTrail(int w) {
         getImage().scale(w,15);
     }
-    
-    public SnowTrail()
-    {
-    }
-    
-    public int timer = 0;
 
-    public void act() 
-    {
+    public void act() {
         timer++;
         setLocation(getX(), getY() + Object.speed);
         if (getY() >= getWorld().getHeight()+20){

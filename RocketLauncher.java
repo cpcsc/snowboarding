@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class RocketLauncher extends Pickup
 {
+    // Tyeler Bridges
+    // Image: Andrew Tran
+    
     public void act() {
         if (getY()<0) killObst();
         objMove();

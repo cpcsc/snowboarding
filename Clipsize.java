@@ -1,11 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
+// Tarrant Starck
+
 public class Clipsize extends Buttons
 {
     public static boolean canClick = true;
     public Clipsize() {
-        setImage(new GreenfootImage("Pistol to AK-47 (250 coins)", 50, Color.BLUE, null));
+        setImage(new GreenfootImage("Gun Upgrade (250 coins)", 50, Color.BLUE, null));
     }    
 
     public void act() {
@@ -18,7 +20,7 @@ public class Clipsize extends Buttons
                 Clipsize.canClick = false;
             }
         } else {
-            setImage(new GreenfootImage("Pistol to AK-47 (250 coins)", 50, Color.GRAY, null));    
+            setImage(new GreenfootImage("Gun Upgrade (250 coins)", 50, Color.GRAY, null));    
         }
     }    
 } 

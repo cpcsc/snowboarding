@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class SnowMobileCrashed extends Object
 {
+    // Andrew Tran
+    
     public int explodeTimer = 0;
     public SnowMobileCrashed(int rotation)
     {
@@ -17,7 +19,7 @@ public class SnowMobileCrashed extends Object
         }
     }    
 
-    public void explode() {
+    public void explode() {    // Ricky Escobar
         if (explodeTimer < 12) {
             getWorld().addObject(new Image("explosion/explosion_010_"+explodeTimer+".gif"), getX(), getY());
             explodeTimer++;

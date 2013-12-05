@@ -1,6 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 
+// Mark McKinney - StoreWorld, jump upgrades
+// Tarrant Starck - other upgrades
+
 public class StoreWorld extends World
 {
     private World sw;

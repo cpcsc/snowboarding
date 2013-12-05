@@ -3,6 +3,9 @@ import java.util.*;
 
 public class Rocket extends Weapon
 {
+    // Tyeler Bridges
+    // Image: Andrew Tran
+    
     public void act() {
         setLocation(getX(), getY() - 20);
         destroy();

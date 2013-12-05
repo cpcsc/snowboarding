@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+// Mark McKinney
+
 public class Reset extends Buttons
 {
     private boolean applet()  

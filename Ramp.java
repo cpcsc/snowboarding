@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Ramp extends Object
 {
+    // Mark McKinney
+    // Image: Megan Voss
+    
     public Ramp() {
         getImage().scale(169,100);        
     }

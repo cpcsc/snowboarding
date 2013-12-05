@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Bot extends Object
 {
+    // Mark McKinney && Ricky Escobar
+    // Image: Andrew Tran && Tyeler Bridges
+    
     public int speed = 4;
     private int timer = 0;
     

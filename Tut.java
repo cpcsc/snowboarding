@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Mark McKinney
+
 /**
  * Write a description of class Tut here.
  * 

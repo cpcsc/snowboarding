@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Ricky Escobar
+
 public class Explosion extends Actor
 {
     public int size;

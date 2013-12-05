@@ -3,6 +3,8 @@ import java.awt.Color;
 
 public class SnowWorld extends World
 {
+    // Everyone (look through code)
+    
     private SpeakerButton sButton = new SpeakerButton();
     private GreenfootSound bkgMusic, bkgMusic2;
     private boolean musicChange = false;
@@ -27,10 +29,10 @@ public class SnowWorld extends World
         storeTimer++;
     }
 
-    public SnowWorld(int Coins) {    
+    // Passing worlds by Mark McKinney
+    public SnowWorld(int Coins) {    // Jeffrey Xie
         super(900, 700, 1, false); 
-        coins = Coins;
-        
+        coins = Coins;        
         theLives = new Lives();
         addObject(theLives, 820, 670);
         //start music in the snow world
@@ -62,7 +64,7 @@ public class SnowWorld extends World
         addObject(back, 30, 680);
         Back back2 = new Back();
         addObject(back2, 100, 680);
-        for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees
+        for(int y = getHeight() + 50; y > -700; y -= 3) { //spawn in trees     // Ricky Escobar
             obstacles.addTree(y);
         }      
         addObject(score, getWidth()/2, 17);
@@ -71,7 +73,7 @@ public class SnowWorld extends World
         addObject(sButton, 30, 60);
     }
 
-    public void spawnPowerup() {
+    public void spawnPowerup() {   // Ricky Escobar && Tarrant Starck
         Boarder b = getBoarder();
         if (Greenfoot.getRandomNumber(2000) == 0 && getScore() >= 15000) { 
             addObject2(new Gun(), randX(-100), -100);
@@ -99,7 +101,7 @@ public class SnowWorld extends World
                 int rx = r.getX();
                 int ry = r.getY();            
                 int rh = r.getImage().getHeight();
-                addObject2(new Coin2(), rx, ry - rh/2 - 8*Object.speed);
+                addObject2(new Coin2(), rx, ry - rh/2 - 8*Object.speed);    // Tarrant Starck - coins
                 addObject2(new Coin2(), rx, ry - rh/2 - 24*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 40*Object.speed);
                 addObject2(new Coin2(), rx, ry - rh/2 - 56*Object.speed);  
@@ -122,7 +124,7 @@ public class SnowWorld extends World
         }
     }
 
-    public void spawnLineOfCoins() {
+    public void spawnLineOfCoins() {    // Ricky Escobar
         int x1 = randX(-20);
         int r = Greenfoot.getRandomNumber(5) + 5;
         int x2 = randX(-20 - 60*r);
@@ -134,7 +136,7 @@ public class SnowWorld extends World
     public int randX(int y) {
         return randX(y, 10);
     }
-
+        // Ricky Escobar
     public int randX(int y, int precision) { //Returns random x-value between the trees at a given y-value
         int min = 0;                         //x-value will be at least precision units away from the trees
         int max = 0;
@@ -149,17 +151,17 @@ public class SnowWorld extends World
         return Greenfoot.getRandomNumber(max - min - 2*precision) + min + precision;
     }
 
-    public void scoreMult(int multiplier, int frames) {
+    public void scoreMult(int multiplier, int frames) {    // Ricky
         multCounter = frames;
         scoreMult = multiplier;
     }
 
-    public void incScore(int pts) {
+    public void incScore(int pts) {    // Ricky
         scoreMult = (multCounter <= 0) ? 1 : scoreMult;
         score.add((Object.speed - 2) * scoreMult * pts);    
     }
 
-    public void showPowerup() {
+    public void showPowerup() {    // Ricky Escobar
         removeObjects(getObjects(Image.class));
         Image coinImage = new Image("coin.png");
         coinImage.getImage().scale(20, 20);
@@ -175,7 +177,7 @@ public class SnowWorld extends World
             Image multImage2 = new Image("x3.png");
             addObject(multImage2, score.getX() + score.getImage().getWidth()/2 + multImage2.getWidth()/2 + 4, 15);
         }    
-        if (getObjects(Boarder.class).size() != 0) {
+        if (getObjects(Boarder.class).size() != 0) {  // Mark McKinney
             Boarder b = getBoarder();
             if (b.gun > 0) {
                 Image gunImage = new Image("GunPowerup.png");
@@ -200,7 +202,7 @@ public class SnowWorld extends World
         }
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = getBoarder();
-            if (b.rocket > 0) {
+            if (b.rocket > 0) {  // Andrew Tran
                 Image rocketImage = new Image("RocketAndrew.png");
                 addObject(rocketImage, score.getX() - score.getImage().getWidth()/2 - rocketImage.getWidth()/2 - 160, 20);
                 Image rNumImage = new Image("" + b.rocket, 30, Color.BLACK, null);
@@ -209,16 +211,16 @@ public class SnowWorld extends World
         }
     }
 
-    public void speedUp() { 
+    public void speedUp() {   // Ricky Escobar
         int speed1 = Object.speed;
         Object.speed = (int) (2.5 + .5*Math.sqrt(8 * getScore() / 10000 + 1));
         if (speed1 < Object.speed) {
             (new GreenfootSound("Speedboost.mp3")).play();
-            addObject(new Store(), getMiddleX(-100), -100);
+            addObject(new Store(), getMiddleX(-100), -100);    // Mark McKinney
         }
     }
 
-    public int getMiddleX(int y) {
+    public int getMiddleX(int y) {    // Mark McKinney
         int min = 0;
         int max = getWidth();
         for(int i = 1; getObjectsAt(i, y, Tree.class).size() != 0; i += 10) {
@@ -254,10 +256,9 @@ public class SnowWorld extends World
         return score.getValue();
     }
 
-    public void addSnowMobile() {
+    public void addSnowMobile() {    // Ricky
         Boarder boarder = getBoarder();
         if (Greenfoot.getRandomNumber(2000) <= Object.speed && getScore()>=50000) {
-            //addObject(new SnowMobile(), getBoarder().getX(), getHeight() + 50);
             addObject(new SnowMobile(), randX(getHeight() + 50, 80), getHeight() + 50);
             (new GreenfootSound("policeSound.mp3")).play();
             if(chase == false){
@@ -272,7 +273,7 @@ public class SnowWorld extends World
         return sButton;
     }
 
-    public void volumeAdjust() {
+    public void volumeAdjust() {    // Andrew Tran
         if (getSpeaker().getOff()==true) {
             bkgMusic.setVolume(0);
             bkgMusic2.setVolume(0);
@@ -283,7 +284,7 @@ public class SnowWorld extends World
         }
     }
     // upgrades
-    public void JumpU() {
+    public void JumpU() {    // Mark McKinney
         jumpU = true;
     }
 

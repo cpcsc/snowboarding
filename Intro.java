@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+// Mark McKinney
+
 public class Intro extends World
 {
     public Intro()
