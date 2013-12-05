@@ -4,7 +4,7 @@ import java.util.*;
 public class Boarder extends Object
 {   
     // Everyone (look through)
-    
+
     private int dragFromX, dragFromY;
     public int invincible = 0;
     private int airTime = 0;
@@ -18,10 +18,8 @@ public class Boarder extends Object
     private int trailTimer = 0;
     public int dir;
     public static int delayMax = 20;
-    public boolean storeSpawned = false;
-    public int timerStore = 0;
     private SnowWorld sw;
-    private int c;
+
     public void act() {
         trailTimer++;
         moveAround();
@@ -65,7 +63,7 @@ public class Boarder extends Object
         if (!dead && Greenfoot.isKeyDown("up")) {    // Ricky Escobar
             SnowWorld sw = (SnowWorld) getWorld();
             if (airTime <= -6) {
-                if(sw.getJumpU()){
+                if(SnowWorld.jumpU) {
                     airTime = 85;
                     jumpTime = 85;
                 } else {
@@ -74,7 +72,7 @@ public class Boarder extends Object
                 }
                 jumpConst = -50.0 / 1058.0;
             } else if (airTime <= -5) {
-                if(sw.getJumpU()){
+                if(SnowWorld.jumpU){
                     airTime = 40;
                     jumpTime = 40;
                 } else {
@@ -94,7 +92,7 @@ public class Boarder extends Object
             (new GreenfootSound("GunShotSound.mp3")).play();    // Tyeler Bridges
             gun--;
         }
-        if (Greenfoot.isKeyDown("x") && rocket > 0 && shotDelay >= delayMax) {    // Tyeler Bridges
+        if (Greenfoot.isKeyDown("x") && rocket > 0 && shotDelay >= 50) {    // Tyeler Bridges
             Rocket r = new Rocket();
             getWorld().addObject(r, getX(), getY());
             shotDelay = 0;
@@ -108,7 +106,7 @@ public class Boarder extends Object
     public void ramp() {
         if (airTime < 0 && !dead && isTouching(Ramp.class)) {    // Ricky Escobar
             SnowWorld sw = (SnowWorld) getWorld();
-            if(sw.getJumpU()){
+            if(SnowWorld.jumpU) {
                 airTime = 150;
                 jumpTime = 150;
             }
@@ -179,21 +177,13 @@ public class Boarder extends Object
         }
     }
 
-    public void setInvincible(int i) {    // Andrew
-        invincible = i;
-    }
-    
-    public int getInvincible(){
-        return invincible;
-    }
-
     public void jump(int jumpTime) {    // Ricky
         air = airTime > 0;
         if (!dead) {
             if (air) {
-                getWorld().setPaintOrder(Counter.class, Coin2.class, Boarder.class, SnowMobile.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+                getWorld().setPaintOrder(Counter.class, Coin2.class, Image.class, Boarder.class, SnowMobile.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
             } else {
-                getWorld().setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
+                getWorld().setPaintOrder(Counter.class, Coin2.class, Image.class, SnowMobile.class, Boarder.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class);
             }
             if (air) {
                 Image shadow = new Image("shadow.png");
@@ -210,9 +200,11 @@ public class Boarder extends Object
             List l = getNeighbours(200, false, Pickup.class);
             for (int i = 0; i < l.size(); i++) {
                 Actor a = (Actor) l.get(i);
-                a.turnTowards(getX(), getY());
-                a.move(Object.speed + 2);
-                a.setRotation(0);
+                if (!(a instanceof Store)) {
+                    a.turnTowards(getX(), getY());
+                    a.move(Object.speed + 2);
+                    a.setRotation(0);
+                }
             }
         }
     }

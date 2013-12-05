@@ -14,14 +14,22 @@ public class Back extends Buttons
                 setImage(new GreenfootImage("Restart", 30, Color.BLUE, Color.WHITE));
                 getImage().setTransparency(220);
             }
-        } else {
-            setImage(new GreenfootImage("Back", 50, Color.BLUE, Color.WHITE));
-            getImage().setTransparency(220);
+        } else if (getWorld() instanceof StoreWorld) {
+            setImage(new GreenfootImage("Back", 50, Color.BLUE, null));
             if (Greenfoot.getMouseInfo() != null){
                 if (Greenfoot.getMouseInfo().getX() >= 405 && Greenfoot.getMouseInfo().getX() <= 495 &&
                 Greenfoot.getMouseInfo().getY() >= 640 && Greenfoot.getMouseInfo().getY() <= 670) {
-                    setImage(new GreenfootImage("Back", 50, Color.RED, Color.WHITE));
-                    getImage().setTransparency(220);
+                    setImage(new GreenfootImage("Back", 50, Color.RED, null));
+                }
+            } else {
+                setImage(new GreenfootImage("Back", 50, Color.BLUE, Color.WHITE));
+                getImage().setTransparency(220);
+                if (Greenfoot.getMouseInfo() != null){
+                    if (Greenfoot.getMouseInfo().getX() >= 405 && Greenfoot.getMouseInfo().getX() <= 495 &&
+                    Greenfoot.getMouseInfo().getY() >= 640 && Greenfoot.getMouseInfo().getY() <= 670) {
+                        setImage(new GreenfootImage("Back", 50, Color.RED, Color.WHITE));
+                        getImage().setTransparency(220);
+                    }
                 }
             }
         }
@@ -29,7 +37,7 @@ public class Back extends Buttons
         if (Greenfoot.mouseClicked(this)) {
             if (getWorld() instanceof SnowWorld) {
                 // Tarrant Starck
-                
+
                 SnowWorld sw = (SnowWorld) getWorld();
                 sw.stopMusic();
                 Gun.clipSize = 10;

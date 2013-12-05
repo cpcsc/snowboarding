@@ -50,11 +50,4 @@ public class StoreWorld extends World
         addObject(coinImage, coinImage.getWidth()/2 + 5, coinImage.getHeight()/2 + 5);
         addObject(coinNumImage, coinImage.getWidth() + 8 + coinNumImage.getWidth()/2, coinImage.getHeight()/2 + 5);
     }
-    
-    public void JumpU(){
-        ((SnowWorld)sw).JumpU();
-    }
-    public boolean getJumpU(){
-        return ((SnowWorld)sw).getJumpU();
-    }
 }

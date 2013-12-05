@@ -17,8 +17,7 @@ public class SnowWorld extends World
     public static boolean rampCoins = false;
     public static boolean rocketsSpawn = false;
     public boolean chase = false;
-    private int storeTimer = 0;
-    private int c;
+    public static int imgOffset = 0;
     public void act() {
         volumeAdjust();
         spawnPowerup();
@@ -26,7 +25,6 @@ public class SnowWorld extends World
         showPowerup();
         addSnowMobile();
         speedUp();
-        storeTimer++;
     }
 
     // Passing worlds by Mark McKinney
@@ -55,7 +53,7 @@ public class SnowWorld extends World
     }
 
     private void prepare() {
-        setPaintOrder(Counter.class, Coin2.class, SnowMobile.class, Boarder.class, Image.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, SnowMobileCrashed.class ,SnowTrail.class);
+        setPaintOrder(Counter.class, Image.class, Coin2.class, SnowMobile.class, Boarder.class, Lives.class, Buttons.class, Obstacles.class, Weapon.class, Pickup.class, SnowMobileCrashed.class ,SnowTrail.class);
         Boarder boarder = new Boarder();
         addObject(boarder, getWidth()/2, 400);
         Obstacles obstacles = new Obstacles();
@@ -181,9 +179,10 @@ public class SnowWorld extends World
             Boarder b = getBoarder();
             if (b.gun > 0) {
                 Image gunImage = new Image("GunPowerup.png");
+                if (Boarder.delayMax != 20) gunImage.setImage("ak47.png");
                 addObject(gunImage, score.getX() - score.getImage().getWidth()/2 - gunImage.getWidth()/2 - 4, 20);
                 Image gunNumImage = new Image("" + b.gun, 30, Color.BLACK, null);
-                addObject(gunNumImage, gunImage.getX() - 40, 15);
+                addObject(gunNumImage, gunImage.getX() - 40 + imgOffset, 15);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
@@ -197,16 +196,16 @@ public class SnowWorld extends World
             Boarder b = getBoarder();
             if (b.shield) {
                 Image shieldImage = new Image("shield.png");
-                addObject(shieldImage, score.getX() - score.getImage().getWidth()/2 - shieldImage.getWidth()/2 - 100, 20);
+                addObject(shieldImage, 606, 30);
             }
         }
         if (getObjects(Boarder.class).size() != 0) {
             Boarder b = getBoarder();
             if (b.rocket > 0) {  // Andrew Tran
-                Image rocketImage = new Image("RocketAndrew.png");
-                addObject(rocketImage, score.getX() - score.getImage().getWidth()/2 - rocketImage.getWidth()/2 - 160, 20);
+                Image rocketImage = new Image("RocketLauncherAndrew.png");
+                addObject(rocketImage, score.getX() - score.getImage().getWidth()/2 - rocketImage.getWidth()/2 - 90 + imgOffset - 5, 18);
                 Image rNumImage = new Image("" + b.rocket, 30, Color.BLACK, null);
-                addObject(rNumImage, rocketImage.getX() - 30, 15);
+                addObject(rNumImage, rocketImage.getX() - 45, 15);
             }
         }
     }
@@ -282,13 +281,5 @@ public class SnowWorld extends World
             bkgMusic.setVolume(80);
             bkgMusic2.setVolume(80);
         }
-    }
-    // upgrades
-    public void JumpU() {    // Mark McKinney
-        jumpU = true;
-    }
-
-    public boolean getJumpU() {
-        return jumpU;
     }
 }
