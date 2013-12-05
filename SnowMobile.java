@@ -89,6 +89,7 @@ public class SnowMobile extends Obstacles
             w.addObject(new Coin(), getX() + Greenfoot.getRandomNumber(21) - 10, getY() + Greenfoot.getRandomNumber(21) - 10);
         }
         (new GreenfootSound("Explosion.mp3")).play();
+        (new GreenfootSound("policeDeath.mp3")).play();
         w.addObject(new SnowMobileCrashed(Greenfoot.getRandomNumber(180)-90), getX(), getY());
         w.removeObject(this);
         dead = true;
